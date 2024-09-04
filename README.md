@@ -13,6 +13,7 @@ Dependencies
 - Redux Toolkit npm install @reduxjs/toolkit
 - Sequelize npm install --save sequelize pg pg-hstore
 - Axios npm i axios
+
 API
 - Zillow
 - MapBox/Google Maps?
