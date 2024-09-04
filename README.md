@@ -4,14 +4,15 @@ This project will encompass a front-end with react styled with tailwind, a serve
 
 
 Dependencies 
-- TailWind
-- Express
-- Nodemon
-- React Router
-- Redux
-- Redux Toolkit
-- Sequelize - pg pg-hstore
-- Axios
+- TailWind  npm install -D tailwindcss postcss autoprefixer
+            npx tailwindcss init -p
+- Express npm i express
+- Nodemon npm i nodemon
+- React Router npm install react-router-dom
+- Redux npm install react-redux
+- Redux Toolkit npm install @reduxjs/toolkit
+- Sequelize npm install --save sequelize pg pg-hstore
+- Axios npm i axios
 API
 - Zillow
 - MapBox/Google Maps?
