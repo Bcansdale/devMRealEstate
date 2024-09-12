@@ -15,15 +15,21 @@ function App() {
         setIsShowLogin((isShowLogin) => !isShowLogin)
     }
 
+    const [isShowSignup, setIsShowSignUp] = useState(false)
+    const handleSignupClick = () => {
+        setIsShowSignUp((isShowSignup) => !isShowSignup)
+    }
+
+
   return (
       <>
-          <StickyNavbar handleLoginClick={handleLoginClick}/>
+          <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
           <Login isShowLogin={isShowLogin}/>
+          <SignUp isShowSignup={isShowSignup}/>
           <Banner/>
           <MainProperties/>
           <Testimonials/>
           <Footer/>
-          {/*<SignUp />*/}
       </>
   )
 }

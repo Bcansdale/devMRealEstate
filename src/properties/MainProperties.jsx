@@ -24,7 +24,6 @@ function MainProperties() {
             </div>
             <div>
                 <section className="flex flex-col items-center bg-white">
-                    {/*<h1 className="mt-10 text-[3rem] font-bold text-[#444445]">New Listings</h1>*/}
                     <div
                         className="mt-10 mx-4 grid md:grid-cols-2 md:px-10 md:gap-8 xl:grid-cols-4 xl:gap-8 xl:ml-8 xl:mr-8">
                         <PropertyCard/>

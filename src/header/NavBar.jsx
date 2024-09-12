@@ -8,10 +8,12 @@ import {
 } from "@material-tailwind/react";
 import logo from '/public/devmLogo.png'
 import { BsHouseHeart } from "react-icons/bs";
+import { GrUserAdmin } from "react-icons/gr";
 
 
 
-function StickyNavbar({ handleLoginClick }) {
+
+function StickyNavbar({ handleLoginClick, handleSignupClick }) {
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -23,6 +25,10 @@ function StickyNavbar({ handleLoginClick }) {
 
     const handleLogin = () => {
         handleLoginClick()
+    }
+
+    const handleSignup = () => {
+        handleSignupClick()
     }
 
 
@@ -78,7 +84,9 @@ function StickyNavbar({ handleLoginClick }) {
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
-                        <button className='mr-5'><BsHouseHeart size={'1.4rem'}/></button>
+                        <button className="mr-5"><BsHouseHeart size={'1.4rem'}/></button>
+                        <button className="mr-5"><GrUserAdmin size={'1.4rem'}/></button>
+
                         <div className="flex items-center gap-x-1 text-[#444445]">
                             <Button
                                 variant="outlined"
@@ -87,6 +95,14 @@ function StickyNavbar({ handleLoginClick }) {
                                 onClick={handleLogin}
                             >
                                 Login
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                size="sm"
+                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
+                                onClick={handleSignup}
+                            >
+                                Sign Up
                             </Button>
                         </div>
                         <IconButton
@@ -129,7 +145,7 @@ function StickyNavbar({ handleLoginClick }) {
                     </div>
                 </div>
                 <Collapse open={openNav}>
-                    {navList}
+                {navList}
                     <div className="flex items-center gap-x-1">
                     <Button fullWidth variant="outlined" size="sm" className="rounded-3xl text-[#444445] text-[1rem]">
                             <span>Log In/Sign Up</span>
