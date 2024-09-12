@@ -22,7 +22,7 @@ function PropertyCard() {
                            className="text-lg hover:text-green-600 font-[400] duration-500 ease-in-out text-[1.4rem] text-[#444445]">351 W 800 N, Salt Lake City, UT, USA</a>
                     </div>
 
-                    <ul className="box-border flex list-none items-center border-t border-b border-solid border-gray-300 px-0 py-6">
+                    <ul className="box-border flex list-none items-center justify-between border-t border-b border-solid border-gray-300 px-0 py-6">
                         <li className="mr-4 flex items-center text-left">
                             <i className="mr-2 text-2xl text-[#444445]">
                                 {/*uil:compress-arrows*/}

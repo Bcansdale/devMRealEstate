@@ -14,11 +14,11 @@ function Banner() {
                         <div className="md:w-1/2 min-w-[350px] mt-24">
                             <div className="relative">
                                 <input
-                                    className="w-full bg-transparent placeholder:text-white sm:text-[1.3rem] border border-white rounded-3xl pl-5 md:pl-8 lg:pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-white shadow-sm focus:shadow "
-                                    placeholder="Search for properties by type"
+                                    className="w-full bg-transparent placeholder:text-white sm:text-[1.3rem] border border-white rounded-[2rem] pl-5 md:pl-8 lg:pr-28 py-3 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-white shadow-sm focus:shadow "
+                                    placeholder="Search for properties"
                                 />
                                 <button
-                                    className="absolute top-1 right-1 flex items-center rounded-3xl bg-white w-1/4 py-2 px-1 md:px-3 border border-transparent text-center sm:text-[1.3rem] text-[#444445] transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    className="absolute top-1 right-1 flex items-center rounded-3xl bg-white md:w-1/4 py-2 px-1 md:px-3 border border-transparent text-center sm:text-[1.3rem] text-[#444445] transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     type="button"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -34,7 +34,7 @@ function Banner() {
                     </div>
                 </div>
                 <h1 className='flex flex-col justify-center items-center text-3xl md:text-[3.5rem] mt-10 text-[#444445]'>
-                    Find listings By Property Type</h1>
+                    Find Listings By Property Type</h1>
             </div>
         </>
     );
