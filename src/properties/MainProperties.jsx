@@ -21,9 +21,9 @@ function MainProperties() {
             </div>
             <div>
                 <section className="flex flex-col items-center bg-white">
-                    <h1 className="mt-10 text-4xl font-bold text-[#444445]">New Listings</h1>
+                    {/*<h1 className="mt-10 text-[3rem] font-bold text-[#444445]">New Listings</h1>*/}
                     <div
-                        className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:gap-8">
+                        className="mt-10 mx-4 grid md:grid-cols-2 md:px-10 md:gap-8 lg:grid-cols-4 lg:gap-8 lg:ml-8 lg:mr-8">
                         <PropertyCard />
                         <PropertyCard />
                         <PropertyCard />
