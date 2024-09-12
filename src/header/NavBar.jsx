@@ -83,17 +83,10 @@ function StickyNavbar({ handleLoginClick }) {
                             <Button
                                 variant="outlined"
                                 size="sm"
-                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-6"
+                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
                                 onClick={handleLogin}
                             >
                                 Login
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                size="sm"
-                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem]"
-                            >
-                                Sign Up
                             </Button>
                         </div>
                         <IconButton
