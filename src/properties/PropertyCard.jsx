@@ -4,22 +4,17 @@ function PropertyCard() {
     return (
         <>
             <article
-                className="mb-4 overflow-hidden rounded-xl border text-gray-700 shadow-md duration-500 ease-in-out hover:shadow-xl">
+                className="mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
                 <div className="">
                     <img
-                        src="https://photos.zillowstatic.com/fp/ed200887e22839e617a0815a0c9f8e8e-uncropped_scaled_within_1536_1152.webp"
+                        src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
                         alt="" className=""/>
                 </div>
 
                 <div className="p-4">
                     <div className="pb-6">
                         <a href="#"
-                           className="text-lg hover:text-green-600 font-medium duration-500 ease-in-out">238
-                                                                                                         Baton
-                                                                                                         Rouge,
-                                                                                                         LA
-                                                                                                         70809,
-                                                                                                         USA</a>
+                           className="text-lg hover:text-green-600 font-[400] duration-500 ease-in-out text-[#444445]">351 W 800 N, Salt Lake City, UT</a>
                     </div>
 
                     <ul className="box-border flex list-none items-center border-t border-b border-solid border-gray-200 px-0 py-6">

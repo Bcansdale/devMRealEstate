@@ -33,7 +33,7 @@ function Banner() {
                         </div>
                     </div>
                 </div>
-                <h1 className='flex flex-col justify-center items-center text-3xl md:text-5xl mt-7 text-[#444445]'>
+                <h1 className='flex flex-col justify-center items-center text-3xl md:text-5xl mt-10 text-[#444445]'>
                     Find listings By Property Type</h1>
             </div>
         </>
