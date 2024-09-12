@@ -7,6 +7,7 @@ import Testimonials from "./testimonials/Testimonials.jsx";
 import Footer from "./footer/Footer.jsx";
 import Login from "./loginSignup/Login.jsx";
 import SignUp from "./loginSignup/SignUp.jsx";
+import DetailProperty from "./properties/DetailProperty.jsx";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <MainProperties/>
           <Testimonials/>
           <Footer/>
+          <DetailProperty />
       </>
   )
 }

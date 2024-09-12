@@ -5,7 +5,7 @@ function Footer() {
     return (
         <>
             <footer className="bg-white rounded-lg shadow opacity-96">
-                <div className="w-full mx-auto p-8 md:pt-2">
+                <div className="w-full mx-auto px-8 py-4">
                     <div className="lg:flex lg:items-center lg:justify-between">
                         <a href="#"
                            className="flex items-center mb-4 lg:mb-0 space-x-3 rtl:space-x-reverse">
