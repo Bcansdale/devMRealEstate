@@ -14,7 +14,7 @@ function PropertyCard() {
                 <div className="p-4">
                     <div className="pb-6">
                         <a href="#"
-                           className="text-lg hover:text-green-600 font-[400] duration-500 ease-in-out text-[#444445]">351 W 800 N, Salt Lake City, UT</a>
+                           className="text-lg hover:text-green-600 font-[400] duration-500 ease-in-out text-[1.4rem] text-[#444445]">351 W 800 N, Salt Lake City, UT, USA</a>
                     </div>
 
                     <ul className="box-border flex list-none items-center border-t border-b border-solid border-gray-200 px-0 py-6">
