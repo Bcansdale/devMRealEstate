@@ -50,7 +50,7 @@ function DetailProperty() {
     return (
         <>
             <div className="flex flex-col min-h-screen justify-center items-center bg-gray-800 opacity-90">
-                <div className="container max-w-full lg:w-[80vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
+                <div className="container max-w-full lg:w-[85vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
                     <Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-6">
                         <div className="flex items-center justify-between text-[#444445]">
                             <div className="mr-4 cursor-pointer items-center justify-center">
@@ -65,7 +65,7 @@ function DetailProperty() {
                     </Navbar>
                     <section className="flex flex-col bg-white">
                         <div
-                            className="grid m-2 gap-2 md:gap-2 md:ml-4 md:mr-4 lg:gap-2 lg:ml-4 lg:mr-4 xl:grid-cols-2 xl:gap-4 xl:ml-3 xl:mr-1">
+                            className="grid m-2 gap-2 md:gap-2 md:ml-4 md:mr-2 lg:gap-2 lg:ml-4 lg:mr-4 xl:grid-cols-2 xl:gap-4 xl:ml-3 xl:mr-1">
                             <Carousel
                                 className="rounded-xl h-full sm:min-w-full"
                                 navigation={({setActiveIndex, activeIndex, length}) => (
@@ -92,11 +92,11 @@ function DetailProperty() {
                                 className="h-full w-full object-cover"
                             />
                             </Carousel>
-                            <div className="hidden md:grid md:grid-cols-2 gap-2">
+                            <div className="hidden md:grid md:grid-cols-2 md:gap-2">
                                 {data.map(({imageLink}, index) => (
                                     <div key={index}>
                                         <img
-                                            className="h-40 max-w-full rounded-lg object-cover object-center md:h-60"
+                                            className="h-40 max-w-full rounded-lg object-cover object-center md:h-80"
                                             src={imageLink}
                                             alt=""
                                         />
@@ -118,7 +118,7 @@ function DetailProperty() {
                                     <h3 className="text-1xl text-[#444445] ml-5">Est Payment: $68,671</h3>
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between md:justify-end md:items-end md:mx-28 xl:flex-col xl:mr-20">
+                            <div className="flex flex-row items-center justify-between xl:justify-end xl:items-end md:mx-28 xl:flex-col xl:mr-20">
                                 <div className="flex flex-col lg:items-end pr-4 xl:mt-5">
                                     <h3 className="text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
                                     <div className="flex justify-end m-2">
@@ -131,7 +131,7 @@ function DetailProperty() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-center justify-center xl:items-end xl:pr-4 xl:m-2">
+                                <div className="flex flex-col lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
                                     <div className="flex items-center xl:justify-start">
                                         <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
                                                                                                                 Agent</Button>
