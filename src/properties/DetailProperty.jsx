@@ -49,11 +49,11 @@ function DetailProperty() {
 
     return (
         <>
-            <div className="flex flex-col min-h-screen justify-center items-center bg-gray-800 opacity-90">
-                <div className="container max-w-full lg:w-[85vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
-                    <Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-6">
+            <div className="flex flex-col justify-center items-center bg-gray-800 opacity-90">
+                <div className="container max-w-full lg:w-[90vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
+                    <Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-6">
                         <div className="flex items-center justify-between text-[#444445]">
-                            <div className="mr-4 cursor-pointer items-center justify-center">
+                            <div className="mr-4 cursor-pointer items-center justify-center text-[1.25rem]">
                                 <p>Back to Properties</p>
                             </div>
                             <div className="flex items-center gap-4">
@@ -65,76 +65,89 @@ function DetailProperty() {
                     </Navbar>
                     <section className="flex flex-col bg-white">
                         <div
-                            className="grid m-2 gap-2 md:gap-2 md:ml-4 md:mr-2 lg:gap-2 lg:ml-4 lg:mr-4 xl:grid-cols-2 xl:gap-4 xl:ml-3 xl:mr-1">
-                            <Carousel
-                                className="rounded-xl h-full sm:min-w-full"
-                                navigation={({setActiveIndex, activeIndex, length}) => (
-                                    <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
-                                        {new Array(length).fill("").map((_, i) => (
-                                            <span
-                                                key={i}
-                                                className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                                                    activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                                                }`}
-                                                onClick={() => setActiveIndex(i)}
-                                            />
-                                        ))}
-                                    </div>
-                                )}
-                            >
-                                <img
+                            className="flex flex-col m-2 gap-2">
+                            <div className='inline-flex'>
+                                <Carousel
+                                    className="rounded-xl h-1/2 lg:w-1/2 mr-2"
+                                    navigation={({setActiveIndex, activeIndex, length}) => (
+                                        <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                                            {new Array(length).fill("").map((_, i) => (
+                                                <span
+                                                    key={i}
+                                                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                                                        activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                                                    }`}
+                                                    onClick={() => setActiveIndex(i)}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                >
+                                    <img
+                                        src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
+                                        alt="image 1"
+                                        className="h-full w-full object-cover"
+                                    /> <img
                                     src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
                                     alt="image 1"
                                     className="h-full w-full object-cover"
-                                /> <img
-                                src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
-                                alt="image 1"
-                                className="h-full w-full object-cover"
-                            />
-                            </Carousel>
-                            <div className="hidden md:grid md:grid-cols-2 md:gap-2">
-                                {data.map(({imageLink}, index) => (
-                                    <div key={index}>
-                                        <img
-                                            className="h-40 max-w-full rounded-lg object-cover object-center md:h-80"
-                                            src={imageLink}
-                                            alt=""
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="flex flex-col">
-                                <div className="flex flex-col mt-5">
-                                    <h2 className="text-4xl text-[#444445] m-2 xl:ml-20">Mountain Side Mansion</h2>
-                                    <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake City, UT,
-                                                                                     84103</h3>
-                                </div>
-                                <div className="flex xl:ml-20">
-                                    <h3 className="text-1xl text-[#444445]">Listed On: Sep 6, 2024</h3>
-                                    <h3 className="text-1xl text-[#444445] ml-5">Category: House</h3>
-                                    <h3 className="text-1xl text-[#444445] ml-5">Bedrooms: 7</h3>
-                                    <h3 className="text-1xl text-[#444445] ml-5">Bathrooms: 5</h3>
-                                    <h3 className="text-1xl text-[#444445] ml-5">Square Feet: 11,200</h3>
-                                    <h3 className="text-1xl text-[#444445] ml-5">Est Payment: $68,671</h3>
+                                />
+                                </Carousel>
+                                <div className="hidden lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
+                                    {data.map(({imageLink}, index) => (
+                                        <div key={index}>
+                                            <img
+                                                className="rounded-lg md:h-fit"
+                                                src={imageLink}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between xl:justify-end xl:items-end md:mx-28 xl:flex-col xl:mr-20">
-                                <div className="flex flex-col lg:items-end pr-4 xl:mt-5">
-                                    <h3 className="text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
-                                    <div className="flex justify-end m-2">
-                                        <button className="text-1xl text-[#444445] mr-12">Share</button>
-                                        <button className="flex flex-row">
-                                            <div className="flex" style={{width: "1rem", color: "#444445"}}>
-                                                <Heart isActive={active} onClick={() => setActive(!active)}/>
-                                            </div>
-                                            <h3 className="text-1xl text-[#444445] mx-2">Favorite</h3>
-                                        </button>
+                            {/*Property Details*/}
+                            <div className="flex flex-col lg:flex-row-2">
+                                <div className="flex flex-col">
+                                    <div className="flex flex-col mt-5">
+                                        <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side
+                                                                                                  Mansion</h2>
+                                        <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake
+                                                                                             City, UT,
+                                                                                             84103</h3>
+                                    </div>
+                                    <div className="flex xl:ml-20">
+                                        <div className="flex flex-wrap xl:ml-20">
+                                            <h3 className="text-1xl text-[#444445] ml-2">Listed: Sep 6, 2024</h3>
+                                            <h3 className="text-1xl text-[#444445] ml-2">Category: House</h3>
+                                            <h3 className="text-1xl text-[#444445] ml-2">Bedrooms: 7</h3>
+                                        </div>
+                                        <div className="flex flex-wrap xl:ml-20">
+                                            <h3 className="text-1xl text-[#444445] ml-2">Bathrooms: 2</h3>
+                                            <h3 className="text-1xl text-[#444445] ml-2">Square Feet: 11,200</h3>
+                                            <h3 className="text-1xl text-[#444445] ml-2">Est Payment: $68,671</h3>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
-                                    <div className="flex items-center xl:justify-start">
-                                        <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
-                                                                                                                Agent</Button>
+                                <div
+                                    className="flex flex-row items-center justify-between mt-3 xl:justify-end xl:items-end md:mx-28 xl:flex-col xl:mr-20">
+                                    <div className="flex flex-col lg:items-end pr-4 xl:mt-5">
+                                        <h3 className="text-2xl md:text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
+                                        <div className="flex justify-end m-2">
+                                            <button className="text-1xl text-[#444445] mr-6 md:mr-12">Share</button>
+                                            <button className="flex flex-row">
+                                                <div className="flex" style={{width: "1rem", color: "#444445"}}>
+                                                    <Heart isActive={active} onClick={() => setActive(!active)}/>
+                                                </div>
+                                                <h3 className="text-1xl text-[#444445] mx-2">Favorite</h3>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="flex flex-col lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
+                                        <div className="flex items-center xl:justify-start">
+                                            <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
+                                                                                                                    Agent</Button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
