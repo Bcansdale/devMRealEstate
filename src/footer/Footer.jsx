@@ -6,12 +6,12 @@ function Footer() {
         <>
             <footer className="bg-white rounded-lg shadow opacity-96">
                 <div className="w-full mx-auto px-8 py-4">
-                    <div className="lg:flex lg:items-center lg:justify-between">
+                    <div className="xl:flex xl:items-center xl:justify-between">
                         <a href="#"
                            className="flex items-center mb-4 lg:mb-0 space-x-3 rtl:space-x-reverse">
                             <img src={logo} className="h-24" alt="Logo"/>
                         </a>
-                        <div className="flex flex-col text-[1rem] lg:ml-28 text-[#444445] lg:text-center">
+                        <div className="flex flex-col text-[1rem] lg:ml-28 text-[#444445] xl:text-center">
                             <p>© 2023. DevM Real Estate™.</p>
                             <p>Designed By: Brandon Cansdale</p>
                         </div>

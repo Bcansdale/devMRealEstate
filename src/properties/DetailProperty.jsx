@@ -92,7 +92,7 @@ function DetailProperty() {
                                 className="h-full w-full object-cover"
                             />
                             </Carousel>
-                            <div className="grid min-w-[375px] sm:grid-cols-2 gap-2">
+                            <div className="hidden md:grid md:grid-cols-2 gap-2">
                                 {data.map(({imageLink}, index) => (
                                     <div key={index}>
                                         <img
@@ -105,11 +105,11 @@ function DetailProperty() {
                             </div>
                             <div className="flex flex-col">
                                 <div className="flex flex-col mt-5">
-                                    <h2 className="text-4xl text-[#444445] m-2 lg:ml-20">Mountain Side Mansion</h2>
-                                    <h3 className="text-1xl text-[#444445] m-2 lg:ml-20">351 W 800 N, Salt Lake City, UT,
+                                    <h2 className="text-4xl text-[#444445] m-2 xl:ml-20">Mountain Side Mansion</h2>
+                                    <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake City, UT,
                                                                                      84103</h3>
                                 </div>
-                                <div className="flex lg:ml-20">
+                                <div className="flex xl:ml-20">
                                     <h3 className="text-1xl text-[#444445]">Listed On: Sep 6, 2024</h3>
                                     <h3 className="text-1xl text-[#444445] ml-5">Category: House</h3>
                                     <h3 className="text-1xl text-[#444445] ml-5">Bedrooms: 7</h3>
@@ -118,8 +118,8 @@ function DetailProperty() {
                                     <h3 className="text-1xl text-[#444445] ml-5">Est Payment: $68,671</h3>
                                 </div>
                             </div>
-                            <div className="flex flex-row lg:flex-col lg:mr-20">
-                                <div className="flex flex-col items-end pr-4 mt-5">
+                            <div className="flex flex-row items-center justify-between md:justify-end md:items-end md:mx-28 xl:flex-col xl:mr-20">
+                                <div className="flex flex-col lg:items-end pr-4 xl:mt-5">
                                     <h3 className="text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
                                     <div className="flex justify-end m-2">
                                         <button className="text-1xl text-[#444445] mr-12">Share</button>
@@ -131,15 +131,15 @@ function DetailProperty() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-end pr-4 m-2">
-                                    <div className="flex items-center lg:justify-start">
+                                <div className="flex flex-col items-center justify-center xl:items-end xl:pr-4 xl:m-2">
+                                    <div className="flex items-center xl:justify-start">
                                         <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
                                                                                                                 Agent</Button>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <div className="grid lg:ml-20">
+                                <div className="grid xl:ml-20">
                                     <h2 className="text-3xl text-[#444445] mt-2 mb-8">Property Description</h2>
                                     <p className="text-[1rem] text-[#444445] ">Lorem ipsum odor amet, consectetuer
                                                                                adipiscing
@@ -229,7 +229,7 @@ function DetailProperty() {
                                 </div>
                             </div>
                             <div>
-                                <div className="lg:pr-20">
+                                <div className="xl:pr-20">
                                     <h2 className="text-3xl text-[#444445] mt-2 mb-8">
                                         Property Map
                                     </h2>
@@ -241,14 +241,14 @@ function DetailProperty() {
                             </div>
                         </div>
                     </section>
-                    <footer className="bg-white rounded-lg shadow opacity-96">
+                    <footer className="bg-white rounded-xl shadow opacity-96">
                         <div className="w-full mx-auto px-8 py-4">
-                            <div className="lg:flex lg:items-center lg:justify-between">
+                            <div className="xl:flex xl:items-center xl:justify-between">
                                 <a href="#"
                                    className="flex items-center mb-4 lg:mb-0 space-x-3 rtl:space-x-reverse">
                                     <img src={logo} className="h-24" alt="Logo"/>
                                 </a>
-                                <div className="flex flex-col text-[1rem] lg:ml-28 text-[#444445] lg:text-center">
+                                <div className="flex flex-col text-[1rem] lg:ml-28 text-[#444445] xl:text-center">
                                     <p>© 2023. DevM Real Estate™.</p>
                                     <p>Designed By: Brandon Cansdale</p>
                                 </div>
