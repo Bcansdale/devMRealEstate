@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useEffect, useRef, useState } from "react";
 import './App.css'
 import Banner from "./header/MainBanner.jsx";
 import StickyNavbar from "./header/NavBar.jsx";
