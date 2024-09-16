@@ -6,7 +6,7 @@ import {
     IconButton,
     Collapse,
 } from "@material-tailwind/react";
-import logo from '/devmLogo.png'
+import logo from '/src/public/devmLogo.png'
 import { BsHouseHeart } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
 
