@@ -1,5 +1,5 @@
 import React from 'react';
-import StickyNavbar from "/src/header/NavBar.jsx";
+import StickyNavbar from "/src/components/header/NavBar.jsx";
 import Footer from "../footer/Footer.jsx";
 import MainProperties from "../properties/MainProperties.jsx";
 import bannerImage from "/public/background-dark2.png";

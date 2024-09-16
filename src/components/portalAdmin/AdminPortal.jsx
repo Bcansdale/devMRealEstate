@@ -19,10 +19,16 @@ function AdminPortal() {
                         </div>
                         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
                             <div>
-                                <h2 className="text-[1.5rem] text-[#444445]">Street Address</h2>
+                                <h2 className="text-[1.5rem] text-[#444445]">Address Line 1</h2>
                                 <input
                                     className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline "
                                     type="text" placeholder="Street Address"/>
+                            </div>
+                            <div>
+                                <h2 className="text-[1.5rem] text-[#444445]">Address Line 2</h2>
+                                <input
+                                    className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                    type="text" placeholder="Apt, Suite, Etc"/>
                             </div>
                             <div>
                                 <h2 className="text-[1.5rem] text-[#444445]">City</h2>
@@ -31,28 +37,22 @@ function AdminPortal() {
                                     type="text" placeholder="City"/>
                             </div>
                             <div>
-                                <h2 className="text-[1.5rem] text-[#444445]">Address Line 2</h2>
-                                <input
-                                    className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                                    type="text" placeholder="Address Line 2"/>
-                            </div>
-                            <div>
                                 <h2 className="text-[1.5rem] text-[#444445]">State</h2>
                                 <input
                                     className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                     type="text" placeholder="State"/>
                             </div>
                             <div>
+                                <h2 className="text-[1.5rem] text-[#444445]">Area Code</h2>
+                                <input
+                                    className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                    type="number" placeholder="Area Code"/>
+                            </div>
+                            <div>
                                 <h2 className="text-[1.5rem] text-[#444445]">Price</h2>
                                 <input
                                     className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                     type="number" placeholder="Price"/>
-                            </div>
-                            <div>
-                                <h2 className="text-[1.5rem] text-[#444445]">State</h2>
-                                <input
-                                    className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                                    type="number" placeholder="Area Code"/>
                             </div>
                             <div>
                                 <h2 className="text-[1.5rem] text-[#444445]">Bedrooms</h2>

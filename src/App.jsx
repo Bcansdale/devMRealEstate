@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import './App.css'
-import Banner from "./header/MainBanner.jsx";
-import StickyNavbar from "./header/NavBar.jsx";
-import MainProperties from "./properties/MainProperties.jsx";
-import Testimonials from "./testimonials/Testimonials.jsx";
-import Footer from "./footer/Footer.jsx";
-import Login from "./loginSignup/Login.jsx";
-import SignUp from "./loginSignup/SignUp.jsx";
-import DetailProperty from "./properties/DetailProperty.jsx";
-import UserSaves from "./userSaves/userSaves.jsx";
-import AdminPortal from "./portalAdmin/AdminPortal.jsx";
+import Banner from "./components/header/MainBanner.jsx";
+import StickyNavbar from "./components/header/NavBar.jsx";
+import MainProperties from "./components/properties/MainProperties.jsx";
+import Testimonials from "./components/testimonials/Testimonials.jsx";
+import Footer from "./components/footer/Footer.jsx";
+import Login from "./components/loginSignup/Login.jsx";
+import SignUp from "./components/loginSignup/SignUp.jsx";
+import DetailProperty from "./components/properties/DetailProperty.jsx";
+import UserSaves from "./components/userSaves/userSaves.jsx";
+import AdminPortal from "./components/portalAdmin/AdminPortal.jsx";
 
 
 function App() {
@@ -27,15 +27,15 @@ function App() {
 
   return (
       <>
-          {/*<StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>*/}
-          {/*<Login isShowLogin={isShowLogin}/>*/}
-          {/*<SignUp isShowSignup={isShowSignup}/>*/}
-          {/*<Banner/>*/}
-          {/*<MainProperties/>*/}
-          {/*<Testimonials/>*/}
-          {/*<Footer/>*/}
-          {/*<DetailProperty />*/}
-          {/*<UserSaves />*/}
+          <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
+          <Login isShowLogin={isShowLogin}/>
+          <SignUp isShowSignup={isShowSignup}/>
+          <Banner/>
+          <MainProperties/>
+          <Testimonials/>
+          <Footer/>
+          <DetailProperty />
+          <UserSaves />
           <AdminPortal />
       </>
   )

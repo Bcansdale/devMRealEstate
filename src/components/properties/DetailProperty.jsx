@@ -9,7 +9,7 @@ import {Carousel} from "@material-tailwind/react";
 import Heart from "react-heart";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import logo from "../../public/devmLogo.png";
+import logo from "../../../public/devmLogo.png";
 import Footer from "../footer/Footer.jsx";
 
 function DetailProperty() {
