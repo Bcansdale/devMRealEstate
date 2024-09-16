@@ -9,6 +9,7 @@ import Login from "./loginSignup/Login.jsx";
 import SignUp from "./loginSignup/SignUp.jsx";
 import DetailProperty from "./properties/DetailProperty.jsx";
 import UserSaves from "./userSaves/userSaves.jsx";
+import AdminPortal from "./portalAdmin/AdminPortal.jsx";
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
           {/*<Testimonials/>*/}
           {/*<Footer/>*/}
           {/*<DetailProperty />*/}
-          <UserSaves />
+          {/*<UserSaves />*/}
+          <AdminPortal />
       </>
   )
 }
