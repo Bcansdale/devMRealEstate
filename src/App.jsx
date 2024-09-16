@@ -8,6 +8,8 @@ import Footer from "./footer/Footer.jsx";
 import Login from "./loginSignup/Login.jsx";
 import SignUp from "./loginSignup/SignUp.jsx";
 import DetailProperty from "./properties/DetailProperty.jsx";
+import UserSaves from "./userSaves/userSaves.jsx";
+
 
 function App() {
 
@@ -24,14 +26,15 @@ function App() {
 
   return (
       <>
-          <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
-          <Login isShowLogin={isShowLogin}/>
-          <SignUp isShowSignup={isShowSignup}/>
-          <Banner/>
-          <MainProperties/>
-          <Testimonials/>
-          <Footer/>
-          <DetailProperty />
+          {/*<StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>*/}
+          {/*<Login isShowLogin={isShowLogin}/>*/}
+          {/*<SignUp isShowSignup={isShowSignup}/>*/}
+          {/*<Banner/>*/}
+          {/*<MainProperties/>*/}
+          {/*<Testimonials/>*/}
+          {/*<Footer/>*/}
+          {/*<DetailProperty />*/}
+          <UserSaves />
       </>
   )
 }

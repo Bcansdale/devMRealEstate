@@ -10,6 +10,7 @@ import Heart from "react-heart";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import logo from "../../public/devmLogo.png";
+import Footer from "../footer/Footer.jsx";
 
 function DetailProperty() {
 
@@ -66,9 +67,9 @@ function DetailProperty() {
                     <section className="flex flex-col bg-white">
                         <div
                             className="flex flex-col m-2 gap-2">
-                            <div className='inline-flex'>
+                            <div className="inline-flex mt-2">
                                 <Carousel
-                                    className="rounded-xl h-1/2 lg:w-1/2 mr-2"
+                                    className="rounded-xl h-1/2 lg:w-1/2"
                                     navigation={({setActiveIndex, activeIndex, length}) => (
                                         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
                                             {new Array(length).fill("").map((_, i) => (
@@ -93,7 +94,7 @@ function DetailProperty() {
                                     className="h-full w-full object-cover"
                                 />
                                 </Carousel>
-                                <div className="hidden lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
+                                <div className="hidden ml-2 lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
                                     {data.map(({imageLink}, index) => (
                                         <div key={index}>
                                             <img
@@ -107,213 +108,142 @@ function DetailProperty() {
                             </div>
                             {/*Property Details*/}
                             <div className="flex flex-col lg:flex-row-2">
-                                <div className="flex flex-col">
-                                    <div className="flex flex-col mt-5">
-                                        <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side
-                                                                                                  Mansion</h2>
-                                        <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake
-                                                                                             City, UT,
-                                                                                             84103</h3>
-                                    </div>
-                                    <div className="flex xl:ml-20">
-                                        <div className="flex flex-wrap xl:ml-20">
-                                            <h3 className="text-1xl text-[#444445] ml-2">Listed: Sep 6, 2024</h3>
-                                            <h3 className="text-1xl text-[#444445] ml-2">Category: House</h3>
-                                            <h3 className="text-1xl text-[#444445] ml-2">Bedrooms: 7</h3>
+                                <div className="xl:inline-flex">
+                                    <div className="flex flex-col ">
+                                        <div className="flex flex-col mt-5">
+                                            <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side
+                                                                                                      Mansion</h2>
+                                            <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake
+                                                                                                 City, UT,
+                                                                                                 84103</h3>
                                         </div>
-                                        <div className="flex flex-wrap xl:ml-20">
-                                            <h3 className="text-1xl text-[#444445] ml-2">Bathrooms: 2</h3>
-                                            <h3 className="text-1xl text-[#444445] ml-2">Square Feet: 11,200</h3>
-                                            <h3 className="text-1xl text-[#444445] ml-2">Est Payment: $68,671</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex flex-row items-center justify-between mt-3 xl:justify-end xl:items-end md:mx-28 xl:flex-col xl:mr-20">
-                                    <div className="flex flex-col lg:items-end pr-4 xl:mt-5">
-                                        <h3 className="text-2xl md:text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
-                                        <div className="flex justify-end m-2">
-                                            <button className="text-1xl text-[#444445] mr-6 md:mr-12">Share</button>
-                                            <button className="flex flex-row">
-                                                <div className="flex" style={{width: "1rem", color: "#444445"}}>
-                                                    <Heart isActive={active} onClick={() => setActive(!active)}/>
+                                        <div className="grid justify-betweenlg:justify-start lg:flex">
+                                            <ul className="flex flex-wrap justify-between py-2 xl:flex-row xl:ml-20">
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Listed:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">Sep 6, 2024</li>
                                                 </div>
-                                                <h3 className="text-1xl text-[#444445] mx-2">Favorite</h3>
-                                            </button>
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Category:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">House</li>
+                                                </div>
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Bedrooms:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">7</li>
+                                                </div>
+                                            </ul>
+                                            <ul className="flex flex-wrap py-2 justify-between xl:flex-row xl:ml-20">
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Bathrooms:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">2</li>
+                                                </div>
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Square Feet:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">11,200</li>
+                                                </div>
+                                                <div>
+                                                <li className="text-1xl text-[#444445] ml-2">Est Payment:</li>
+                                                <li className="text-1xl text-[#444445] ml-2">$68,671</li>
+                                                </div>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div
-                                        className="flex flex-col lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
-                                        <div className="flex items-center xl:justify-start">
-                                            <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
-                                                                                                                    Agent</Button>
+                                        className="flex flex-row items-center justify-between mt-3 w-full md:mr-28 xl:justify-end xl:items-end xl:flex-col xl:mr-20 xl:w-1/2">
+                                        <div className="flex flex-col lg:items-end md:ml-28 pr-4 xl:mt-5">
+                                            <h3 className="text-2xl md:text-4xl text-[#444445] m-2 ml-5">$17,000,000</h3>
+                                            <div className="flex justify-end m-2">
+                                                <button className="text-1xl text-[#444445] mr-6 md:mr-12">Share</button>
+                                                <button className="flex flex-row">
+                                                    <div className="flex" style={{width: "1rem", color: "#444445"}}>
+                                                        <Heart isActive={active} onClick={() => setActive(!active)}/>
+                                                    </div>
+                                                    <h3 className="text-1xl text-[#444445] mx-2">Favorite</h3>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="flex flex-col md:mr-28 lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
+                                            <div className="flex items-center xl:justify-start">
+                                                <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]">Contact
+                                                                                                                        Agent</Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div className="grid xl:ml-20">
-                                    <h2 className="text-3xl text-[#444445] mt-2 mb-8">Property Description</h2>
-                                    <p className="text-[1rem] text-[#444445] ">Lorem ipsum odor amet, consectetuer
-                                                                               adipiscing
-                                                                               elit. Ultrices elit inceptos tempus
-                                                                               auctor
-                                                                               per
-                                                                               erat aliquam augue vulputate. Libero nibh
-                                                                               penatibus congue tortor vel sollicitudin
-                                                                               finibus
-                                                                               dis vulputate. Pretium maecenas dapibus
-                                                                               enim
-                                                                               mauris, habitasse at. Ornare congue
-                                                                               parturient et
-                                                                               vestibulum semper sem consectetur.
-                                                                               Ridiculus
-                                                                               egestas donec porta placerat morbi magnis
-                                                                               vivamus
-                                                                               quisque porttitor. Maximus nec feugiat
-                                                                               lacinia
-                                                                               massa maximus volutpat. Integer sodales
-                                                                               torquent
-                                                                               id lacus finibus sit. Nascetur maximus
-                                                                               nunc
-                                                                               pharetra adipiscing facilisis cubilia
-                                                                               malesuada
-                                                                               quisque. Vehicula justo fames montes
-                                                                               torquent
-                                                                               ultrices faucibus commodo. Ullamcorper
-                                                                               maecenas
-                                                                               sit taciti quisque mattis; ultrices
-                                                                               ligula.
-                                                                               Dolor
-                                                                               quis vitae platea primis habitant non et
-                                                                               odio.
-                                                                               Placerat elit sodales penatibus risus
-                                                                               suscipit
-                                                                               faucibus ut platea. Velit felis nascetur
-                                                                               fames
-                                                                               urna faucibus mauris? Enim id sem aliquet
-                                                                               vehicula pharetra cubilia.</p>
-                                    <p
-                                        className="text-[1rem] text-[#444445] ">Lorem ipsum odor amet, consectetuer
-                                                                                adipiscing
-                                                                                elit.
-                                                                                Ultrices elit inceptos tempus auctor per
-                                                                                erat
-                                                                                aliquam augue vulputate. Libero nibh
-                                                                                penatibus
-                                                                                congue tortor vel sollicitudin finibus
-                                                                                dis
-                                                                                vulputate. Pretium maecenas dapibus enim
-                                                                                mauris,
-                                                                                habitasse at. Ornare congue parturient
-                                                                                et
-                                                                                vestibulum
-                                                                                semper sem consectetur. Ridiculus
-                                                                                egestas donec
-                                                                                porta placerat morbi magnis vivamus
-                                                                                quisque
-                                                                                porttitor. Maximus nec feugiat lacinia
-                                                                                massa
-                                                                                maximus
-                                                                                volutpat. Integer sodales torquent id
-                                                                                lacus
-                                                                                finibus
-                                                                                sit. Nascetur maximus nunc pharetra
-                                                                                adipiscing
-                                                                                facilisis cubilia malesuada quisque.
-                                                                                Vehicula
-                                                                                justo
-                                                                                fames montes torquent ultrices faucibus
-                                                                                commodo.
-                                                                                Ullamcorper maecenas sit taciti quisque
-                                                                                mattis;
-                                                                                ultrices ligula. Dolor quis vitae platea
-                                                                                primis
-                                                                                habitant non et odio. Placerat elit
-                                                                                sodales
-                                                                                penatibus risus suscipit faucibus ut
-                                                                                platea.
-                                                                                Velit
-                                                                                felis nascetur fames urna faucibus
-                                                                                mauris? Enim
-                                                                                id
-                                                                                sem aliquet vehicula pharetra
-                                                                                cubilia.</p>
+                            {/* Description */}
+                            <div className='xl:inline-grid xl:grid-cols-2'>
+                                <div className='xl:pr-5'>
+                                    <div className="flex-col xl:ml-20">
+                                        <h2 className="text-3xl text-[#444445] mt-2 mb-8">Property Description</h2>
+                                        <p className="text-[1rem] text-[#444445] ">Lorem ipsum odor amet, consectetuer
+                                                                                   adipiscing
+                                                                                   elit. Ultrices elit inceptos tempus
+                                                                                   auctor
+                                                                                   per
+                                                                                   erat aliquam augue vulputate. Libero
+                                                                                   nibh
+                                                                                   penatibus congue tortor vel
+                                                                                   sollicitudin
+                                                                                   finibus
+                                                                                   dis vulputate. Pretium maecenas
+                                                                                   dapibus
+                                                                                   enim
+                                                                                   mauris, habitasse at. Ornare congue
+                                                                                   parturient et
+                                                                                   vestibulum semper sem consectetur.
+                                                                                   Ridiculus
+                                                                                   egestas donec porta placerat morbi
+                                                                                   magnis
+                                                                                   vivamus
+                                                                                   quisque porttitor. Maximus nec
+                                                                                   feugiat
+                                                                                   lacinia
+                                                                                   massa maximus volutpat. Integer
+                                                                                   sodales
+                                                                                   torquent
+                                                                                   id lacus finibus sit. Nascetur
+                                                                                   maximus
+                                                                                   nunc
+                                                                                   pharetra adipiscing facilisis cubilia
+                                                                                   malesuada
+                                                                                   quisque. Vehicula justo fames montes
+                                                                                   torquent
+                                                                                   ultrices faucibus commodo.
+                                                                                   Ullamcorper
+                                                                                   maecenas
+                                                                                   sit taciti quisque mattis; ultrices
+                                                                                   ligula.
+                                                                                   Dolor
+                                                                                   quis vitae platea primis habitant non
+                                                                                   et
+                                                                                   odio.
+                                                                                   Placerat elit sodales penatibus risus
+                                                                                   suscipit
+                                                                                   faucibus ut platea. Velit felis
+                                                                                   nascetur
+                                                                                   fames
+                                                                                   urna faucibus mauris? Enim id sem
+                                                                                   aliquet
+                                                                                   vehicula pharetra cubilia.</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div className="xl:pr-20">
-                                    <h2 className="text-3xl text-[#444445] mt-2 mb-8">
-                                        Property Map
-                                    </h2>
-                                    <div
-                                        ref={mapContainerRef}
-                                        className="aspect-square w-full h-full"
-                                    />
+                                <div className='xl:pl-5'>
+                                    <div className="xl:pr-20">
+                                        <h2 className="text-3xl text-[#444445] mt-2 mb-8">
+                                            Property Map
+                                        </h2>
+                                        <div
+                                            ref={mapContainerRef}
+                                            className="aspect-square w-full h-full"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <footer className="bg-white rounded-xl shadow opacity-96">
-                        <div className="w-full mx-auto px-8 py-4">
-                            <div className="xl:flex xl:items-center xl:justify-between">
-                                <a href="#"
-                                   className="flex items-center mb-4 lg:mb-0 space-x-3 rtl:space-x-reverse">
-                                    <img src={logo} className="h-24" alt="Logo"/>
-                                </a>
-                                <div className="flex flex-col text-[1rem] lg:ml-28 text-[#444445] xl:text-center">
-                                    <p>© 2023. DevM Real Estate™.</p>
-                                    <p>Designed By: Brandon Cansdale</p>
-                                </div>
-                                <ul className="flex flex-wrap items-center mb-6 text-[1rem] font-medium text-[#444445] lg:mb-0">
-                                    <div className="flex flex-wrap items-center">
-                                        <li className="p-2">
-                                            <h2 className="text-[1.25rem] pb-2 ">About Us:</h2>
-                                            <ul className="font-light">
-                                                <li>
-                                                    <p>123 W 800 N</p>
-                                                </li>
-                                                <li>
-                                                    <p>Salt Lake City, UT</p>
-                                                </li>
-                                                <li>
-                                                    <p>239-222-3333</p>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className="p-2">
-                                            <h2 className="text-[1.25rem] pb-2">Hours:</h2>
-                                            <ul className="font-light">
-                                                <li>
-                                                    <p>Monday - Friday</p>
-                                                </li>
-                                                <li>
-                                                    <p>09:00am - 07:00pm</p>
-                                                </li>
-                                                <li>
-                                                    <p>Sat - Sun - Closed</p>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className="p-2">
-                                            <h2 className="text-[1.25rem] pb-2">Links:</h2>
-                                            <ul className="font-light">
-                                                <li>
-                                                    <a href="#" className="hover:underline me-4 lg:me-6">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="hover:underline me-4 lg:me-6">Licensing</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="hover:underline">Contact</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>
