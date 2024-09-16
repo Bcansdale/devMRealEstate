@@ -11,6 +11,9 @@ for (const user of users) {
     await User.create({
         username: user.toLowerCase(),
         password: hashedPassword,
+        roleID: 1,
+        dateCreated: new Date(),
+        dateUpdated: new Date(),
     })
 }
 

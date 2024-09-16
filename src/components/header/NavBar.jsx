@@ -6,14 +6,12 @@ import {
     IconButton,
     Collapse,
 } from "@material-tailwind/react";
-import logo from '/src/public/devmLogo.png'
-import { BsHouseHeart } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
+import logo from '/src/assets/devmLogo.png';
+import {BsHouseHeart} from "react-icons/bs";
+import {GrUserAdmin} from "react-icons/gr";
 
 
-
-
-function StickyNavbar({ handleLoginClick, handleSignupClick }) {
+function StickyNavbar({handleLoginClick, handleSignupClick}) {
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -24,12 +22,12 @@ function StickyNavbar({ handleLoginClick, handleSignupClick }) {
     }, []);
 
     const handleLogin = () => {
-        handleLoginClick()
-    }
+        handleLoginClick();
+    };
 
     const handleSignup = () => {
-        handleSignupClick()
-    }
+        handleSignupClick();
+    };
 
 
     const navList = (
@@ -76,7 +74,8 @@ function StickyNavbar({ handleLoginClick, handleSignupClick }) {
 
     return (
 
-        <div className="max-h-[768px] w-full overflow-scroll flex relative mt-[80px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445]">
+        <div
+            className="max-h-[768px] w-full overflow-scroll flex relative mt-[80px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445]">
             <Navbar className="fixed top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-2">
                 <div className="flex items-center justify-between text-[#444445]">
                     <div className="mr-4 cursor-pointer items-center justify-center">
@@ -145,9 +144,10 @@ function StickyNavbar({ handleLoginClick, handleSignupClick }) {
                     </div>
                 </div>
                 <Collapse open={openNav}>
-                {navList}
+                    {navList}
                     <div className="flex items-center gap-x-1">
-                    <Button fullWidth variant="outlined" size="sm" className="rounded-3xl text-[#444445] text-[1rem]">
+                        <Button fullWidth variant="outlined" size="sm"
+                                className="rounded-3xl text-[#444445] text-[1rem]">
                             <span>Log In/Sign Up</span>
                         </Button>
                         {/*<Button fullWidth variant="gradient" size="sm" className="">*/}
