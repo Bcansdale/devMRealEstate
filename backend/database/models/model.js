@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import connectToDB from "./db.js";
+import connectToDB from "../db.js";
 import * as util from "node:util";
 // import bcryptjs from "bcryptjs";
 

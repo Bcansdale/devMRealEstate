@@ -1,4 +1,4 @@
-import { db, User } from './model.js'
+import { db, User } from '../models/model.js'
 
 console.log(await User.findAll())
 

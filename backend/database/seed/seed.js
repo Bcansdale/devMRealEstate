@@ -1,4 +1,4 @@
-import { db, User } from './model.js'
+import { db, User } from '../models/model.js'
 import bcryptjs from 'bcryptjs'
 
 await db.sync({force: true })
