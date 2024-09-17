@@ -33,7 +33,7 @@ UserProfile.init(
     }
 );
 
-// Associations go here
+// Associations
 UserProfile.associate = (models) => {
     UserProfile.belongsTo(models.User, {
         foreignKey: "userId", // Links userId in UserProfile to userId in User
