@@ -1,4 +1,3 @@
-
 // User Profile model for db
 export const UserProfile = (sequelize, Sequelize) => {
     // Define user profile model
@@ -21,13 +20,12 @@ export const UserProfile = (sequelize, Sequelize) => {
             allowNull: false,
         },
     });
-// Define associations between models 
+// Define associations between models
     UserProfile.associate = (models) => {
         UserProfile.belongsTo(models.user, {
             foreignKey: "userId", // Links userId in UserProfile to userId in User
             onDelete: "CASCADE",
         });
     };
-
     return UserProfile;
 };

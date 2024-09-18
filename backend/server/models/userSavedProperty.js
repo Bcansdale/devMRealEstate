@@ -1,10 +1,46 @@
-import { DataTypes, Model } from "sequelize";
-import connectToDB from "../db.js";
+import {User} from "./user.js";
 
-// Connect to the database
-export const db = await connectToDB("postgresql:///devm");
+export const UserSavedProperty = (sequelize, Sequelize) => {
+    const UserSavedProperty = sequelize.define(
+        "userSavedProperty", {
+            // Define colums
+            userId: {
+                type: sequelize.INTEGER,
+                allowNull: true,
+            },
+            propertyId: {
+                type: sequelize.INTEGER,
+                allowNull: true,
+            },
+        },
+        {
+            sequelize: sequelize,
+            modelName: "UserSavedProperty",
+            tableName: "userSavedProperty",
+            timestamps: true,
+        }
+    );
+    // associate the table with models
+    // associate the table with other tables
+    // foreign key
+    UserSavedProperty.associate = (models) => {
+        UserSavedProperty.associate(models.user, {
+            foreignKey: "userId",
+            onDelete: "RESTRICT",
+            onUpdate: "CASCADE",
+        });
+        UserSavedProperty.associate(models.property, {
+            foreignKey: "propertyId",
+            onDelete: "RESTRICTED",
+            onUpdate: "CASCADE",
+            });
+    };
+    return UserSavedProperty;
+};
 
-export class UserSavedProperty extends Model {}
+
+export class UserSavedProperty extends Model {
+}
 
 UserSavedProperty.init(
     {
@@ -26,4 +62,4 @@ UserSavedProperty.init(
         modelName: "UserSavedProperty",
         tableName: "userSavedProperty", // Actual table name in the database
     }
-)
+);
