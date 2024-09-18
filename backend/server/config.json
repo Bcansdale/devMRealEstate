@@ -1,0 +1,15 @@
+{
+  "development": {
+    "username": "",
+    "password": null,
+    "database": "devmdb",
+    "host": "localhost",
+    "dialect": "postgresql",
+    "logging": false,
+    "define": {
+      "underscored": true,
+      "timestamps": false,
+      "freezeTableName": true
+    }
+  }
+}

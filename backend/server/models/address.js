@@ -4,9 +4,9 @@ import connectToDB from "../db.js";
 // Connect to the database
 export const db = await connectToDB("postgresql:///devm");
 
-export class address extends Model {}
+export class Address extends Model {}
 
-address.init(
+Address.init(
     {
         id: {
             type: DataTypes.INTEGER,

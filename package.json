@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/server/server.js -w server -w src",
-    "seed": "node backend/database/seed/userSeed.js",
+    "initdb": "dropdb --if-exists devmdb && createdb devmdb",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

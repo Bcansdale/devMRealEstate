@@ -21,6 +21,6 @@ Role.init(
     {
         sequelize: db,
         modelName: "Role",
-        tableName: "roles", // Actual table name in the database
+        tableName: "role", // Actual table name in the database
     }
 )

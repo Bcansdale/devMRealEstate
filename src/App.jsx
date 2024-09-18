@@ -34,9 +34,9 @@ function App() {
           <MainProperties/>
           <Testimonials/>
           <Footer/>
-          <DetailProperty />
-          <UserSaves />
-          <AdminPortal />
+          {/*<DetailProperty />*/}
+          {/*<UserSaves />*/}
+          {/*<AdminPortal />*/}
       </>
   )
 }
