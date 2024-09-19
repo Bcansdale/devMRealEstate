@@ -78,7 +78,9 @@ export const Property = (sequelize, Sequelize) => {
         Property.belongsToMany(models.permission, {
             through: "propertyImage"
         });
-        Property.belongsTo(models.pr)
+        Property.belongsToMany(models.userId, {
+            through: "userSavedProperty"
+        })
     }
     return property;
 }

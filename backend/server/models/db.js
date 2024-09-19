@@ -36,12 +36,12 @@ const userProfile = UserProfile(sequelize, Sequelize.DataTypes);
 const role = Role(sequelize, Sequelize.DataTypes);
 const rolePermission = RolePermission(sequelize, Sequelize.DataTypes);
 const permission = Permission(sequelize, Sequelize.DataTypes);
-// const userSavedProperty = UserSavedProperty(sequelize, Sequelize.DataTypes);
-// const address = Address(sequelize, Sequelize.DataTypes);
-// const property = Property(sequelize, Sequelize.DataTypes);
-// const propertyType = PropertyType(sequelize, Sequelize.DataTypes);
-// const image = Image(sequelize, Sequelize.DataTypes);
-// const propertyImage = PropertyImage(sequelize, Sequelize.DataTypes);
+const userSavedProperty = UserSavedProperty(sequelize, Sequelize.DataTypes);
+const address = Address(sequelize, Sequelize.DataTypes);
+const property = Property(sequelize, Sequelize.DataTypes);
+const propertyType = PropertyType(sequelize, Sequelize.DataTypes);
+const image = Image(sequelize, Sequelize.DataTypes);
+const propertyImage = PropertyImage(sequelize, Sequelize.DataTypes);
 
 
 // Storing the models in the db object
@@ -50,12 +50,12 @@ db[rolePermission.name] = rolePermission;
 db[role.name] = role;
 db[user.name] = user;
 db[userProfile.name] = userProfile;
-// db[userSavedProperty.name] = userSavedProperty;
-// db[address.name] = address;
-// db[property.name] = property;
-// db[propertyType.name] = propertyType;
-// db[image.name] = image;
-// db[propertyImage.name] = propertyImage;
+db[userSavedProperty.name] = userSavedProperty;
+db[address.name] = address;
+db[property.name] = property;
+db[propertyType.name] = propertyType;
+db[image.name] = image;
+db[propertyImage.name] = propertyImage;
 
 // Setting up relationships between models
 Object.keys(db).forEach((modelName) => {
