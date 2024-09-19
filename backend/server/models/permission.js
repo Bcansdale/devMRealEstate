@@ -1,7 +1,7 @@
 //
 export const Permission = (sequelize, Sequelize) => {
     //
-     sequelize.define("rolePermission", {
+     const Permission = sequelize.define("rolePermission", {
             permissionId: {
                 type: Sequelize.INTEGER,
                 autoIncrement: true, // Enables auto-increment
