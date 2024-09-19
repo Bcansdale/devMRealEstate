@@ -26,10 +26,6 @@ export const UserProfile = (sequelize, Sequelize) => {
             foreignKey: "userId", // Links userId in UserProfile to userId in User
             onDelete: "CASCADE",
         });
-        UserProfile.belongsTo(models.user, {
-            foreignKey: "addressId",
-            onDelete: "RESTRICTED"
-        });
     };
     return UserProfile;
 };

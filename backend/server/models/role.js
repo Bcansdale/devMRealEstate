@@ -8,7 +8,8 @@ export const Role = (sequelize, Sequelize) => {
                 primaryKey: true,
             },
             roleName: {
-                type: Sequelize.STRING(35), allowNull: false,
+                type: Sequelize.STRING(35),
+                allowNull: true,
             },
         },
         {

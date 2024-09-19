@@ -7,12 +7,23 @@ const users = [
         password: "test",
         roleId: 1,
         // Nested objects related to user from userProfile model
-        profile: {
+        userProfile: {
             firstName: "Test",
             lastName: "Test",
             addressId: 1,
         },
     },
+    {
+        username: "admin@admin.com",
+        password: "admin",
+        roleId: 2,
+        // Nested objects related to user from userProfile model
+        userProfile: {
+            firstName: "Admin",
+            lastName: "Admin",
+            addressId: 2,
+        },
+    }
 ];
 
 // Function to create users in the database with hashed passwords and associated profile
@@ -41,6 +52,7 @@ export const createUsers = async function createUsers(db) {
                     firstName: profile.firstName,
                     lastName: profile.lastName,
                 });
-            });
+            }
+        );
     }
 };

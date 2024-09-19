@@ -30,6 +30,7 @@ export const PropertyImage = (sequelize, Sequelize) => {
         PropertyImage.associate(models.image, {
             foreignKey: "imageId",
             onDelete: "RESTRICTED",
-        })
-    }
+        });
+    };
+    return PropertyImage
 }
