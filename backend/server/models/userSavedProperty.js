@@ -1,15 +1,14 @@
-import {User} from "./user.js";
-
+//
 export const UserSavedProperty = (sequelize, Sequelize) => {
     const UserSavedProperty = sequelize.define(
         "userSavedProperty", {
-            // Define colums
+            // Define columns
             userId: {
-                type: sequelize.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             propertyId: {
-                type: sequelize.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
         },
@@ -37,29 +36,3 @@ export const UserSavedProperty = (sequelize, Sequelize) => {
     };
     return UserSavedProperty;
 };
-
-
-export class UserSavedProperty extends Model {
-}
-
-UserSavedProperty.init(
-    {
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid userId from User model
-        },
-        propertyId: {
-            type: DataTypes.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid propertyId from Property model
-        },
-        dateCreated: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-    },
-    {
-        sequelize: db,
-        modelName: "UserSavedProperty",
-        tableName: "userSavedProperty", // Actual table name in the database
-    }
-);

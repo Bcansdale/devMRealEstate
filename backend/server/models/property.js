@@ -1,75 +1,82 @@
-import { DataTypes, Model } from "sequelize";
-import connectToDB from "../db.js";
-
-// Connect to the database
-export const db = await connectToDB("postgresql:///devm");
-
-export class Property extends Model {}
-
-Property.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
+//
+export const Property = (sequelize, Sequelize) => {
+    const Property = sequelize.define("property", {
+        propertyId: {
+            type: Sequelize.INTEGER,
             autoIncrement: true, // Enables auto-increment
             primaryKey: true,    // Defines propertyId as the primary key
         },
         addressId: {
-            type: DataTypes.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid addressId from Address model
+            type: Sequelize.INTEGER,
+            allowNull: true, // Foreign key, must reference a valid addressId from Address model
         },
         propertyTypeId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: Sequelize.INTEGER,
+            allowNull: true,
         },
         title: {
-            type: DataTypes.STRING(100),
+            type: Sequelize.STRING(100),
             allowNull: false,
         },
         description: {
-            type: DataTypes.TEXT,
+            type: Sequelize.TEXT,
             allowNull: false,
         },
         price: {
-            type: DataTypes.FLOAT,
+            type: Sequelize.FLOAT,
             allowNull: false,
         },
         numBedrooms: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         numBathrooms: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         squareFeet: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         isAvailable: {
-            type: DataTypes.BOOLEAN,
+            type: Sequelize.BOOLEAN,
             allowNull: false,
         },
         dateCreated: {
-            type: DataTypes.DATE,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         dateUpdated: {
-            type: DataTypes.DATE,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         userId: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false, // Foreign key, must reference a valid userId from User model
         },
         userIdUpdated: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false, // Foreign key, must reference a valid userId from User model
         },
     },
-    {
-        sequelize: db,
-        modelName: "Property",
-        tableName: "property", // Actual table name in the database
-        timestamps: true,
+        {
+            sequelize: sequelize,
+            modelName: "Property",
+            tableName: "property", // Actual table name in the database
+            timestamps: true,
+        }
+    );
+
+    Property.associate = (models) => {
+        Property.associate(models.address, {
+            foreignKey: "addressId",
+            onDelete: "RESTRICT",
+        });
+        Property.belongsTo(models.propertyTypeId, {
+            foreignKey: "propertyTypeId",
+            onDelete: "RESTRICTED",
+        });
     }
-);
+    return Property;
+}
+

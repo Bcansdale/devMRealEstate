@@ -1,14 +1,14 @@
 //
-export const Role = (sequelize, DataTypes) => {
+export const Role = (sequelize, Sequelize) => {
     //
     return sequelize.define("role", {
             roleId: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 autoIncrement: true, // Enables auto-increment
                 primaryKey: true,
             },
             roleName: {
-                type: DataTypes.STRING(35), allowNull: false,
+                type: Sequelize.STRING(35), allowNull: false,
             },
         },
         {

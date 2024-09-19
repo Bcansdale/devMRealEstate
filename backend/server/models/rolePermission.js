@@ -1,13 +1,13 @@
 //
-export const RolePermission = (sequelize, DataTypes) => {
+export const RolePermission = (sequelize, Sequelize) => {
     //
     const RolePermission = sequelize.define("rolePermission", {
             roleId: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             permissionId: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
         },
@@ -15,7 +15,7 @@ export const RolePermission = (sequelize, DataTypes) => {
             sequelize: sequelize,
             modelName: "RolePermission",
             tableName: "rolePermission", // Actual table name in the database
-        };
+        }
     );
 
     // Define associations

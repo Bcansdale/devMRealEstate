@@ -5,11 +5,11 @@ export const UserProfile = (sequelize, Sequelize) => {
         // Define columns
         userId: {
             type: Sequelize.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid userId from User model
+            allowNull: true, // Foreign key, must reference a valid userId from User model
         },
         addressId: {
             type: Sequelize.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid addressId from Address model
+            allowNull: true, // Foreign key, must reference a valid addressId from Address model
         },
         firstName: {
             type: Sequelize.STRING(35),
@@ -25,6 +25,10 @@ export const UserProfile = (sequelize, Sequelize) => {
         UserProfile.belongsTo(models.user, {
             foreignKey: "userId", // Links userId in UserProfile to userId in User
             onDelete: "CASCADE",
+        });
+        UserProfile.belongsTo(models.user, {
+            foreignKey: "addressId",
+            onDelete: "RESTRICTED"
         });
     };
     return UserProfile;
