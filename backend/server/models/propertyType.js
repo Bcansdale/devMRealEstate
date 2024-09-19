@@ -14,7 +14,6 @@ export const PropertyType = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "PropertyType",
-            tableName: "propertyType",
         }
     );
 };

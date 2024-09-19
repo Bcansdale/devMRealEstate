@@ -1,7 +1,7 @@
 // User Profile model for db
 export const UserProfile = (sequelize, Sequelize) => {
     // Define user profile model
-    const UserProfile = sequelize.define("userProfile", {
+    const userProfile = sequelize.define("userProfile", {
         // Define columns
         userId: {
             type: Sequelize.INTEGER,
@@ -27,5 +27,5 @@ export const UserProfile = (sequelize, Sequelize) => {
             onDelete: "CASCADE",
         });
     };
-    return UserProfile;
+    return userProfile;
 };

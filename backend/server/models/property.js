@@ -62,7 +62,6 @@ export const Property = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "Property",
-            tableName: "property", // Actual table name in the database
             timestamps: true,
         }
     );

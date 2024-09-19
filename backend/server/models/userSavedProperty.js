@@ -15,7 +15,6 @@ export const UserSavedProperty = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "UserSavedProperty",
-            tableName: "userSavedProperty",
             timestamps: true,
         }
     );

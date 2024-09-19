@@ -14,7 +14,6 @@ export const Image = (sequelize, Sequelize) => {
     }, {
             sequelize: sequelize,
             modelName: "Image",
-            tableName: "image",
         }
     );
 };

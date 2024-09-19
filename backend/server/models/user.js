@@ -1,7 +1,7 @@
 // User model for db
 export const User = (sequelize, Sequelize) => {
     // Define user model
-    const User = sequelize.define("user", {
+    const user = sequelize.define("user", {
             // Define columns
             userId: {
                 type: Sequelize.INTEGER,
@@ -24,8 +24,8 @@ export const User = (sequelize, Sequelize) => {
         // Define options
         {
             sequelize: sequelize,
-            modelName: "User",
-            tableName: "user", // Actual table name in the database
+            modelName: "Users",
+            tableName: "users",
             timestamps: true,
         }
     );
@@ -37,5 +37,5 @@ export const User = (sequelize, Sequelize) => {
             onUpdate: "CASCADE",
         });
     };
-    return User;
+    return user;
 };

@@ -7,7 +7,7 @@
     "dialect": "postgresql",
     "logging": false,
     "define": {
-      "underscored": true,
+      "underscored": false,
       "timestamps": false,
       "freezeTableName": true
     }

@@ -4,17 +4,16 @@ export const RolePermission = (sequelize, Sequelize) => {
     return sequelize.define("rolePermission", {
             roleId: {
                 type: Sequelize.INTEGER,
-                allowNull: true,
+                allowNull: false,
             },
             permissionId: {
                 type: Sequelize.INTEGER,
-                allowNull: true,
+                allowNull: false,
             },
         },
         {
             sequelize: sequelize,
             modelName: "RolePermission",
-            tableName: "rolePermission", // Actual table name in the database
         }
     );
 };

@@ -18,7 +18,6 @@ export const PropertyImage = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "PropertyType",
-            tableName: "propertyType",
         }
     );
 

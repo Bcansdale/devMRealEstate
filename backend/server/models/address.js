@@ -30,7 +30,6 @@ export const Address = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "Address",
-            tableName: "address",
         }
     );
 };
