@@ -1,12 +1,11 @@
 //
-
 const roles = [
     {
         roleId: 1,
         roleName: "admin",
         rolePermission: {
             roleId: 1,
-            permissionId: "read",
+            permissionId: 1,
         }
     },
     {
@@ -14,7 +13,7 @@ const roles = [
         roleName: "user",
         rolePermission: {
             roleId: 2,
-            permissionId: "create",
+            permissionId: 2,
         }
     },
 ];
@@ -27,8 +26,8 @@ export const createRoles = async function createRoles(db) {
                 roleName: role.name,
             })
             .then(async (newRole) => {
-                const permission = role.permission;
-                await db.userProfile.create({
+                const permission = role.rolePermission;
+                await db.rolePermission.create({
                     roleId: newRole.roleId,
                     permissionId: permission.permissionId
                 })

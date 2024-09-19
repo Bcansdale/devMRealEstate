@@ -45,7 +45,7 @@ export const createUsers = async function createUsers(db) {
             })
             // Create profile in db associated with user after user is created
             .then(async (newUser) => {
-                const profile = user.profile;
+                const profile = user.userProfile;
                 await db.userProfile.create({
                     userId: newUser.userId,
                     addressId: 1,

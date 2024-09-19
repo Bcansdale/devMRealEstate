@@ -45,11 +45,11 @@ const permission = Permission(sequelize, Sequelize.DataTypes);
 
 
 // Storing the models in the db object
-db[user.name] = user;
-db[userProfile.name] = userProfile;
+db[permission.name] = permission;
 db[role.name] = role;
 db[rolePermission.name] = rolePermission;
-db[permission.name] = permission;
+db[user.name] = user;
+db[userProfile.name] = userProfile;
 // db[userSavedProperty.name] = userSavedProperty;
 // db[address.name] = address;
 // db[property.name] = property;

@@ -23,12 +23,15 @@ app.use(
 import db from "./models/db.js";
 import { createUsers } from "./seed/userSeed.js";
 import { createRoles } from "./seed/roleSeed.js";
+import { createPermissions } from "./seed/permissionSeed.js";
 // import { createProperties } from "./seeds/property.js";
 
 db.sequelize.sync({ force: true }).then(function () {
     // create temp data for testing, remove after testing is done
+    createPermissions(db).then(() => console.log("Permissions successfully created"));
+    createRoles(db).then(() => console.log("Roles successfully created"));
     createUsers(db).then(() => console.log("Users successfully created"));
-    createRoles(db).then(() => console.log("Roles successfully created"))
+
     // createProperties(db).then(() =>
     //   console.log("Properties successfully created"),
     // );
