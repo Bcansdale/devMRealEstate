@@ -1,7 +1,7 @@
 //
 export const Role = (sequelize, Sequelize) => {
     //
-    return sequelize.define("role", {
+    const Role = sequelize.define("role", {
             roleId: {
                 type: Sequelize.INTEGER,
                 autoIncrement: true, // Enables auto-increment
@@ -18,4 +18,8 @@ export const Role = (sequelize, Sequelize) => {
             tableName: "role", // Actual table name in the database
         }
     );
+    Role.associate = (models) => {
+        Role.belongsToMany(models.permission, { through: "rolePermission" });
+    };
+    return Role;
 };
