@@ -1,6 +1,6 @@
 //
 export const Property = (sequelize, Sequelize) => {
-    const Property = sequelize.define("property", {
+    const property = sequelize.define("property", {
         propertyId: {
             type: Sequelize.INTEGER,
             autoIncrement: true, // Enables auto-increment
@@ -67,15 +67,19 @@ export const Property = (sequelize, Sequelize) => {
     );
 
     Property.associate = (models) => {
-        Property.associate(models.address, {
+        Property.belongsTo(models.address, {
             foreignKey: "addressId",
             onDelete: "RESTRICT",
         });
         Property.belongsTo(models.propertyTypeId, {
             foreignKey: "propertyTypeId",
-            onDelete: "RESTRICTED",
+            onDelete: "RESTRICT",
         });
+        Property.belongsToMany(models.permission, {
+            through: "propertyImage"
+        });
+        Property.belongsTo(models.pr)
     }
-    return Property;
+    return property;
 }
 

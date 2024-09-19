@@ -1,6 +1,6 @@
 //
 export const UserSavedProperty = (sequelize, Sequelize) => {
-    const UserSavedProperty = sequelize.define(
+    return sequelize.define(
         "userSavedProperty", {
             // Define columns
             userId: {
@@ -18,20 +18,4 @@ export const UserSavedProperty = (sequelize, Sequelize) => {
             timestamps: true,
         }
     );
-    // associate the table with models
-    // associate the table with other tables
-    // foreign key
-    UserSavedProperty.associate = (models) => {
-        UserSavedProperty.associate(models.user, {
-            foreignKey: "userId",
-            onDelete: "RESTRICT",
-            onUpdate: "CASCADE",
-        });
-        UserSavedProperty.associate(models.property, {
-            foreignKey: "propertyId",
-            onDelete: "RESTRICTED",
-            onUpdate: "CASCADE",
-            });
-    };
-    return UserSavedProperty;
 };

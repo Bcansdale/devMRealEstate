@@ -25,7 +25,7 @@ export const User = (sequelize, Sequelize) => {
         {
             sequelize: sequelize,
             modelName: "Users",
-            tableName: "users",
+            tableName: "user",
             timestamps: true,
         }
     );
@@ -35,6 +35,9 @@ export const User = (sequelize, Sequelize) => {
             foreignKey: "roleId", // Links roleId in User to roleId in Role
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
+        });
+        User.belongsToMany(models.property, {
+            through: "userSavedProperty"
         });
     };
     return user;

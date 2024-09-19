@@ -41,7 +41,7 @@ export const createUsers = async function createUsers(db) {
             .create({
                 username: user.username.toLowerCase(),
                 password: hashedPassword,
-                roleID: user.roleId,
+                roleId: user.roleId,
             })
             // Create profile in db associated with user after user is created
             .then(async (newUser) => {
