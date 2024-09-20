@@ -1,11 +1,11 @@
 //
 const permissions = [
     {
-        permissionId: 1,
+        // permissionId: 1,
         permissionName: "read",
     },
     {
-        permissionId: 2,
+        // permissionId: 2,
         permissionName: "create",
     }
 ];

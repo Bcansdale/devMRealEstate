@@ -1,6 +1,6 @@
 const addresses = [
     {
-        addressId: 1,
+        // addressId: 1,
         addressLine1: "351 W 800 N",
         addressLine2: "Unit 6",
         city: "Salt Lake City",

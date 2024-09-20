@@ -5,6 +5,7 @@ export const Image = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false, // Foreign key, must reference a valid propertyId from Property model
             primaryKey: true,
+            autoIncrement: true,
         },
         imageURL: {
             type: Sequelize.STRING(500),

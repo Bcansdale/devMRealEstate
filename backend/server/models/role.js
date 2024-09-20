@@ -6,6 +6,7 @@ export const Role = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 autoIncrement: true, // Enables auto-increment
                 primaryKey: true,
+                autioIncrement: true,
             },
             roleName: {
                 type: Sequelize.STRING(35),

@@ -1,7 +1,7 @@
 const properties = [
     {
-        propertyId: 1,
-        addressId: 1,
+        // propertyId: 1,
+        // addressId: 1,
         propertyTypeId: 2,
         title: "Salt Lake Town Home",
         description: "Lorem ipsum",

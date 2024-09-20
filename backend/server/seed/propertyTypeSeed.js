@@ -1,14 +1,14 @@
 const propertyTypes = [
     {
-        propertyTypeId: 1,
+        // propertyTypeId: 1,
         typeName: "House",
     },
     {
-        propertyTypeId: 2,
+        // propertyTypeId: 2,
         typeName: "Town Home",
     },
     {
-        propertyTypeId: 3,
+        // propertyTypeId: 3,
         typeName: "Multi-Family",
     },
 ]
