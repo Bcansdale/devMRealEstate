@@ -52,10 +52,10 @@ db[user.name] = user;
 db[userProfile.name] = userProfile;
 db[userSavedProperty.name] = userSavedProperty;
 db[address.name] = address;
-db[property.name] = property;
-db[propertyType.name] = propertyType;
 db[image.name] = image;
 db[propertyImage.name] = propertyImage;
+db[propertyType.name] = propertyType;
+db[property.name] = property;
 
 // Setting up relationships between models
 Object.keys(db).forEach((modelName) => {

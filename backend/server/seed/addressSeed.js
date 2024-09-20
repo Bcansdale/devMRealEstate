@@ -11,7 +11,7 @@ const addresses = [
 
 export const createAddresses = async function createAddresses(db) {
     for (const address of addresses) {
-        await db.permission
+        await db.address
             .create({
                 addressId: address.addressId,
                 addressLine1: address.addressLine1,

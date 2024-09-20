@@ -42,13 +42,13 @@ export const Property = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN,
             allowNull: false,
         },
-        dateCreated: {
+        createdAt: {
             type: Sequelize.DATE,
             allowNull: false,
         },
         dateUpdated: {
             type: Sequelize.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         userId: {
             type: Sequelize.INTEGER,
@@ -71,12 +71,13 @@ export const Property = (sequelize, Sequelize) => {
             foreignKey: "propertyTypeId",
             onDelete: "RESTRICT",
         });
-        Property.belongsToMany(models.permission, {
+        Property.belongsToMany(models.image, {
             through: "propertyImage"
         });
         Property.belongsToMany(models.userId, {
             through: "userSavedProperty"
         })
+
     }
     return property;
 }

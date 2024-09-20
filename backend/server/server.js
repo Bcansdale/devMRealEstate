@@ -19,7 +19,7 @@ app.use(
     }),
 );
 
-// Database
+// Database and seed data
 import db from "./models/db.js";
 import { createUsers } from "./seed/userSeed.js";
 import { createRoles } from "./seed/roleSeed.js";
@@ -35,21 +35,17 @@ import { createImages } from "./seed/imageSeed.js";
 db.sequelize.sync({ force: true }).then(function () {
     // create temp data for testing, remove after testing is done
     console.log("Database successfully created");
-    createPermissions(db).then(() => console.log("Permissions successfully created"));
-    console.log("Permissions successfully created");
-    createRoles(db).then(() => console.log("Roles successfully created"));
-    console.log('Roles successfully created');
-    createUsers(db).then(() => console.log("Users successfully created"));
-    console.log('Users successfully created');
-    createAddresses(db).then(() => console.log("Addresses successfully created"));
-    console.log('Addresses successfully created');
-    createProperties(db).then(() => console.log("Properties successfully created"));
-    console.log('Properties successfully created');
-    createImages(db).then(() => console.log("Images successfully created"));
-    console.log('Images successfully created');
-    createPropertyTypes(db).then(() => console.log("Property Types successfully created"));
-    console.log('Property Types successfully created');
-
+    try {
+        createPermissions(db).then(() => console.log("Permissions successfully created"));
+        createRoles(db).then(() => console.log("Roles successfully created"));
+        createUsers(db).then(() => console.log("Users successfully created"));
+        createAddresses(db).then(() => console.log("Addresses successfully created"));
+        createPropertyTypes(db).then(() => console.log("Property Types successfully created"));
+        createImages(db).then(() => console.log("Images successfully created"));
+        createProperties(db).then(() => console.log("Properties successfully created"));
+    } catch (err) {
+        console.log(err);
+    }
 
     // Server
     // Dependent on the database being set up and populated with test data before it can start listening for requests

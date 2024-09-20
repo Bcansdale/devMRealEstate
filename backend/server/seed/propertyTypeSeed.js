@@ -13,12 +13,13 @@ const propertyTypes = [
     },
 ]
 
+// console.log(propertyTypes)
 export const createPropertyTypes = async function createPropertyTypes(db) {
-    for (const propertyType of propertyTypes) {
-        await db.propertyTypeId
+    for (const type of propertyTypes) {
+        await db.propertyType
             .create({
-                propertyTypeId: propertyType.propertyTypeId,
-                typeName: propertyType.typeName,
+                propertyTypeId: type.propertyTypeId,
+                typeName: type.typeName,
             }
         )
     }

@@ -22,7 +22,7 @@ export const Address = (sequelize, Sequelize) => {
             type: Sequelize.STRING(35),
             allowNull: false,
         },
-        zipCode: {
+        postalCode: {
             type: Sequelize.STRING(35),
             allowNull: false,
         }

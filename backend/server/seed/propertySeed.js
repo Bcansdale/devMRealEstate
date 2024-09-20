@@ -11,7 +11,6 @@ const properties = [
         squareFeet: 1500,
         isAvailable: true,
         userId: 2,
-        userIdUpdate: 2,
     },
 ]
 

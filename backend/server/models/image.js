@@ -8,7 +8,7 @@ export const Image = (sequelize, Sequelize) => {
         },
         imageURL: {
             type: Sequelize.STRING(500),
-            allowNull: false,
+            allowNull: true,
         },
     }, {
             sequelize: sequelize,
@@ -17,11 +17,10 @@ export const Image = (sequelize, Sequelize) => {
     );
 
     Image.associate = (models) => {
-        Image.belongsTo(models.property,
-            {through: "propertyImage",
+        Image.belongsToMany(models.property, {
+            through: "propertyImage",
             foreignKey: "imageId",
-            });
-
-    }
+        });
+    };
     return image;
 };
