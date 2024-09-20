@@ -33,3 +33,6 @@ export const UserProfile = (sequelize, Sequelize) => {
     };
     return userProfile;
 };
+
+// INSERT INTO "userProfile" ("userId", "firstName", "lastName", "addressId")
+// VALUES (1, 'Alice', 'Smith', 1);

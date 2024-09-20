@@ -55,3 +55,9 @@ export const User = (sequelize, Sequelize) => {
     };
     return user;
 };
+
+
+//INSERT INTO "user" ("roleId", "username", "password", "createdAt", "updatedAt")
+// VALUES (2, 'alice@example.com', 'hashed_password_here', NOW(), NOW())
+// RETURNING "userId";
+

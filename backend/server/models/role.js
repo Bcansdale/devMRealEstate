@@ -22,3 +22,7 @@ export const Role = (sequelize, Sequelize) => {
     };
     return role;
 };
+
+
+//INSERT INTO "role" ("roleId", "roleName")
+// VALUES (3, 'test');

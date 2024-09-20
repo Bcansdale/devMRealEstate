@@ -23,3 +23,6 @@ export const Permission = (sequelize, Sequelize) => {
     };
     return permission;
 };
+
+//INSERT INTO "permission" ("permissionId", "permissionName")
+// VALUES (3, 'test');
