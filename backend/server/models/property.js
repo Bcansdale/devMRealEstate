@@ -72,12 +72,13 @@ export const Property = (sequelize, Sequelize) => {
             onDelete: "RESTRICT",
         });
         Property.belongsToMany(models.image, {
-            through: "propertyImage"
+            through: "propertyImage",
+            foreignKey: "imageId",
         });
         Property.belongsToMany(models.userId, {
             through: "userSavedProperty",
             foreignKey: "userId",
-        })
+        });
 
     }
     return property;
