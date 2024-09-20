@@ -24,17 +24,31 @@ import db from "./models/db.js";
 import { createUsers } from "./seed/userSeed.js";
 import { createRoles } from "./seed/roleSeed.js";
 import { createPermissions } from "./seed/permissionSeed.js";
-// import { createProperties } from "./seeds/property.js";
+import { createAddresses } from "./seed/addressSeed.js";
+
+import { createProperties } from "./seed/propertySeed.js";
+import { createPropertyTypes } from "./seed/propertyTypeSeed.js";
+import { createImages } from "./seed/imageSeed.js";
+
+
 
 db.sequelize.sync({ force: true }).then(function () {
     // create temp data for testing, remove after testing is done
+    console.log("Database successfully created");
     createPermissions(db).then(() => console.log("Permissions successfully created"));
+    console.log("Permissions successfully created");
     createRoles(db).then(() => console.log("Roles successfully created"));
+    console.log('Roles successfully created');
     createUsers(db).then(() => console.log("Users successfully created"));
-
-    // createProperties(db).then(() =>
-    //   console.log("Properties successfully created"),
-    // );
+    console.log('Users successfully created');
+    createAddresses(db).then(() => console.log("Addresses successfully created"));
+    console.log('Addresses successfully created');
+    createProperties(db).then(() => console.log("Properties successfully created"));
+    console.log('Properties successfully created');
+    createImages(db).then(() => console.log("Images successfully created"));
+    console.log('Images successfully created');
+    createPropertyTypes(db).then(() => console.log("Property Types successfully created"));
+    console.log('Property Types successfully created');
 
 
     // Server

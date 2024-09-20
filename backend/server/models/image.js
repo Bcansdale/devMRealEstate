@@ -18,7 +18,10 @@ export const Image = (sequelize, Sequelize) => {
 
     Image.associate = (models) => {
         Image.belongsTo(models.property,
-            {through: "properyImage" });
+            {through: "propertyImage",
+            foreignKey: "imageId",
+            });
+
     }
     return image;
 };

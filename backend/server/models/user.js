@@ -36,7 +36,7 @@ export const User = (sequelize, Sequelize) => {
             onDelete: "RESTRICT",
             onUpdate: "CASCADE",
         });
-        User.belongsToMany(models.property, {
+        User.hasMany(models.property, {
             through: "userSavedProperty"
         });
     };

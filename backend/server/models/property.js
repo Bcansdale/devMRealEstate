@@ -31,7 +31,7 @@ export const Property = (sequelize, Sequelize) => {
             allowNull: false,
         },
         numBathrooms: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.FLOAT,
             allowNull: false,
         },
         squareFeet: {
@@ -51,10 +51,6 @@ export const Property = (sequelize, Sequelize) => {
             allowNull: false,
         },
         userId: {
-            type: Sequelize.INTEGER,
-            allowNull: false, // Foreign key, must reference a valid userId from User model
-        },
-        userIdUpdated: {
             type: Sequelize.INTEGER,
             allowNull: false, // Foreign key, must reference a valid userId from User model
         },
