@@ -9,7 +9,7 @@ const images = [
         }
     },
 ];
-console.log(images)
+// console.log(images)
 export const createImages = async function createImages(db){
     for (const image of images) {
         await db.image

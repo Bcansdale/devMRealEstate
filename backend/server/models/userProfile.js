@@ -24,6 +24,7 @@ export const UserProfile = (sequelize, Sequelize) => {
     UserProfile.associate = (models) => {
         UserProfile.belongsTo(models.user, {
             foreignKey: "userId", // Links userId in UserProfile to userId in User
+            as: "user",
             onDelete: "CASCADE",
         });
         UserProfile.belongsTo(models.address, {
