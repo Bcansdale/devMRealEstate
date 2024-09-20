@@ -21,10 +21,13 @@ export const PropertyImage = (sequelize, Sequelize) => {
         }
     );
 
-    PropertyImage.associate = (models) => {
-        PropertyImage.belongsToMany(models.property, {
-            through: "propertyIamge"
-        })
-    }
+    // PropertyImage.associate = (models) => {
+    //     PropertyImage.belongsTo(models.property, {
+    //         foreignKey: 'propertyId'
+    //     })
+    //     PropertyImage.belongsToMany(models.property, {
+    //         through: "propertyImage"
+    //     })
+    // }
     return propertyImage;
 }

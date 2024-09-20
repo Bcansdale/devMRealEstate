@@ -12,6 +12,10 @@ const users = [
             lastName: "Test",
             addressId: 1,
         },
+        userSavedProperty: {
+            userId: 1,
+            propertyId: 1,
+        }
     },
     {
         username: "admin@admin.com",
@@ -23,6 +27,10 @@ const users = [
             lastName: "Admin",
             addressId: 2,
         },
+        userSavedProperty: {
+            userId: 2,
+            propertyId: 2,
+        }
     }
 ];
 
@@ -46,13 +54,17 @@ export const createUsers = async function createUsers(db) {
             // Create profile in db associated with user after user is created
             .then(async (newUser) => {
                 const profile = user.userProfile;
+                const savedProperty = user.userSavedProperty;
                 await db.userProfile.create({
                     userId: newUser.userId,
                     addressId: 1,
                     firstName: profile.firstName,
                     lastName: profile.lastName,
+                })
+                await db.userSavedProperty.create({
+                    userId: newUser.userId,
+                    propertyId: savedProperty.propertyId
                 });
-            }
-        );
+            })
     }
 };

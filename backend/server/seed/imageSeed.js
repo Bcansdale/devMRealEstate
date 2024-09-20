@@ -8,10 +8,6 @@ const images = [
             isPrimary: true
         }
     },
-    {
-        imageId: 2,
-        imageUrl: "https://photos.zillowstatic.com/fp/3b2f0d7f9b0d0f2a9a7b5d0a5e7c6e9b-uncropped_scaled_within_1536_1152.webp",
-    }
 ];
 // console.log(images)
 export const createImages = async function createImages(db){
