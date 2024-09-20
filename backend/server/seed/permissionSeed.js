@@ -7,6 +7,9 @@ const permissions = [
     {
         // permissionId: 2,
         permissionName: "create",
+    },
+    {
+        permissionName: "manage"
     }
 ];
 

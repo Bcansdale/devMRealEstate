@@ -29,6 +29,7 @@ import { createProperties } from "./seed/propertySeed.js";
 import { createPropertyTypes } from "./seed/propertyTypeSeed.js";
 import { createImages } from "./seed/imageSeed.js";
 import { createCompleteUser } from "./seed/completeUser.js";
+import { createCompleteUser2 } from "./seed/completeUser2.js";
 
 // Synchronize database and seed data
 db.sequelize.sync({ force: true }).then(async function () {
@@ -67,6 +68,10 @@ db.sequelize.sync({ force: true }).then(async function () {
 
         // 8. Finally, create the complete user
         await createCompleteUser(db);
+        console.log("Complete User successfully created");
+
+        // 9. Finally, create the complete user
+        await createCompleteUser2(db);
         console.log("Complete User successfully created");
 
     } catch (err) {
