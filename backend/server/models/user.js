@@ -1,3 +1,4 @@
+
 // User model for db
 export const User = (sequelize, Sequelize) => {
     // Define user model

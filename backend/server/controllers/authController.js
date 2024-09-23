@@ -1,4 +1,4 @@
-import {User} from "../models/user.js";
+import {User}  from "../models/user.js";
 import bcryptjs from "bcryptjs";
 
 
@@ -52,6 +52,8 @@ export const signup = async (req, res) => {
     const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10))
 
     const user = await User.create({
+        firstname: '',
+        lastname: '',
         username: username,
         password: hashedPassword
     })

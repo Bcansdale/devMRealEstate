@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
     Navbar,
     Typography,
@@ -10,10 +10,47 @@ import logo from '/src/assets/devmLogo.png';
 import {BsHouseHeart} from "react-icons/bs";
 import {GrUserAdmin} from "react-icons/gr";
 import { Link } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 
 
 function StickyNavbar({handleLoginClick, handleSignupClick}) {
     const [openNav, setOpenNav] = React.useState(false);
+    const [showLogout, setShowLogout] = React.useState(false);
+
+    const userId = useSelector((state) => state.userId)
+
+    const dispatch = useDispatch()
+
+    const handleLogout = async () => {
+        const res = await axios.get("/api/auth/logout")
+
+        if (res.data.success) {
+            // setUserId(null)
+            dispatch({
+                type: "LOGOUT",
+            })
+        }
+    }
+
+    const sessionCheck = async () => {
+        const res = await axios.get("/api/auth/session")
+
+        if (res.data.success) {
+            // setUserId(res.data.userId)
+            dispatch({
+                type: "USER_AUTH",
+                payload: res.data.userId
+            })
+        }
+    }
+
+    useEffect(() => {
+        sessionCheck()
+    }, [])
+
+
+
 
     React.useEffect(() => {
         window.addEventListener(
@@ -74,6 +111,7 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
 
 
     return (
+
         <header
             className="max-h-[768px] w-full overflow-scroll flex relative mt-[100px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445] z-50">
             <Navbar className="fixed top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-2">
@@ -102,12 +140,13 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                                 Login
                             </Button>
                             <Button
+                                onChange={(e) => setShowLogout(e.target.value)}
                                 variant="outlined"
                                 size="sm"
                                 className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
-                                onClick={handleSignup}
+                                onClick={handleLogout}
                             >
-                                Sign Up
+                                Logout
                             </Button>
                         </div>
                         <IconButton
