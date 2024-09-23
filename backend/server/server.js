@@ -21,12 +21,12 @@ app.use(
 
 // Routes
 import user from "./routes/user.js";
-// import auth from "./routes/auth.js";
-// import properties from "./routes/properties.js";
+import auth from "./routes/auth.js";
+import properties from "./routes/properties.js";
 
 app.use("/api/user", user);
-// app.use("/api/auth", auth);
-// app.use("/api/properties", properties)
+app.use("/api/auth", auth);
+app.use("/api/properties", properties)
 
 
 
@@ -39,8 +39,8 @@ import { createAddresses } from "./seed/addressSeed.js";
 import { createProperties } from "./seed/propertySeed.js";
 import { createPropertyTypes } from "./seed/propertyTypeSeed.js";
 import { createImages } from "./seed/imageSeed.js";
-import { createCompleteUser } from "./seed/completeUser.js";
-import { createCompleteUser2 } from "./seed/completeUser2.js";
+// import { createCompleteUser } from "./seed/completeUser.js";
+// import { createCompleteUser2 } from "./seed/completeUser2.js";
 
 // Synchronize database and seed data
 db.sequelize.sync({ force: true }).then(async function () {
@@ -77,13 +77,13 @@ db.sequelize.sync({ force: true }).then(async function () {
         await createProperties(db);
         console.log("Properties successfully created");
 
-        // 8. Finally, create the complete user
-        await createCompleteUser(db);
-        console.log("Complete User successfully created");
-
-        // 9. Finally, create the complete user
-        await createCompleteUser2(db);
-        console.log("Complete User successfully created");
+        // // 8. Finally, create the complete user
+        // await createCompleteUser(db);
+        // console.log("Complete User successfully created");
+        //
+        // // 9. Finally, create the complete user
+        // await createCompleteUser2(db);
+        // console.log("Complete User successfully created");
 
     } catch (err) {
         console.error("Error during seeding:", err);
