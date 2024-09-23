@@ -50,20 +50,20 @@ function DetailProperty() {
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center bg-gray-800 opacity-90">
-                <div className="container max-w-full lg:w-[100vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
-                    <Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-6">
-                        <div className="flex items-center justify-between text-[#444445]">
-                            <div className="mr-4 cursor-pointer items-center justify-center text-[1.25rem]">
-                                <p>Back to Properties</p>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                {/*<div className="mr-4 hidden lg:block">{navList}</div>*/}
-                                <button className="mr-5"><BsHouseHeart size={'1.4rem'}/></button>
-                                <button className="mr-5"><GrUserAdmin size={'1.4rem'}/></button>
-                            </div>
-                        </div>
-                    </Navbar>
+            <div className="flex flex-col justify-center items-center bg-gray-800">
+                <div className="max-w-full lg:w-[100vw] bg-[#fff] ">
+                    {/*<Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-6">*/}
+                    {/*    <div className="flex items-center justify-between text-[#444445]">*/}
+                    {/*        <div className="mr-4 cursor-pointer items-center justify-center text-[1.25rem]">*/}
+                    {/*            <p>Back to Properties</p>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="flex items-center gap-4">*/}
+                    {/*            /!*<div className="mr-4 hidden lg:block">{navList}</div>*!/*/}
+                    {/*            <button className="mr-5"><BsHouseHeart size={'1.4rem'}/></button>*/}
+                    {/*            <button className="mr-5"><GrUserAdmin size={'1.4rem'}/></button>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</Navbar>*/}
                     <section className="flex flex-col bg-white">
                         <div
                             className="flex flex-col m-2 gap-2">
@@ -71,7 +71,7 @@ function DetailProperty() {
                                 <Carousel
                                     className="rounded-xl h-1/2 lg:w-1/2"
                                     navigation={({setActiveIndex, activeIndex, length}) => (
-                                        <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                                        <div className="absolute bottom-4 left-2/4 flex -translate-x-2/4 gap-2">
                                             {new Array(length).fill("").map((_, i) => (
                                                 <span
                                                     key={i}
@@ -87,11 +87,11 @@ function DetailProperty() {
                                     <img
                                         src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
                                         alt="image 1"
-                                        className="h-full w-full object-cover"
+                                        className="h-full w-full"
                                     /> <img
                                     src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
                                     alt="image 1"
-                                    className="h-full w-full object-cover"
+                                    className="h-full w-full"
                                 />
                                 </Carousel>
                                 <div className="hidden ml-2 lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
@@ -243,7 +243,7 @@ function DetailProperty() {
                             </div>
                         </div>
                     </section>
-                    <Footer />
+                    {/*<Footer />*/}
                 </div>
             </div>
         </>

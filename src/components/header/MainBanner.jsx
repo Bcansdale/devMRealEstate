@@ -8,7 +8,7 @@ function Banner() {
                 <div className="h-[80vh] text-white text-center grid bg-cover"
                      style={{backgroundImage: `url(${bannerImage})`}}>
                     <div className="col-start-1 row-start-1 bg-gray-800 bg-opacity-60"></div>
-                    <div className="col-start-1 row-start-1 flex flex-col items-center justify-center mb-40">
+                    <div className="col-start-1 row-start-1 flex flex-col items-center justify-center mb-20">
                         <h1 className="text-4xl md:text-[5rem]">The Finest Real Estate</h1>
                         <h2 className="text-2xl md:text-[2.5rem] mt-6">Salt Lake City, UT</h2>
                         <div className="md:w-1/2 min-w-[350px] mt-24">

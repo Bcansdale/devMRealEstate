@@ -18,7 +18,7 @@ function Login({ isShowLogin, }) {
         <>
             <div className={isShowLogin ? "active" : ""}>
 
-                <div className="fixed min-h-screen flex items-center justify-center w-full">
+                <div className="fixed min-h-screen flex items-center justify-center w-full z-50">
 
                     <div className="bg-white shadow-xl rounded-2xl px-8 py-6 max-w-md text-[#444445]">
 

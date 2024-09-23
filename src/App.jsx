@@ -28,16 +28,15 @@ function App() {
 
   return (
       <BrowserRouter>
+          <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
+          <Login isShowLogin={isShowLogin}/>
+          <SignUp isShowSignup={isShowSignup}/>
           <Routes>
               <Route path="/" element={
                   <>
-                      <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
-                      <Login isShowLogin={isShowLogin}/>
-                      <SignUp isShowSignup={isShowSignup}/>
                       <Banner/>
                       <MainProperties/>
                       <Testimonials/>
-                      <Footer/>
                   </>
               }/>
               {/*<Route path="/login" element={<Login/>}/>*/}
@@ -46,6 +45,7 @@ function App() {
               <Route path="/saves" element={<UserSaves/>}/>
               <Route path="/admin" element={<AdminPortal/>}/>
           </Routes>
+          <Footer/>
       </BrowserRouter>
   )
 }

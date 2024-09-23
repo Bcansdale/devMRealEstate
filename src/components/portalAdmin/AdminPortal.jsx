@@ -7,7 +7,7 @@ import {Button} from "@material-tailwind/react";
 function AdminPortal() {
     return (
         <>
-            <StickyNavbar/>
+            {/*<StickyNavbar/>*/}
             <h2 className="flex justify-center items-center text-[#444445] text-5xl pt-[20px]">Current Listings</h2>
             <MainProperties/>
             <div className="flex justify-center items-center w-fill h-fill bg-[#444445] py-5">
@@ -122,7 +122,7 @@ function AdminPortal() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     );
 }

@@ -9,6 +9,7 @@ import {
 import logo from '/src/assets/devmLogo.png';
 import {BsHouseHeart} from "react-icons/bs";
 import {GrUserAdmin} from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 
 function StickyNavbar({handleLoginClick, handleSignupClick}) {
@@ -37,7 +38,7 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                 variant="small"
                 className="p-1 font-normal text-[1.2rem]"
             >
-                <a href="#" className="flex items-center">
+                <a href="/" className="flex items-center">
                     Home
                 </a>
             </Typography>
@@ -46,7 +47,7 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                 variant="small"
                 className="p-1 font-normal text-[1.2rem]"
             >
-                <a href="#" className="flex items-center">
+                <a href="/properties" className="flex items-center">
                     Properties
                 </a>
             </Typography>
@@ -55,7 +56,7 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                 variant="small"
                 className="p-1 font-normal text-[1.2rem]"
             >
-                <a href="#" className="flex items-center">
+                <a href="/about" className="flex items-center">
                     About
                 </a>
             </Typography>
@@ -64,7 +65,7 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                 variant="small"
                 className="p-1 font-normal text-[1.2rem]"
             >
-                <a href="#" className="flex items-center">
+                <a href="/contact" className="flex items-center">
                     Contact
                 </a>
             </Typography>
@@ -73,18 +74,23 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
 
 
     return (
-
-        <div
-            className="max-h-[768px] w-full overflow-scroll flex relative mt-[80px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445]">
+        <header
+            className="max-h-[768px] w-full overflow-scroll flex relative mt-[100px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445] z-50">
             <Navbar className="fixed top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-2">
                 <div className="flex items-center justify-between text-[#444445]">
+                    <Link to="/">
                     <div className="mr-4 cursor-pointer items-center justify-center">
                         <img className="inline w-[14rem]" src={logo} alt="Logo"/>
                     </div>
+                    </Link>
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
-                        <button className="mr-5"><BsHouseHeart size={'1.4rem'}/></button>
-                        <button className="mr-5"><GrUserAdmin size={'1.4rem'}/></button>
+                        <Link to='/saves'>
+                        <button className="mt-2 mr-5"><BsHouseHeart size={'1.4rem'}/></button>
+                        </Link>
+                        <Link to='/admin'>
+                        <button className="mt-2 mr-5"><GrUserAdmin size={'1.4rem'}/></button>
+                        </Link>
 
                         <div className="flex items-center gap-x-1 text-[#444445]">
                             <Button
@@ -146,17 +152,24 @@ function StickyNavbar({handleLoginClick, handleSignupClick}) {
                 <Collapse open={openNav}>
                     {navList}
                     <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="outlined" size="sm"
-                                className="rounded-3xl text-[#444445] text-[1rem]">
-                            <span>Log In/Sign Up</span>
+                        <Button fullWidth
+                                variant="outlined"
+                                size="sm"
+                                className="rounded-3xl text-[#444445] text-[1rem]"
+                                onClick={handleLogin}>
+                            Log In
                         </Button>
-                        {/*<Button fullWidth variant="gradient" size="sm" className="">*/}
-                        {/*    <span>Sign Up</span>*/}
-                        {/*</Button>*/}
+                        <Button fullWidth
+                                variant="outlined"
+                                size="sm"
+                                className="rounded-3xl text-[#444445] text-[1rem]"
+                                onClick={handleSignup}>
+                            Sign Up
+                        </Button>
                     </div>
                 </Collapse>
             </Navbar>
-        </div>
+        </header>
     );
 }
 
