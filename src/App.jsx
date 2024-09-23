@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import Banner from "./components/header/MainBanner.jsx";
 import StickyNavbar from "./components/header/NavBar.jsx";
@@ -26,18 +27,26 @@ function App() {
 
 
   return (
-      <>
-          <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
-          <Login isShowLogin={isShowLogin}/>
-          <SignUp isShowSignup={isShowSignup}/>
-          <Banner/>
-          <MainProperties/>
-          <Testimonials/>
-          <Footer/>
-          {/*<DetailProperty />*/}
-          {/*<UserSaves />*/}
-          {/*<AdminPortal />*/}
-      </>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={
+                  <>
+                      <StickyNavbar handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick}/>
+                      <Login isShowLogin={isShowLogin}/>
+                      <SignUp isShowSignup={isShowSignup}/>
+                      <Banner/>
+                      <MainProperties/>
+                      <Testimonials/>
+                      <Footer/>
+                  </>
+              }/>
+              {/*<Route path="/login" element={<Login/>}/>*/}
+              {/*<Route path="/signup" element={<SignUp/>}/>*/}
+              <Route path="/detail" element={<DetailProperty/>}/>
+              <Route path="/saves" element={<UserSaves/>}/>
+              <Route path="/admin" element={<AdminPortal/>}/>
+          </Routes>
+      </BrowserRouter>
   )
 }
 

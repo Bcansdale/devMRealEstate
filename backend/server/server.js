@@ -19,6 +19,17 @@ app.use(
     })
 );
 
+// Routes
+import user from "./routes/user.js";
+// import auth from "./routes/auth.js";
+// import properties from "./routes/properties.js";
+
+app.use("/api/user", user);
+// app.use("/api/auth", auth);
+// app.use("/api/properties", properties)
+
+
+
 // Database and seed data
 import db from "./models/db.js";
 import { createUsers } from "./seed/userSeed.js";
@@ -77,6 +88,7 @@ db.sequelize.sync({ force: true }).then(async function () {
     } catch (err) {
         console.error("Error during seeding:", err);
     }
+
 
     // Start the server after seeding is complete
     ViteExpress.config({ printViteDevServerHost: true });

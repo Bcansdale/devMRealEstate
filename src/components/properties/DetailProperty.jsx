@@ -51,7 +51,7 @@ function DetailProperty() {
     return (
         <>
             <div className="flex flex-col justify-center items-center bg-gray-800 opacity-90">
-                <div className="container max-w-full lg:w-[90vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
+                <div className="container max-w-full lg:w-[100vw] shadow-2xl shadow-[#444445] bg-[#fff] ">
                     <Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-6">
                         <div className="flex items-center justify-between text-[#444445]">
                             <div className="mr-4 cursor-pointer items-center justify-center text-[1.25rem]">
