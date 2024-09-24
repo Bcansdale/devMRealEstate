@@ -1,11 +1,31 @@
 import { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid/index.js";
+import { useAuth } from "../../context/AuthContext.jsx";
 
-function SignUp({ handleClickShowForm }) {
+function SignUp({ handleClickShowForm, handleCloseForm }) {
+    const [signupError, setSignupError] = useState(null);
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const { signup } = useAuth();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (firstname && lastname && username && password) {
+            signup(firstname, lastname, username, password).then((res) => {
+                const { message, success } = res.data;
+
+                if (success) {
+                    handleCloseForm(null);
+                } else {
+                    setSignupError(message);
+                }
+            });
+        }
+    }
 
     return (
         <div id="signup" className="active">
@@ -20,7 +40,12 @@ function SignUp({ handleClickShowForm }) {
                             <XMarkIcon />
                         </div>
                     </h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
+                        {signupError ? (
+                            <div className="text-red-600 mb-4">{signupError}</div>
+                        ) : (
+                            ""
+                        )}
                         <div className="mb-4">
                             <label
                                 htmlFor="firstName"

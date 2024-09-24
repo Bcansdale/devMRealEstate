@@ -13,7 +13,7 @@ export const test = (req, res) => {
 export const signup = async (req, res) => {
     const db = req.app.get("db");
 
-    const { username, password } = req.body;
+    const { firstname, lastname, username, password } = req.body;
 
     if (await db.user.findOne({ where: { username: username } })) {
         res.send({
@@ -25,13 +25,22 @@ export const signup = async (req, res) => {
 
     const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10));
 
-    const user = await User.create({
-        firstname: "",
-        lastname: "",
+    const user = await db.user.create({
+        firstname: firstname,
+        lastname: lastname,
         username: username,
         password: hashedPassword,
     });
 
+    if (!user) {
+        res.send({
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
+            password: hashedPassword,
+        });
+        return;
+    }
     req.session.userId = user.userId;
 
     res.send({
@@ -45,19 +54,14 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
     const db = req.app.get("db");
 
-    // grab values of 'username'/'password' from body object
     const { username, password } = req.body;
 
-    // see if a user exists in the db with
-    // the provided username
     const user = await db.user.findOne({
         where: {
             username: username,
         },
     });
 
-    // if we're here, then the user was found
-    // now evaluate if the passwords match
     if (!user || !bcryptjs.compareSync(password, user.password)) {
         res.send({
             message: "Invalid login, please try again.",
@@ -65,15 +69,7 @@ export const login = async (req, res) => {
         });
         return;
     }
-    // if we're here, then the user exists
-    // AND their password was correct!
-    // So I want to "save" their userId to a cookie --> req.session
     req.session.userId = user.userId;
-    // req.session is a cookie saved on the user's browser.
-    // so each user that visits our site sends their custom "req" object to us, and therefore, as far as their browser knows, they are "logged in"
-
-    // if we're here, then all is a success
-    // send a response including the userId:
 
     res.send({
         message: "user logged in",

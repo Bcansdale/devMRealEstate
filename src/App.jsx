@@ -32,7 +32,7 @@ function App() {
         e.preventDefault();
         setActiveForm(formName)
     }
-    function handleClickCloseForm() {
+    function handleCloseForm() {
         setActiveForm(null);
     }
 
@@ -41,12 +41,12 @@ function App() {
             <BrowserRouter>
                 <StickyNavbar
                     handleClickShowForm={handleClickShowForm}
-                    handleCloseForm={handleClickCloseForm}
+                    handleCloseForm={handleCloseForm}
                 />
                 {activeForm === "user/login" ? (
                     <Login
                         handleClickShowForm={handleClickShowForm}
-                        handleCloseForm={handleClickCloseForm}
+                        handleCloseForm={handleCloseForm}
                     />
                 ) : (
                     ""
