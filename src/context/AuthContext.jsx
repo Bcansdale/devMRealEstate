@@ -48,19 +48,16 @@ function AuthProvider({ children }) {
     }
 
     async function signup(firstname, lastname, username, password)  {
-        axios
-            .post("/api/auth/signup", {
+        const res = await axios.post("/api/auth/signup", {
                 firstname: firstname,
                 lastname: lastname,
                 username: username,
                 password: password,
             })
-            .then((res) => {
                 if (res.data.success) {
                     dispatch({ type: "user/signup", payload: res.data });
                 }
-            });
-
+        return res;
     }
 
     async function login(username, password) {
