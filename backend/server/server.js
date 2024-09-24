@@ -28,17 +28,15 @@ app.use("/api/user", user);
 app.use("/api/auth", auth);
 app.use("/api/properties", properties)
 
-
-
 // Database and seed data
 import db from "./models/db.js";
 import { createUsers } from "./seed/userSeed.js";
 import { createRoles } from "./seed/roleSeed.js";
 import { createPermissions } from "./seed/permissionSeed.js";
-import { createAddresses } from "./seed/addressSeed.js";
+// import { createAddresses } from "./seed/addressSeed.js";
 import { createProperties } from "./seed/propertySeed.js";
 import { createPropertyTypes } from "./seed/propertyTypeSeed.js";
-import { createImages } from "./seed/imageSeed.js";
+// import { createImages } from "./seed/imageSeed.js";
 // import { createCompleteUser } from "./seed/completeUser.js";
 // import { createCompleteUser2 } from "./seed/completeUser2.js";
 
@@ -50,46 +48,53 @@ db.sequelize.sync({ force: true }).then(async function () {
         // Ensure seeding happens in a specific order to maintain dependencies
 
         // 1. Seed permissions
-        await createPermissions(db);
-        console.log("Permissions successfully created");
+        await createPermissions(db).then(() =>
+            console.log("Permissions successfully created"),
+        );
 
         // 2. Seed roles
-        await createRoles(db);
-        console.log("Roles successfully created");
-
+        await createRoles(db).then(() =>
+            console.log("Roles successfully created"),
+        );
         // 3. Seed users (optional if unrelated to complete user)
-        await createUsers(db);
-        console.log("Users successfully created");
+        await createUsers(db).then(() =>
+            console.log("Users successfully created"),
+        );
 
-        // 4. Seed addresses (if needed for the user profile)
-        await createAddresses(db);
-        console.log("Addresses successfully created");
+        // // 4. Seed addresses (if needed for the user profile)
+        // await createAddresses(db).then(() =>
+        //     console.log("Addresses successfully created")
+        // );
 
         // 5. Seed property types
-        await createPropertyTypes(db);
-        console.log("Property Types successfully created");
+        await createPropertyTypes(db).then(() =>
+            console.log("Property Types successfully created")
+        );
 
-        // 6. Seed images
-        await createImages(db);
-        console.log("Images successfully created");
+        // // 6. Seed images
+        // await createImages(db).then(() =>
+        //     console.log("Images successfully created"),
+        // );
 
         // 7. Seed properties
-        await createProperties(db);
-        console.log("Properties successfully created");
+        await createProperties(db).then(() =>
+            console.log("Properties successfully created"),
+        );
 
         // // 8. Finally, create the complete user
-        // await createCompleteUser(db);
-        // console.log("Complete User successfully created");
+        // await createCompleteUser(db).then(() =>
+        //     console.log("Complete User successfully created"),
+        // );
         //
         // // 9. Finally, create the complete user
-        // await createCompleteUser2(db);
-        // console.log("Complete User successfully created");
-
+        // await createCompleteUser2(db).then(() =>
+        //     console.log("Complete User successfully created"),
+        // );
     } catch (err) {
         console.error("Error during seeding:", err);
     }
 
-
+    app.set("db", db)
     // Start the server after seeding is complete
     ViteExpress.config({ printViteDevServerHost: true });
     ViteExpress.listen(app, 5539, () => console.log("Server running on http://localhost:5539"));

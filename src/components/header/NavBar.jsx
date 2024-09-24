@@ -1,213 +1,118 @@
-import React, {useEffect} from "react";
-import {
-    Navbar,
-    Typography,
-    Button,
-    IconButton,
-    Collapse,
-} from "@material-tailwind/react";
-import logo from '/src/assets/devmLogo.png';
-import {BsHouseHeart} from "react-icons/bs";
-import {GrUserAdmin} from "react-icons/gr";
+import { useEffect, useState } from "react";
+import { Button, Typography } from "@material-tailwind/react";
+import logo from "/src/assets/devmLogo.png";
+import { BsHouseHeart } from "react-icons/bs";
+import { GrUserAdmin } from "react-icons/gr";
 import { Link } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import axios from "axios";
+import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { useAuth } from "../../context/AuthContext.jsx";
 
+function StickyNavbar({ handleClickShowForm }) {
+    let Links = [
+        { name: "Home", link: "/" },
+        { name: "Properties", link: "/properties" },
+        { name: "About", link: "/about" },
+        { name: "Contact", link: "/contact" },
+    ];
+    let [open, setOpen] = useState(false);
 
-function StickyNavbar({handleLoginClick, handleSignupClick}) {
-    const [openNav, setOpenNav] = React.useState(false);
-    const [showLogout, setShowLogout] = React.useState(false);
-
-    const userId = useSelector((state) => state.userId)
-
-    const dispatch = useDispatch()
-
-    const handleLogout = async () => {
-        const res = await axios.get("/api/auth/logout")
-
-        if (res.data.success) {
-            // setUserId(null)
-            dispatch({
-                type: "LOGOUT",
-            })
-        }
-    }
-
-    const sessionCheck = async () => {
-        const res = await axios.get("/api/auth/session")
-
-        if (res.data.success) {
-            // setUserId(res.data.userId)
-            dispatch({
-                type: "USER_AUTH",
-                payload: res.data.userId
-            })
-        }
-    }
+    const { user, logout, isAuthenticated, sessionCheck } = useAuth();
 
     useEffect(() => {
-        sessionCheck()
-    }, [])
-
-
-
-
-    React.useEffect(() => {
-        window.addEventListener(
-            "resize",
-            () => window.innerWidth >= 960 && setOpenNav(false),
-        );
+        sessionCheck();
     }, []);
 
-    const handleLogin = () => {
-        handleLoginClick();
-    };
+    function handleClickLogout(e) {
+        e.preventDefault();
 
-    const handleSignup = () => {
-        handleSignupClick();
-    };
-
-
-    const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-[#444445]">
-            <Typography
-                as="li"
-                variant="small"
-                className="p-1 font-normal text-[1.2rem]"
-            >
-                <a href="/" className="flex items-center">
-                    Home
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                className="p-1 font-normal text-[1.2rem]"
-            >
-                <a href="/properties" className="flex items-center">
-                    Properties
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                className="p-1 font-normal text-[1.2rem]"
-            >
-                <a href="/about" className="flex items-center">
-                    About
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                className="p-1 font-normal text-[1.2rem]"
-            >
-                <a href="/contact" className="flex items-center">
-                    Contact
-                </a>
-            </Typography>
-        </ul>
-    );
-
+        logout();
+    }
 
     return (
-
-        <header
-            className="max-h-[768px] w-full overflow-scroll flex relative mt-[100px] lg:mt-[100px] opacity-95 shadow-2xl shadow-[#444445] z-50">
-            <Navbar className="fixed top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-2">
-                <div className="flex items-center justify-between text-[#444445]">
-                    <Link to="/">
-                    <div className="mr-4 cursor-pointer items-center justify-center">
-                        <img className="inline w-[14rem]" src={logo} alt="Logo"/>
+        <header className="max-h-[768px] w-full overflow-scroll flex relative mt-[115px] lg:mt-[115px] opacity-85 shadow-2xl shadow-[#444445] z-50">
+            <div className="shadow-md w-full fixed top-0 left-0">
+                <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
+                    <div className="font-bold text-2xl cursor-pointer flex items-center gap-1">
+                        <Link to="/">
+                            <img className="inline w-[14rem]" src={logo} alt="Logo" />
+                        </Link>
                     </div>
-                    </Link>
-                    <div className="flex items-center gap-4">
-                        <div className="mr-4 hidden lg:block">{navList}</div>
-                        <Link to='/saves'>
-                        <button className="mt-2 mr-5"><BsHouseHeart size={'1.4rem'}/></button>
-                        </Link>
-                        <Link to='/admin'>
-                        <button className="mt-2 mr-5"><GrUserAdmin size={'1.4rem'}/></button>
-                        </Link>
 
-                        <div className="flex items-center gap-x-1 text-[#444445]">
-                            <Button
-                                variant="outlined"
-                                size="sm"
-                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
-                                onClick={handleLogin}
+                    <div
+                        onClick={() => setOpen(!open)}
+                        className="absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7"
+                    >
+                        {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
+                    </div>
+                    <ul
+                        className={`text-[#444445] gap-4 md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-28" : "top-[-490px]"}`}
+                    >
+                        {Links.map((link, index) => (
+                            <Typography
+                                as="li"
+                                variant="small"
+                                className="my-7 font-normal text-[1.2rem]"
+                                key={index}
                             >
-                                Login
-                            </Button>
-                            <Button
-                                onChange={(e) => setShowLogout(e.target.value)}
-                                variant="outlined"
-                                size="sm"
-                                className="hidden lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </Button>
-                        </div>
-                        <IconButton
-                            variant="text"
-                            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                            ripple={false}
-                            onClick={() => setOpenNav(!openNav)}
-                        >
-                            {openNav ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    className="h-6 w-6"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
+                                <a href={link.link} className="flex items-center">
+                                    {link.name}
+                                </a>
+                            </Typography>
+                        ))}
+
+                        {isAuthenticated ? (
+                            <>
+                                <li className="hidden lg:block">
+                                    <Link to="/saves">
+                                        <button className="mt-2 mr-5">
+                                            <BsHouseHeart size={"1.4rem"} />
+                                        </button>
+                                    </Link>
+                                    <Link to="/admin">
+                                        <button className="mt-2 mr-5">
+                                            <GrUserAdmin size={"1.4rem"} />
+                                        </button>
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            ""
+                        )}
+
+                        <li>
+                            {isAuthenticated ? (
+                                <Button
+                                    variant="outlined"
+                                    size="sm"
+                                    className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
+                                    onClick={handleClickLogout}
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
+                                    Logout
+                                </Button>
                             ) : (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                </svg>
+                                <>
+                                    <Button
+                                        variant="outlined"
+                                        size="sm"
+                                        className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8 mr-2"
+                                        onClick={(e) => handleClickShowForm(e, "user/login")}
+                                    >
+                                        Login
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        size="sm"
+                                        className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8 mr-2"
+                                        onClick={(e) => handleClickShowForm(e, "user/signup")}
+                                    >
+                                        Sign Up
+                                    </Button>
+                                </>
                             )}
-                        </IconButton>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-                <Collapse open={openNav}>
-                    {navList}
-                    <div className="flex items-center gap-x-1">
-                        <Button fullWidth
-                                variant="outlined"
-                                size="sm"
-                                className="rounded-3xl text-[#444445] text-[1rem]"
-                                onClick={handleLogin}>
-                            Log In
-                        </Button>
-                        <Button fullWidth
-                                variant="outlined"
-                                size="sm"
-                                className="rounded-3xl text-[#444445] text-[1rem]"
-                                onClick={handleSignup}>
-                            Sign Up
-                        </Button>
-                    </div>
-                </Collapse>
-            </Navbar>
+            </div>
         </header>
     );
 }

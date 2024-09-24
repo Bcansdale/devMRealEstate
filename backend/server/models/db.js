@@ -45,9 +45,9 @@ const propertyImage = PropertyImage(sequelize, Sequelize.DataTypes);
 
 
 // Storing the models in the db object
+db[role.name] = role;
 db[permission.name] = permission;
 db[rolePermission.name] = rolePermission;
-db[role.name] = role;
 db[user.name] = user;
 db[userProfile.name] = userProfile;
 db[userSavedProperty.name] = userSavedProperty;
