@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 router.get("/test", test);
-router.get("/session", sessionCheck);
+router.get("/session-check", sessionCheck);
 router.post("/signup", signup);
 router.post("/login", login);
 router.get("/logout", logout);

@@ -11,7 +11,7 @@ import SignUp from "./components/loginSignup/SignUp.jsx";
 import DetailProperty from "./components/properties/DetailProperty.jsx";
 import UserSaves from "./components/userSaves/userSaves.jsx";
 import AdminPortal from "./components/portalAdmin/AdminPortal.jsx";
-import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
+import { AuthProvider} from "./context/AuthContext.jsx";
 
 
 function App() {
@@ -42,7 +42,8 @@ function App() {
                     ""
                 )}
                 {activeForm === "user/signup" ? (
-                    <SignUp handleClickShowForm={handleClickShowForm} />
+                    <SignUp handleClickShowForm={handleClickShowForm}
+                    handleCloseForm={handleCloseForm}/>
                 ) : (
                     ""
                 )}
