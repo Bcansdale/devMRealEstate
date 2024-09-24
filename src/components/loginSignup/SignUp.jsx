@@ -14,18 +14,32 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (firstname && lastname && username && password) {
-            signup(firstname, lastname, username, password).then((res) => {
-                const { message, success } = res.data;
-
-                if (success) {
-                    handleCloseForm(null);
-                } else {
-                    setSignupError(message);
-                }
-            });
+        if (!firstname || !lastname || !username || !password) {
+            setSignupError("Please fill in all fields");
+            return;
         }
+
+        signup(firstname, lastname, username, password)
+            .then((res) => {
+                if (res && res.data) {
+                    const { message, success } = res.data;
+
+                    if (success) {
+                        handleCloseForm(null);
+                    } else {
+                        setSignupError(message || "An error occurred during signup");
+                    }
+                } else {
+                    console.error("Unexpected response format:", res);
+                    setSignupError("An error occurred during signup");
+                }
+            })
+            .catch((error) => {
+                console.error("Error during signup:", error);
+                setSignupError("An error occurred during signup");
+            });
     }
+
 
     return (
         <div id="signup" className="active">

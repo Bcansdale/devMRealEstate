@@ -34,10 +34,8 @@ export const signup = async (req, res) => {
 
     if (!user) {
         res.send({
-            firstname: firstname,
-            lastname: lastname,
-            username: username,
-            password: hashedPassword,
+            message: "user does not exist",
+            success: false,
         });
         return;
     }

@@ -15,16 +15,6 @@ import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
 
 
 function App() {
-// Old code, not working
-    // const [isShowLogin, setIsShowLogin] = useState(false)
-    // const handleLoginClick = () => {
-    //     setIsShowLogin((isShowLogin) => !isShowLogin)
-    // }
-    //
-    // const [isShowSignup, setIsShowSignUp] = useState(false)
-    // const handleSignupClick = () => {
-    //     setIsShowSignUp((isShowSignup) => !isShowSignup)
-    // }
 
     const [activeForm, setActiveForm] = useState(null);
 
