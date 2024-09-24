@@ -18,9 +18,10 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
             setSignupError("Please fill in all fields");
             return;
         }
-
+        if (username && password) {
         signup(firstname, lastname, username, password)
             .then((res) => {
+                console.log("Signup response:", res);
                 if (res && res.data) {
                     const { message, success } = res.data;
 
@@ -38,6 +39,7 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
                 console.error("Error during signup:", error);
                 setSignupError("An error occurred during signup");
             });
+        }
     }
 
 

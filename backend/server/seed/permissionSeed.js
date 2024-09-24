@@ -17,9 +17,9 @@ export const createPermissions = async function createPermissions(db) {
     for (const permission of permissions) {
         await db.permission
             .create({
-                permissionId: permission.permissionId,
-                permissionName: permission.permissionName
-            }
-        )
+                    permissionId: permission.permissionId,
+                    permissionName: permission.permissionName
+                }
+            )
     }
 }

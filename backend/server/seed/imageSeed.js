@@ -16,7 +16,7 @@ export const createImages = async function createImages(db){
             .create({
                 imageId: image.imageId,
                 imageURL: image.imageURL,
-        })
+            })
             .then(async () => {
                 const propertyImage = image.propertyImage;
                 await db.propertyImage.create({

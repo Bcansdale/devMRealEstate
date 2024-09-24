@@ -1,70 +1,71 @@
 import bcryptjs from "bcryptjs";
 
-// Declare sample users
 const users = [
     {
         username: "test@test.com",
         password: "test",
         roleId: 1,
-        // Nested objects related to user from userProfile model
         userProfile: {
             firstName: "Test",
             lastName: "Test",
-            addressId: 1,
+            address: {
+                addressLine1: "145 North St",
+                addressLine2: null,
+                city: "North Naples",
+                state: "FL",
+                postalCode: "34104",
+            },
         },
-        userSavedProperty: {
-            userId: 1,
-            propertyId: 1,
-        }
     },
     {
         username: "admin@admin.com",
         password: "admin",
         roleId: 2,
-        // Nested objects related to user from userProfile model
         userProfile: {
             firstName: "Admin",
             lastName: "Admin",
-            addressId: 2,
+            address: {
+                addressLine1: "123 Main St",
+                addressLine2: null,
+                city: "Naples",
+                state: "FL",
+                postalCode: "34104",
+            },
+            savedProperties: [],
         },
-        userSavedProperty: {
-            userId: 2,
-            propertyId: 2,
-        }
-    }
+    },
 ];
 
-// Function to create users in the database with hashed passwords and associated profile
 export const createUsers = async function createUsers(db) {
-    // create temp data for testing, remove after testing is done
     for (const user of users) {
-        // Hash password before creating user in db with bcryptjs
         const hashedPassword = bcryptjs.hashSync(
             user.password,
             bcryptjs.genSaltSync(10),
         );
-        // Create user in db using await to wait for the user to be created
+
         await db.user
-            // Create user in db
             .create({
                 username: user.username.toLowerCase(),
                 password: hashedPassword,
                 roleId: user.roleId,
             })
-            // Create profile in db associated with user after user is created
             .then(async (newUser) => {
                 const profile = user.userProfile;
-                const savedProperty = user.userSavedProperty;
+                const address = profile.address;
+
+                const newAddress = await db.address.create({
+                    addressLine1: address.addressLine1,
+                    addressLine2: address.addressLine1,
+                    city: address.city,
+                    state: address.state,
+                    postalCode: address.postalCode,
+                });
                 await db.userProfile.create({
                     userId: newUser.userId,
-                    addressId: 1,
+                    addressId: newAddress.addressId,
                     firstName: profile.firstName,
                     lastName: profile.lastName,
-                })
-                await db.userSavedProperty.create({
-                    userId: newUser.userId,
-                    propertyId: savedProperty.propertyId
                 });
-            })
+            });
     }
 };

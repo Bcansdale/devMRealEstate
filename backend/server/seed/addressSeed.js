@@ -4,7 +4,7 @@ const addresses = [
         addressLine1: "351 W 800 N",
         addressLine2: "Unit 6",
         city: "Salt Lake City",
-        state: "UT",
+        state: "Utah",
         postalCode: 84103,
     },
 ];

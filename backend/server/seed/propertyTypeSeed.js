@@ -18,9 +18,9 @@ export const createPropertyTypes = async function createPropertyTypes(db) {
     for (const type of propertyTypes) {
         await db.propertyType
             .create({
-                propertyTypeId: type.propertyTypeId,
-                typeName: type.typeName,
-            }
-        )
+                    propertyTypeId: type.propertyTypeId,
+                    typeName: type.typeName,
+                }
+            )
     }
 }

@@ -29,7 +29,6 @@ import { PropertyType } from "./propertyType.js";
 import { Image } from "./image.js";
 import { PropertyImage } from "./propertyImage.js";
 
-
 // Associating models for use in the db
 const user = User(sequelize, Sequelize.DataTypes);
 const userProfile = UserProfile(sequelize, Sequelize.DataTypes);
@@ -42,7 +41,6 @@ const property = Property(sequelize, Sequelize.DataTypes);
 const propertyType = PropertyType(sequelize, Sequelize.DataTypes);
 const image = Image(sequelize, Sequelize.DataTypes);
 const propertyImage = PropertyImage(sequelize, Sequelize.DataTypes);
-
 
 // Storing the models in the db object
 db[role.name] = role;
@@ -61,7 +59,7 @@ db[property.name] = property;
 Object.keys(db).forEach((modelName) => {
     // check if the model has an associate method
     if (db[modelName].associate) {
-        // if the model has an associate method, call it
+        //   // if the model has an associate method, call it
         db[modelName].associate(db);
     }
 });

@@ -7,10 +7,10 @@ export const UserProfile = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: true, // Foreign key, must reference a valid userId from User model
         },
-        addressId: {
-            type: Sequelize.INTEGER,
-            allowNull: true, // Foreign key, must reference a valid addressId from Address model
-        },
+        // addressId: {
+        //     type: Sequelize.INTEGER,
+        //     allowNull: true, // Foreign key, must reference a valid addressId from Address model
+        // },
         firstName: {
             type: Sequelize.STRING(35),
             allowNull: false,
@@ -20,17 +20,18 @@ export const UserProfile = (sequelize, Sequelize) => {
             allowNull: false,
         },
     });
-// Define associations between models
-    UserProfile.associate = (models) => {
-        UserProfile.belongsTo(models.user, {
+
+    userProfile.associate = (models) => {
+        userProfile.belongsTo(models.user, {
             foreignKey: "userId", // Links userId in UserProfile to userId in User
             as: "user",
             onDelete: "CASCADE",
         });
-        UserProfile.belongsTo(models.address, {
-            foreignKey: "addressId",
-        })
+        // userProfile.belongsTo(models.address, {
+        //     foreignKey: "addressId",
+        // });
     };
+
     return userProfile;
 };
 

@@ -1,7 +1,8 @@
 //
 export const UserSavedProperty = (sequelize, Sequelize) => {
     return sequelize.define(
-        "userSavedProperty", {
+        "userSavedProperty",
+        {
             // Define columns
             userId: {
                 type: Sequelize.INTEGER,
@@ -12,10 +13,6 @@ export const UserSavedProperty = (sequelize, Sequelize) => {
                 allowNull: true,
             },
         },
-        {
-            sequelize: sequelize,
-            modelName: "UserSavedProperty",
-            timestamps: true,
-        }
+        {},
     );
 };

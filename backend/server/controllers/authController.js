@@ -26,13 +26,18 @@ export const signup = async (req, res) => {
     const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10));
 
     const user = await db.user.create({
-        firstname: firstname,
-        lastname: lastname,
+        roleId: 2,
         username: username,
         password: hashedPassword,
+    }).then((user) => {
+        return db.userProfile.create({
+            userId: user.userId, // assuming userId is the foreign key
+            firstName: firstname,
+            lastName: lastname,
+        });
     });
 
-    if (!user) {
+    if (!user.save) {
         res.send({
             message: "user does not exist",
             success: false,
