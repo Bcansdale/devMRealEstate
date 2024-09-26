@@ -16,6 +16,8 @@ function reducer(state, action) {
             return { ...state, user: action.payload, isAuthenticated: true };
         case "user/login":
             return { ...state, user: action.payload, isAuthenticated: true };
+        case "admin/login":
+            return { ...state, user: action.payload, isAuthenticated: true };
         case "user/logout":
             return {
                 ...state,
@@ -85,9 +87,14 @@ function AuthProvider({ children }) {
         return res;
     }
 
+    async function isAdmin() {
+        const res = await axios.get("/api/auth/isAdmin");
+        return res;
+    }
+
     return (
         <AuthContext.Provider
-            value={{ user, isAuthenticated, signup, login, logout, sessionCheck }}
+            value={{ user, isAuthenticated, signup, login, logout, sessionCheck, isAdmin }}
         >
             {children}
         </AuthContext.Provider>

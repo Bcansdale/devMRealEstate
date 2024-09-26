@@ -63,11 +63,11 @@ function StickyNavbar({ handleClickShowForm }) {
                         {isAuthenticated ? (
                             <>
                                 <li className="hidden lg:block">
-                                    <Link to="/saves">
-                                        <button className="mt-2 mr-5">
-                                            <BsHouseHeart size={"1.4rem"} />
-                                        </button>
-                                    </Link>
+                                    {/*<Link to="/saves">*/}
+                                    {/*    <button className="mt-2 mr-5">*/}
+                                    {/*        <BsHouseHeart size={"1.4rem"} />*/}
+                                    {/*    </button>*/}
+                                    {/*</Link>*/}
                                     <Link to="/admin">
                                         <button className="mt-2 mr-5">
                                             <GrUserAdmin size={"1.4rem"} />

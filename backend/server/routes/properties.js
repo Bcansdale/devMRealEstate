@@ -1,15 +1,23 @@
 import express from "express";
-import { test, } from '../controllers/propertiesController.js'
-// createListing, deleteListing, updateListing, getListing, getListings
+import {
+    test,
+    createProperty,
+    deleteProperty,
+    updateProperty,
+    getProperty,
+    getAllProperties,
+} from '../controllers/propertiesController.js';
+import {verifyAdmin} from "../controllers/userController.js";
 
 
 const router = express.Router();
 router.get("/test", test)
-// router.post("/create", createListing);
-// router.delete("/delete/:id", deleteListing);
-// router.put("/update/:id", updateListing);
-// router.get("/get/:id", getListing);
-// router.get("/get", getListings);
+router.get("/get", verifyAdmin, getAllProperties);
+router.get("/get/:id", verifyAdmin, getProperty);
+router.post("/create", verifyAdmin, createProperty);
+router.delete("/delete/:id", verifyAdmin, deleteProperty);
+router.put("/update/:id", verifyAdmin, updateProperty);
+
 
 
 
