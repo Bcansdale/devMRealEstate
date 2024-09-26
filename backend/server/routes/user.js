@@ -1,5 +1,5 @@
 import express from "express";
-import {isUserAdmin, test, verifyAdmin, getAdminProperty} from "../controllers/userController.js";
+import {isUserAdmin, test, verifyAdmin} from "../controllers/userController.js";
 
 
 // updateUser, deleteUser, getUser, getUserListing
@@ -11,7 +11,6 @@ router.get("/test", test)
 // router.get("/properties/:id", getUserProperty);
 router.get('/admin', isUserAdmin);
 router.get('/admin/:id', verifyAdmin);
-router.get('/admin/get', getAdminProperty);
 
 
 export default router

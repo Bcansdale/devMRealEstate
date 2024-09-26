@@ -8,18 +8,27 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
     const [lastname, setLastname] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
+    const [adminAccessCode, setAdminAccessCode] = useState("");
 
     const { signup } = useAuth();
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!firstname || !lastname || !username || !password) {
+        if (!firstname || !lastname || !username || !password || !role) {
             setSignupError("Please fill in all fields");
             return;
         }
+
+        if (role === "admin" && !adminAccessCode) {
+            setSignupError("Please enter admin access code");
+            return;
+        }
+
+
         if (username && password) {
-        signup(firstname, lastname, username, password)
+        signup(firstname, lastname, username, password, role, adminAccessCode)
             .then((res) => {
                 console.log("Signup response:", res);
                 if (res && res.data) {
@@ -135,14 +144,47 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
                                 required
                             />
                         </div>
-                        {/*<div className="mb-4">*/}
-                        {/*    <label htmlFor="confirmPassword"*/}
-                        {/*           className="block text-sm font-medium text-[#444445] mb-2">Confirm*/}
-                        {/*                                                                     Password:</label>*/}
-                        {/*    <input type="text" id="confirmPassword" name="confirmPassword"*/}
-                        {/*           className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-orange-500 focus:border-orange-500"*/}
-                        {/*           placeholder="Password" required/>*/}
-                        {/*</div>*/}
+                        <div className="mb-4">
+                            <label
+                                htmlFor="role"
+                                className="block text-sm font-medium text-[#444445] mb-2"
+                            >
+                                Role:
+                            </label>
+                            <select
+                                id="role"
+                                name="role"
+                                className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                                value={role}
+                                onChange={(e) => setRole(e.target.value)}
+                                required
+                            >
+                                <option value="">Select Role</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        {role === "admin" && (
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="adminAccessCode"
+                                    className="block text-sm font-medium text-[#444445] mb-2"
+                                >
+                                    Admin Access Code:
+                                </label>
+                                <input
+                                    type="text"
+                                    id="adminAccessCode"
+                                    name="adminAccessCode"
+                                    className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                                    placeholder="Admin Access Code"
+                                    value={adminAccessCode}
+                                    onChange={(e) => setAdminAccessCode(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        )}
                         <button
                             type="submit"
                             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#444445] hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 duration-200"

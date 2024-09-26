@@ -6,6 +6,9 @@ const AuthContext = createContext();
 const initialState = {
     user: null,
     isAuthenticated: false,
+    role: "",
+    isAdmin: false,
+    adminAccessCode: "",
 };
 
 function reducer(state, action) {
@@ -13,28 +16,37 @@ function reducer(state, action) {
         case "user/session":
             return { ...state, user: action.payload, isAuthenticated: true };
         case "user/signup":
-            return { ...state, user: action.payload, isAuthenticated: true };
+            return {
+                ...state,
+                user: action.payload,
+                isAuthenticated: true,
+                role: action.role,
+                adminAccessCode: action.adminAccessCode,
+            };
         case "user/login":
             return { ...state, user: action.payload, isAuthenticated: true };
         case "admin/login":
-            return { ...state, user: action.payload, isAuthenticated: true };
+            return {
+                ...state,
+                user: action.payload,
+                isAuthenticated: true,
+                isAdmin: true,
+            };
         case "user/logout":
             return {
                 ...state,
                 user: initialState.user,
                 isAuthenticated: initialState.isAuthenticated,
+                role: initialState.role,
+                adminAccessCode: initialState.adminAccessCode,
             };
         default:
             throw new Error("Unknown action");
     }
 }
-
 function AuthProvider({ children }) {
-    const [{ user, isAuthenticated }, dispatch] = useReducer(
-        reducer,
-        initialState,
-        undefined,
-    );
+    const [{ user, isAuthenticated, role, isAdmin, adminAccessCode, }, dispatch] =
+        useReducer(reducer, initialState, undefined);
 
     async function sessionCheck() {
         const res = await axios.get("/api/auth/session-check");
@@ -45,23 +57,28 @@ function AuthProvider({ children }) {
                 payload: res.data.userId,
             });
         }
-
         return res;
     }
-
-    async function signup(firstname, lastname, username, password)  {
+    async function signup(firstname, lastname, username, password, role, adminAccessCode) {
         const res = await axios.post("/api/auth/signup", {
-                firstname: firstname,
-                lastname: lastname,
-                username: username,
-                password: password,
-            })
-                if (res.data.success) {
-                    dispatch({ type: "user/signup", payload: res.data });
-                }
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
+            password: password,
+            role: role,
+            adminAccessCode: adminAccessCode,
+        });
+
+        if (res.data.success) {
+            dispatch({
+                type: "user/signup",
+                payload: res.data,
+                role: role,
+                adminAccessCode: adminAccessCode,
+            });
+        }
         return res;
     }
-
     async function login(username, password) {
         const res = await axios.post("/api/auth/login", {
             username: username,
@@ -71,36 +88,42 @@ function AuthProvider({ children }) {
         if (res.data.success) {
             dispatch({ type: "user/login", payload: res.data });
         }
-
         return res;
     }
-
     async function logout() {
         const res = await axios.get("/api/auth/logout");
 
         if (res.data.success) {
-            dispatch({
-                type: "user/logout",
-            });
+            dispatch({ type: "user/logout" });
         }
-
         return res;
     }
-
-    async function isAdmin() {
+    async function checkAdmin() {
         const res = await axios.get("/api/auth/isAdmin");
+
+        if (res.data.success) {
+            dispatch({ type: "admin/login", payload: res.data });
+        }
         return res;
     }
-
     return (
         <AuthContext.Provider
-            value={{ user, isAuthenticated, signup, login, logout, sessionCheck, isAdmin }}
+            value={{
+                user,
+                isAuthenticated,
+                role,
+                adminAccessCode,
+                signup,
+                login,
+                logout,
+                sessionCheck,
+                checkAdmin,
+            }}
         >
             {children}
         </AuthContext.Provider>
     );
 }
-
 function useAuth() {
     const context = useContext(AuthContext);
 
@@ -109,5 +132,4 @@ function useAuth() {
 
     return context;
 }
-
 export { AuthProvider, useAuth };

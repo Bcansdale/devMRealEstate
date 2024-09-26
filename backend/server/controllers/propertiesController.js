@@ -1,3 +1,11 @@
+// Test route
+export const test = (req, res) => {
+    res.send({
+        message: "Property controller works",
+        success: true
+    });
+}
+
 // Function to create property
 export const createProperty = async (req, res) => {
     const db = req.app.get("db");

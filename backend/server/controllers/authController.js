@@ -13,7 +13,9 @@ export const test = (req, res) => {
 export const signup = async (req, res) => {
     const db = req.app.get("db");
 
-    const { firstname, lastname, username, password } = req.body;
+    const adminAccessCode = process.env.ADMIN_ACCESS_CODE;
+
+    const { firstname, lastname, username, password, role } = req.body;
 
     if (await db.user.findOne({ where: { username: username } })) {
         res.send({
@@ -23,11 +25,27 @@ export const signup = async (req, res) => {
         return;
     }
 
+    if (role === "admin" && adminAccessCode !== process.env.ADMIN_ACCESS_CODE) {
+        res.send({
+            message: "Invalid admin access code",
+            success: false,
+        });
+        return;
+    }
+
+    let roleId;
+    if (role === 'admin') {
+        roleId = 2; // Assuming roleId 2 is for admin
+    } else {
+        roleId = 1; // Assuming roleId 1 is for user
+    }
+
     const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10));
 
     const user = await db.user.create({
         // firstname: firstname,
         // lastname: lastname,
+        roleId: roleId,
         username: username,
         password: hashedPassword,
         userProfile: {
