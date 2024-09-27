@@ -19,14 +19,7 @@ app.use(
     }),
 );
 
-// Routes
-import user from "./routes/user.js";
-import auth from "./routes/auth.js";
-import properties from "./routes/properties.js";
 
-app.use("/api/user", user);
-app.use("/api/auth", auth);
-app.use("/api/properties", properties);
 
 // Database and seed data
 import db from "./models/db.js";
@@ -63,3 +56,12 @@ db.sequelize.sync({ force: true }).then(async function () {
         console.log("Server running on http://localhost:5539"),
     );
 });
+
+// Routes
+import user from "./routes/user.js";
+import auth from "./routes/auth.js";
+import properties from "./routes/properties.js";
+
+app.use("/api/user", user);
+app.use("/api/auth", auth);
+app.use("/api/properties", properties);

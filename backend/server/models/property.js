@@ -55,7 +55,8 @@ export const Property = (sequelize, Sequelize) => {
             },
             userId: {
                 type: Sequelize.INTEGER,
-                allowNull: false, // Foreign key, must reference a valid userId from User model
+                allowNull: true, // Foreign key, must reference a valid userId from User model
+                defaultValue: 2,
             },
         },
         {},

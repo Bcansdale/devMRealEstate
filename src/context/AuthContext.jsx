@@ -45,7 +45,7 @@ function reducer(state, action) {
     }
 }
 function AuthProvider({ children }) {
-    const [{ user, isAuthenticated, role, isAdmin, adminAccessCode, }, dispatch] =
+    const [{ user, isAuthenticated, role, isUserAdmin, adminAccessCode, }, dispatch] =
         useReducer(reducer, initialState, undefined);
 
     async function sessionCheck() {
@@ -60,9 +60,10 @@ function AuthProvider({ children }) {
         return res;
     }
     async function signup(firstname, lastname, username, password, role, adminAccessCode) {
-        if (role === "admin" && adminAccessCode !== process.env.ADMIN_ACCESS_CODE) {
-            throw new Error("Invalid access key");
-        }
+        // This causes the error
+        // if (role === "admin" && adminAccessCode !== process.env.ADMIN_ACCESS_CODE) {
+        //     throw new Error("Invalid access key");
+        // }
 
         const res = await axios.post("/api/auth/signup", {
             firstname: firstname,

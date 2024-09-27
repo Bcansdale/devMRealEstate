@@ -26,9 +26,7 @@ export const test = (req, res) => {
 //     }
 // };
 
-export const isUserAdmin = async (req,user) => {
-    const db = req.app.get("db");
-
+export const isUserAdmin = async (user, db) => {
     if (user) {
         const userRole = await db.role.findOne({
             where: {
@@ -43,7 +41,7 @@ export const isUserAdmin = async (req,user) => {
 };
 
 export const verifyAdmin = async (req, res, next) => {
-    if (await isUserAdmin(req.user)) {
+    if (await isUserAdmin(req.user, req.app.get("db"))) {
         next();
     } else {
         res.status(401).send({ message: 'Unauthorized' });

@@ -1,5 +1,7 @@
 import express from "express";
+
 import {isUserAdmin, test, verifyAdmin} from "../controllers/userController.js";
+
 
 
 // updateUser, deleteUser, getUser, getUserListing
@@ -11,6 +13,8 @@ router.get("/test", test)
 // router.get("/properties/:id", getUserProperty);
 router.get('/admin', isUserAdmin);
 router.get('/admin/:id', verifyAdmin);
-
+router.get("/admin", verifyAdmin, (req, res) => {
+    res.send("Welcome to the admin page");
+});
 
 export default router

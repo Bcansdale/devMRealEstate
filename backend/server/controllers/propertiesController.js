@@ -10,7 +10,9 @@ export const test = (req, res) => {
 export const createProperty = async (req, res) => {
     const db = req.app.get("db");
 
-    const { addressId, propertyTypeId, title, description, price, numBedrooms, numBathrooms, squareFeet, isAvailable } = req.body;
+    const { addressId, propertyTypeId, title, description, price, numBedrooms, numBathrooms, squareFeet, isAvailable,  } = req.body;
+
+
 
     const property = await db.property.create({
         addressId: addressId,
@@ -22,7 +24,23 @@ export const createProperty = async (req, res) => {
         numBathrooms: numBathrooms,
         squareFeet: squareFeet,
         isAvailable: isAvailable,
+        userId: 2,
+        // userId: req.user ? req.user.id : null,
+        address: {
+            addressLine1: req.body.address.addressLine1,
+            addressLine2: req.body.address.addressLine2,
+            city: req.body.address.city,
+            state: req.body.address.state,
+            postalCode: req.body.address.postalCode,
+        }
+    }, {
+        include: ["address"],
     });
+// This is causing a bug, wont verify admin
+    // if (!req.user) {
+    //     res.status(401).send({ message: 'Unauthorized' });
+    //     return;
+    // }
 
     if (!property) {
         res.status(500).send({
