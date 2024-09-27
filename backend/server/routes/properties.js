@@ -15,8 +15,8 @@ router.get("/test", test)
 router.get("/get",  getAllProperties);
 router.get("/get/:id", getProperty);
 router.post("/create", createProperty);
-router.delete("/delete/:id", verifyAdmin, deleteProperty);
-router.put("/update/:id", verifyAdmin, updateProperty);
+router.delete("/delete/:id", deleteProperty);
+router.put("/update/:id", updateProperty);
 
 
 

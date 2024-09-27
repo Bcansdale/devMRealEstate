@@ -138,7 +138,7 @@ export const getProperty = async (req, res) => {
 export const getAllProperties = async (req, res) => {
     const db = req.app.get("db");
 
-    const listings = await db.property.findAll();
+    const properties = await db.property.findAll();
 
-    res.status(200).send(listings);
+    res.status(200).send(properties);
 };
