@@ -8,13 +8,13 @@ const users = [
         userProfile: {
             firstName: "Test",
             lastName: "Test",
-            address: {
-                addressLine1: "145 North St",
-                addressLine2: null,
-                city: "North Naples",
-                state: "FL",
-                postalCode: "34104",
-            },
+            // address: {
+            //     addressLine1: "145 North St",
+            //     addressLine2: null,
+            //     city: "North Naples",
+            //     state: "FL",
+            //     postalCode: "34104",
+            // },
         },
     },
     {
@@ -24,13 +24,13 @@ const users = [
         userProfile: {
             firstName: "Admin",
             lastName: "Admin",
-            address: {
-                addressLine1: "123 Main St",
-                addressLine2: null,
-                city: "Naples",
-                state: "FL",
-                postalCode: "34104",
-            },
+            // address: {
+            //     addressLine1: "123 Main St",
+            //     addressLine2: null,
+            //     city: "Naples",
+            //     state: "FL",
+            //     postalCode: "34104",
+            // },
             savedProperties: [],
         },
     },
