@@ -1,6 +1,7 @@
+
+import bcryptjs from "bcryptjs";
 import dotenv from "dotenv";
 dotenv.config();
-import bcryptjs from "bcryptjs";
 
 // Test Route
 export const test = (req, res) => {
@@ -14,9 +15,9 @@ export const test = (req, res) => {
 export const signup = async (req, res) => {
     const db = req.app.get("db");
 
-    const adminAccessCode = process.env.VITE_ADMIN_ACCESS_CODE;
+    const validAccessCode = process.env.VITE_ADMIN_ACCESS_CODE;
 
-    const { firstname, lastname, username, password, role } = req.body;
+    const { firstname, lastname, username, password, role, adminAccessCode} = req.body;
 
     if (await db.user.findOne({ where: { username: username } })) {
         res.send({
@@ -26,7 +27,7 @@ export const signup = async (req, res) => {
         return;
     }
 
-    if (role === "admin" && adminAccessCode !== adminAccessCode) {
+    if (role === "admin" && adminAccessCode !== validAccessCode) {
         res.send({
             message: "Invalid admin access code",
             success: false,

@@ -2,16 +2,18 @@ import {useState} from 'react';
 import {HiOutlineHome} from "react-icons/hi2";
 import {HiOutlineHomeModern} from "react-icons/hi2";
 import {BsHouses} from "react-icons/bs";
-import PropertyCard from "./PropertyCard.jsx";
 import {Button} from "@material-tailwind/react";
+import AdminCard from "./AdminCard.jsx";
+import PropertyCard from "../properties/PropertyCard.jsx";
 
 
-function MainProperties() {
+
+function AdminProperties() {
+
     const [listingsToShow, setListingsToShow] = useState(8); // initial number of listings to show
     const handleShowMore = () => {
         setListingsToShow(listingsToShow + 8); // increment the number of listings to show
     };
-
 
     return (
         <>
@@ -35,15 +37,17 @@ function MainProperties() {
                     <div
                         className="mt-10 mx-4 grid md:grid-cols-2 md:px-10 md:gap-8 xl:grid-cols-4 xl:gap-8 xl:ml-8 xl:mr-8">
                         {[...Array(listingsToShow).keys()].map((index) => (
-                            <PropertyCard key={index} />
+                            <AdminCard key={index}/>
                         ))}
                     </div>
                     <div className="flex items-center justify-center m-5 mt-10">
-                        <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]" onClick={handleShowMore}>Show More listings</Button>
+                        <Button variant="outlined" className="px-10 text-[1rem] text-[#444445]"
+                                onClick={handleShowMore}>Show More listings</Button>
                     </div>
                 </section>
             </div>
         </>
     );
 }
-export default MainProperties;
+
+export default AdminProperties;

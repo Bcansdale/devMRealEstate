@@ -1,21 +1,21 @@
 import {useState} from 'react';
 import Heart from "react-heart";
+import { XMarkIcon } from "@heroicons/react/24/solid/index.js";
 
 
-function PropertyCard() {
-
-    const [active, setActive] = useState(false)
+function AdminCard() {
 
     return (
         <>
             <button
                 className="mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
+                <button>
                 <div className="">
                     <img
                         src="https://photos.zillowstatic.com/fp/b59a13db22d49514bb6c612aa5d0378d-uncropped_scaled_within_1536_1152.webp"
                         alt="" className=""/>
                 </div>
-
+                </button>
                 <div className="p-4">
                     <div className="pb-6">
                         <a href="#"
@@ -68,12 +68,14 @@ function PropertyCard() {
                     <ul className="m-0 flex list-none items-center justify-between px-0 pt-4 pb-0">
                         <li className="text-left">
                             <span className="text-sm text-[#444445]">Price</span>
-                            <p className="m-0 text-base font-medium">$5,000,000</p>
+                            <p className="m-0 text-base font-normal text-[#444445]">$5,000,000</p>
                         </li>
-
-                        <li className="text-left mr-5">
-                            <div style={{width: "1.5rem", color: "#444445"}}>
-                                <Heart isActive={active} onClick={() => setActive(!active)}/>
+                        <li>
+                            <div
+                                className="cursor-wait hover:text-orange-600 duration-500 ease-in-out color-[#444445] w-5 h-5"
+                                // onClick={(e) => handleDeleteProperty(e, null)}
+                            >
+                                <XMarkIcon/>
                             </div>
                         </li>
                     </ul>
@@ -85,4 +87,4 @@ function PropertyCard() {
     );
 }
 
-export default PropertyCard;
+export default AdminCard;
