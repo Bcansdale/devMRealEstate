@@ -9,9 +9,8 @@ import {Button} from "@material-tailwind/react";
 function MainProperties() {
     const [listingsToShow, setListingsToShow] = useState(8); // initial number of listings to show
     const handleShowMore = () => {
-        setListingsToShow(listingsToShow + 8); // increment the number of listings to show
+        setListingsToShow(listingsToShow + 4); // increment the number of listings to show
     };
-
 
     return (
         <>
