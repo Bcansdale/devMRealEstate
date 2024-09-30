@@ -6,11 +6,12 @@ import { GrUserAdmin } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { Link as ScrollLink } from "react-scroll";
 
 function StickyNavbar({ handleClickShowForm }) {
     let Links = [
         { name: "Home", link: "/" },
-        { name: "Properties", link: "/properties" },
+        { name: "Properties", link: "properties" },
         { name: "About", link: "/about" },
         { name: "Contact", link: "/contact" },
     ];
@@ -54,9 +55,15 @@ function StickyNavbar({ handleClickShowForm }) {
                                 className="my-7 font-normal text-[1.2rem]"
                                 key={index}
                             >
-                                <a href={link.link} className="flex items-center">
-                                    {link.name}
-                                </a>
+                                {link.link === "properties" ? (
+                                    <ScrollLink to={link.link} smooth={true} duration={500} className="flex items-center cursor-pointer">
+                                        {link.name}
+                                    </ScrollLink>
+                                ) : (
+                                    <Link to={link.link} className="flex items-center">
+                                        {link.name}
+                                    </Link>
+                                )}
                             </Typography>
                         ))}
 

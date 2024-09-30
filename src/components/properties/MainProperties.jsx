@@ -3,6 +3,7 @@ import { HiOutlineHome, HiOutlineHomeModern } from "react-icons/hi2";
 import { BsHouses } from "react-icons/bs";
 import PropertyCard from "./PropertyCard.jsx";
 import { Button } from "@material-tailwind/react";
+import { Element } from 'react-scroll';
 import axios from "axios";
 
 function MainProperties() {
@@ -38,6 +39,7 @@ function MainProperties() {
 
     return (
         <>
+            <Element name="properties" className="element">
             <div className='grid justify-center'>
                 <div className="grid grid-cols-3 justify-center items-center mt-5">
                     <button><HiOutlineHome size={'5rem'} color="#444445" className="mx-7 md:mx-24 px-1 "/></button>
@@ -62,6 +64,7 @@ function MainProperties() {
                     </div>
                 </section>
             </div>
+                </Element>
         </>
     );
 }
