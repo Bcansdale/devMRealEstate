@@ -12,8 +12,8 @@ function StickyNavbar({ handleClickShowForm }) {
     let Links = [
         { name: "Home", link: "/" },
         { name: "Properties", link: "properties" },
-        { name: "About", link: "/about" },
-        { name: "Contact", link: "/contact" },
+        // { name: "About", link: "/about" },
+        // { name: "Contact", link: "/contact" },
     ];
     let [open, setOpen] = useState(false);
 
