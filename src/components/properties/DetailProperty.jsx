@@ -1,31 +1,64 @@
 import React, {useEffect, useRef, useState} from "react";
-import {
-    Button,
-    Navbar,
-} from "@material-tailwind/react";
-import {BsHouseHeart} from "react-icons/bs";
-import {GrUserAdmin} from "react-icons/gr";
-import {Carousel} from "@material-tailwind/react";
+import { Button, Carousel } from "@material-tailwind/react";
 import Heart from "react-heart";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import logo from "../../assets/devmLogo.png";
-import Footer from "../footer/Footer.jsx";
+import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 
 function DetailProperty() {
 
     const mapContainerRef = useRef();
-    const mapRef = useRef();
+    const mapRef = useRef()
+    const geocodingClient = mbxGeocoding({ accessToken: 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g' });
+    const [address, setAddress] = useState('');
+
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g';
 
         mapRef.current = new mapboxgl.Map({
             container: mapContainerRef.current,
-            center: [-111.8910, 40.7608], // starting position [lng, lat]
-            zoom: 9 // starting zoom
+            style: 'mapbox://styles/mapbox/standard-satellite', // Use a style that supports terrain
+            center: [-111.8910, 40.7608], // default starting position [lng, lat]
+            zoom: 15 // starting zoom
         });
-    });
+
+        // Add terrain source and layer
+        mapRef.current.on('load', () => {
+            mapRef.current.addSource('mapbox-dem', {
+                'type': 'raster-dem',
+                'url': 'mapbox://mapbox.terrain-rgb',
+                'tileSize': 512,
+                'maxzoom': 18
+            });
+            mapRef.current.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+        });
+
+        // Geocode the address to get the coordinates
+        geocodingClient.forwardGeocode({
+            query: '351 W 800 N, Salt Lake City, UT',
+            limit: 1
+        })
+            .send()
+            .then(response => {
+                const match = response.body;
+                if (match.features.length > 0) {
+                    const coordinates = match.features[0].center;
+                    if (mapRef.current) {
+                        mapRef.current.setCenter(coordinates);
+
+                        // Add a marker to the map at the geocoded coordinates
+                        new mapboxgl.Marker()
+                            .setLngLat(coordinates)
+                            .addTo(mapRef.current);
+                    }
+                    setAddress(match.features[0].place_name);
+                }
+            })
+            .catch(err => {
+                console.error('Error with geocoding:', err);
+            });
+    }, []);
 
     const [active, setActive] = useState(false);
     const data = [
@@ -52,18 +85,6 @@ function DetailProperty() {
         <>
             <div className="flex flex-col justify-center items-center bg-gray-800">
                 <div className="max-w-full lg:w-[100vw] bg-[#fff] ">
-                    {/*<Navbar className="top-0 z-10 max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-6">*/}
-                    {/*    <div className="flex items-center justify-between text-[#444445]">*/}
-                    {/*        <div className="mr-4 cursor-pointer items-center justify-center text-[1.25rem]">*/}
-                    {/*            <p>Back to Properties</p>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="flex items-center gap-4">*/}
-                    {/*            /!*<div className="mr-4 hidden lg:block">{navList}</div>*!/*/}
-                    {/*            <button className="mr-5"><BsHouseHeart size={'1.4rem'}/></button>*/}
-                    {/*            <button className="mr-5"><GrUserAdmin size={'1.4rem'}/></button>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</Navbar>*/}
                     <section className="flex flex-col bg-white">
                         <div
                             className="flex flex-col m-2 gap-2">
@@ -111,39 +132,36 @@ function DetailProperty() {
                                 <div className="xl:inline-flex">
                                     <div className="flex flex-col ">
                                         <div className="flex flex-col mt-5">
-                                            <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side
-                                                                                                      Mansion</h2>
-                                            <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake
-                                                                                                 City, UT,
-                                                                                                 84103</h3>
+                                            <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side Mansion</h2>
+                                            <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake City, UT, 84103</h3>
                                         </div>
                                         <div className="grid justify-betweenlg:justify-start lg:flex">
                                             <ul className="flex flex-wrap justify-between py-2 xl:flex-row xl:ml-20">
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Listed:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">Sep 6, 2024</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Listed:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Sep 6, 2024</li>
                                                 </div>
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Category:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">House</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Category:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">House</li>
                                                 </div>
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Bedrooms:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">7</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Bedrooms:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">7</li>
                                                 </div>
                                             </ul>
                                             <ul className="flex flex-wrap py-2 justify-between xl:flex-row xl:ml-20">
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Bathrooms:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">2</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Bathrooms:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">2</li>
                                                 </div>
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Square Feet:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">11,200</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Square Feet:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">11,200</li>
                                                 </div>
                                                 <div>
-                                                <li className="text-1xl text-[#444445] ml-2">Est Payment:</li>
-                                                <li className="text-1xl text-[#444445] ml-2">$68,671</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">Est Payment:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2">$68,671</li>
                                                 </div>
                                             </ul>
                                         </div>
