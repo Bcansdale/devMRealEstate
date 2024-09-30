@@ -130,38 +130,38 @@ function DetailProperty() {
                             {/*Property Details*/}
                             <div className="flex flex-col lg:flex-row-2">
                                 <div className="xl:inline-flex">
-                                    <div className="flex flex-col ">
+                                    <div className="flex flex-col lg:min-w-[700px]">
                                         <div className="flex flex-col mt-5">
                                             <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">Mountain Side Mansion</h2>
                                             <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">351 W 800 N, Salt Lake City, UT, 84103</h3>
                                         </div>
-                                        <div className="grid justify-betweenlg:justify-start lg:flex">
-                                            <ul className="flex flex-wrap justify-between py-2 xl:flex-row xl:ml-20">
+                                        <div className="grid justify-between sm:justify-start sm:flex ">
+                                            <ul className="flex flex-wrap sm:justify-between py-2 xl:flex-row xl:ml-20">
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Listed:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">Sep 6, 2024</li>
+                                                    <li className="text-1xl text-[#444445] ml-2 xl:ml-0">Listed:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2 xl:ml-0">Sep 6, 2024</li>
                                                 </div>
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Category:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">House</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">Category:</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">House</li>
                                                 </div>
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Bedrooms:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">7</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">Bedrooms:</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">7</li>
                                                 </div>
                                             </ul>
-                                            <ul className="flex flex-wrap py-2 justify-between xl:flex-row xl:ml-20">
+                                            <ul className="flex flex-wrap py-2 sm::justify-between xl:flex-row">
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Bathrooms:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">2</li>
+                                                    <li className="text-1xl text-[#444445] ml-2 sm:ml-4">Bathrooms:</li>
+                                                    <li className="text-1xl text-[#444445] ml-2 sm:ml-4">2</li>
                                                 </div>
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Square Feet:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">11,200</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">Square Feet:</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">11,200</li>
                                                 </div>
                                                 <div>
-                                                    <li className="text-1xl text-[#444445] ml-2">Est Payment:</li>
-                                                    <li className="text-1xl text-[#444445] ml-2">$68,671</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">Est Payment:</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">$68,671</li>
                                                 </div>
                                             </ul>
                                         </div>
