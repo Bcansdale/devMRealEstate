@@ -67,8 +67,8 @@ function PropertyCard({ property }) {
                     </li>
 
                     <li className="text-left mr-5">
-                        <div className="heart-icon">
-                            <Heart isActive={active} onClick={() => setActive(!active)} />
+                        <div style={{width: "1.5rem", color: "#444445"}}>
+                            <Heart isActive={active} onClick={() => setActive(!active)}/>
                         </div>
                     </li>
                 </ul>
