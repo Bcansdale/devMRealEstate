@@ -18,7 +18,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/1a2b3c4d5e6f7g8h9i0jklmnopqrs-uncropped_scaled_within_1536_1152.webp",
+                src: "https://photos.zillowstatic.com/fp/33694d3ac24b10d530865ca579fd9685-cc_ft_1536.webp",
                 isPrimary: true,
             },
         ],

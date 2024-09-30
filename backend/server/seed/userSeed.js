@@ -51,18 +51,18 @@ export const createUsers = async function createUsers(db) {
             })
             .then(async (newUser) => {
                 const profile = user.userProfile;
-                const address = profile.address;
+                // const address = profile.address;
 
-                const newAddress = await db.address.create({
-                    addressLine1: address.addressLine1,
-                    addressLine2: address.addressLine1,
-                    city: address.city,
-                    state: address.state,
-                    postalCode: address.postalCode,
-                });
+                // const newAddress = await db.address.create({
+                //     addressLine1: address.addressLine1,
+                //     addressLine2: address.addressLine1,
+                //     city: address.city,
+                //     state: address.state,
+                //     postalCode: address.postalCode,
+                // });
                 await db.userProfile.create({
                     userId: newUser.userId,
-                    addressId: newAddress.addressId,
+                    // addressId: newAddress.addressId,
                     firstName: profile.firstName,
                     lastName: profile.lastName,
                 });
