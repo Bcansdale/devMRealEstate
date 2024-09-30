@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Heart from "react-heart";
 
-function PropertyCard({ property, image }) {
+function PropertyCard({ property }) {
     const [active, setActive] = useState(false);
 
     return (
@@ -10,7 +10,7 @@ function PropertyCard({ property, image }) {
             className="mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
             <div className="">
                 <img
-                    src={property.image}
+                    src={property.imageURL}
                     alt={property.address ? property.address.addressLine1 || "Property Image" : "Property Image"}
                     className=""
                 />
@@ -68,7 +68,7 @@ function PropertyCard({ property, image }) {
 
                     <li className="text-left mr-5">
                         <div className="heart-icon">
-                            <Heart isActive={active} onClick={() => setActive(!active)}/>
+                            <Heart isActive={active} onClick={() => setActive(!active)} />
                         </div>
                     </li>
                 </ul>

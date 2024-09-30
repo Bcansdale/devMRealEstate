@@ -8,6 +8,7 @@ import axios from "axios";
 function MainProperties() {
     const [listingsToShow, setListingsToShow] = useState(8); // initial number of listings to show
     const [properties, setProperties] = useState([]);
+    const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -16,6 +17,7 @@ function MainProperties() {
             try {
                 const response = await axios.get('/api/properties/get');
                 setProperties(response.data);
+                setImages(response.data.map((property) => property.image));
                 setLoading(false);
             } catch (error) {
                 setError(error.message);
@@ -52,7 +54,7 @@ function MainProperties() {
                 <section className="flex flex-col items-center bg-white">
                     <div className="mt-10 mx-4 grid md:grid-cols-2 md:px-10 md:gap-8 xl:grid-cols-4 xl:gap-8 xl:ml-8 xl:mr-8">
                         {properties.slice(0, listingsToShow).map((property) => (
-                            <PropertyCard key={property.id} property={property} />
+                            <PropertyCard key={property.id} property={property} image={property.image}/>
                         ))}
                     </div>
                     <div className="flex items-center justify-center m-5 mt-10">
