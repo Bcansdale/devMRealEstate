@@ -119,7 +119,7 @@ function DetailProperty() {
                                                 </div>
                                                 <div>
                                                     <li className="text-1xl text-[#444445] ml-4 ">Est Payment:</li>
-                                                    <li className="text-1xl text-[#444445] ml-4 ">$68,671</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">{`$${(property.price / 360).toFixed(2)}`}</li>
                                                 </div>
                                             </ul>
                                         </div>
