@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Heart from "react-heart";
 
 function PropertyCard({ property }) {
@@ -6,11 +7,18 @@ function PropertyCard({ property }) {
     const primaryImg = property.images.filter(
         (photo) => photo.propertyImage.isPrimary,
     )[0];
+    const navigate = useNavigate();
+
+    const handleCardClick = () => {
+        navigate(`/property/${property.propertyId}`);
+    };
 
     return (
         <button
             key={property.propertyId}
-            className="container mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
+            className="container mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl"
+            onClick={handleCardClick}
+        >
             <div className="container ">
                 <img
                     src={primaryImg.src}
