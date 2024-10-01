@@ -7,17 +7,17 @@ import {
     getProperty,
     getAllProperties,
 } from '../controllers/propertiesController.js';
-import {verifyAdmin} from "../controllers/userController.js";
+// import {verifyAdmin} from "../controllers/userController.js";
 
 
 const router = express.Router();
 
 router.get("/test", test)
 router.get("/get",  getAllProperties);
-router.get("/get/:id", getProperty);
-router.post("/create", verifyAdmin, createProperty);
-router.delete("/delete/:id", deleteProperty);
-router.put("/update/:id", updateProperty);
+router.get("/properties/:propertyId", getProperty);
+router.post("/create", createProperty);
+router.delete("/properties/:propertyId", deleteProperty);
+router.put("/properties/:propertyId", updateProperty);
 
 
 

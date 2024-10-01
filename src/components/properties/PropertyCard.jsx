@@ -10,19 +10,19 @@ function PropertyCard({ property }) {
     return (
         <button
             key={property.propertyId}
-            className="mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
-            <div className="">
+            className="container mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
+            <div className="container ">
                 <img
                     src={primaryImg.src}
                     alt={property.address ? property.address.addressLine1 || "Property Image" : "Property Image"}
-                    className=""
+                    className="container object-cover w-full h-48"
                 />
             </div>
 
             <div className="p-4">
-                <div className="pb-6">
+                <div className="pb-8">
                     <a href={`/property/${property.propertyId}`}
-                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.4rem] text-[#444445]">
+                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.51rem] text-[#444445]">
                         {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
                     </a>
                 </div>

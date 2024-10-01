@@ -14,14 +14,14 @@ function AdminCard({ property }) {
                 <img
                     src={primaryImg.src}
                     alt={property.address ? property.address.addressLine1 || "Property Image" : "Property Image"}
-                    className=""
+                    className="container object-cover w-full h-48"
                 />
             </div>
 
             <div className="p-4">
                 <div className="pb-6">
                     <a href={`/property/${property.propertyId}`}
-                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.4rem] text-[#444445]">
+                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.51rem] text-[#444445]">
                         {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
                     </a>
                 </div>

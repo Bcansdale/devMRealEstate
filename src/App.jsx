@@ -58,7 +58,7 @@ function App() {
                             </>
                         }
                     />
-                    <Route path="/detail/${property.propertyId}" element={<DetailProperty />} />
+                    <Route path="/property/:propertyId" element={<DetailProperty />} />
                     <Route path="/saves" element={<UserSaves />} />
                     <Route path="/admin" element={<AdminPortal />} />
                 </Routes>

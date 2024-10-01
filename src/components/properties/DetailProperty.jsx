@@ -5,12 +5,67 @@ import Heart from "react-heart";
 // import 'mapbox-gl/dist/mapbox-gl.css';
 // import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 import axios from "axios";
-import PropertyMapBox from "./PropertyMapBox.jsx";
-import { useParams } from 'react-router-dom';
+import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding.js";
+import mapboxgl from "mapbox-gl";
 
 function DetailProperty() {
     // const { propertyId } = useParams();
     const [active, setActive] = useState(false);
+
+    const mapContainerRef = useRef();
+    const mapRef = useRef()
+    const geocodingClient = mbxGeocoding({ accessToken: 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g' });
+    const [address, setAddress] = useState('');
+
+
+    useEffect(() => {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g';
+
+        if (mapContainerRef.current) {
+            mapRef.current = new mapboxgl.Map({
+                container: mapContainerRef.current, // Ensure this is correctly set
+                style: 'mapbox://styles/mapbox/standard-satellite', // Use a style that supports terrain
+                center: [-111.8910, 40.7608], // default starting position [lng, lat]
+                zoom: 15 // starting zoom
+            });
+
+            // Add terrain source and layer
+            mapRef.current.on('load', () => {
+                mapRef.current.addSource('mapbox-dem', {
+                    'type': 'raster-dem',
+                    'url': 'mapbox://mapbox.terrain-rgb',
+                    'tileSize': 512,
+                    'maxzoom': 18
+                });
+                mapRef.current.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+            });
+
+            // Geocode the address to get the coordinates
+            geocodingClient.forwardGeocode({
+                query: '351 W 800 N, Salt Lake City, UT',
+                limit: 1
+            })
+                .send()
+                .then(response => {
+                    const match = response.body;
+                    if (match.features.length > 0) {
+                        const coordinates = match.features[0].center;
+                        if (mapRef.current) {
+                            mapRef.current.setCenter(coordinates);
+
+                            // Add a marker to the map at the geocoded coordinates
+                            new mapboxgl.Marker()
+                                .setLngLat(coordinates)
+                                .addTo(mapRef.current);
+                        }
+                        setAddress(match.features[0].place_name);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error with geocoding:', err);
+                });
+        }
+    }, []);
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -68,17 +123,19 @@ function DetailProperty() {
                                         </div>
                                     )}
                                 >
-                                    <img
-                                        src={primaryImg.src}
-                                        alt="image 1"
-                                        className="h-full w-full"
-                                    />
+                                    {primaryImg && (
+                                        <img
+                                            src={primaryImg.src}
+                                            alt="image 1"
+                                            className="h-full w-full"
+                                        />
+                                    )}
                                 </Carousel>
                                 <div className="hidden ml-2 lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
-                                    {property.images.map((image, index) => (
+                                    {property.images && property.images.map((image, index) => (
                                         <img
                                             key={index}
-                                            src={image.src}
+                                            src={property.image.src}
                                             alt=""
                                             className="h-full w-full"
                                         />
@@ -161,7 +218,10 @@ function DetailProperty() {
                                         <h2 className="text-3xl text-[#444445] mt-2 mb-8">
                                             Property Map
                                         </h2>
-                                        <PropertyMapBox />
+                                        <div
+                                            ref={mapContainerRef}
+                                            className="aspect-square w-full h-full"
+                                        />
                                     </div>
                                 </div>
                             </div>

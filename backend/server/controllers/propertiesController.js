@@ -42,7 +42,7 @@ export const createProperty = async (req, res) => {
             { model: db.image, through: db.propertyImage },
         ],
         where: {
-            id: req.params.id,
+            id: req.params.propertyId,
         },
     });
 // This is causing a bug, wont verify admin
@@ -70,13 +70,18 @@ export const createProperty = async (req, res) => {
 export const deleteProperty = async (req, res) => {
     const db = req.app.get("db");
 
+    const propertyId = req.params.propertyId;
+    if (!propertyId) {
+        return res.status(400).send({ message: 'Property ID is required' });
+    }
+
     const property = await db.property.findOne({
         include: [
             { model: db.address },
             { model: db.image, through: db.propertyImage },
         ],
         where: {
-            id: req.params.id,
+            propertyId: propertyId, // Use propertyId instead of id
         },
     });
 
@@ -96,9 +101,15 @@ export const deleteProperty = async (req, res) => {
     });
 };
 
+
 // Function to update property
 export const updateProperty = async (req, res) => {
     const db = req.app.get("db");
+
+    const propertyId = req.params.propertyId;
+    if (!propertyId) {
+        return res.status(400).send({ message: 'Property ID is required' });
+    }
 
     const property = await db.property.findOne({
         include: [
@@ -106,7 +117,7 @@ export const updateProperty = async (req, res) => {
             { model: db.image, through: db.propertyImage },
         ],
         where: {
-            id: req.params.id,
+            propertyId: propertyId, // Use propertyId instead of id
         },
     });
 
@@ -131,13 +142,18 @@ export const updateProperty = async (req, res) => {
 export const getProperty = async (req, res) => {
     const db = req.app.get("db");
 
+    const propertyId = req.params.propertyId;
+    if (!propertyId) {
+        return res.status(400).send({ message: 'Property ID is required' });
+    }
+
     const property = await db.property.findOne({
         include: [
             { model: db.address },
             { model: db.image, through: db.propertyImage },
         ],
         where: {
-            id: req.params.id,
+            propertyId: propertyId, // Use propertyId instead of id
         },
     });
 
