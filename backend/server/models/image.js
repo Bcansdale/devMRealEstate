@@ -9,7 +9,8 @@ export const Image = (sequelize, Sequelize) => {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            imageURL: {
+            src: { // alias/mapped name
+                field: "imageURL", // db column
                 type: Sequelize.STRING(500),
                 allowNull: false,
             },
@@ -20,7 +21,7 @@ export const Image = (sequelize, Sequelize) => {
     image.associate = (models) => {
         image.belongsToMany(models.property, {
             through: "propertyImage",
-            foreignKey: "propertyId",
+            foreignKey: "imageId",
         });
     };
     return image;

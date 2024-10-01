@@ -11,10 +11,11 @@ import {verifyAdmin} from "../controllers/userController.js";
 
 
 const router = express.Router();
+
 router.get("/test", test)
 router.get("/get",  getAllProperties);
 router.get("/get/:id", getProperty);
-router.post("/create", createProperty);
+router.post("/create", verifyAdmin, createProperty);
 router.delete("/delete/:id", deleteProperty);
 router.put("/update/:id", updateProperty);
 

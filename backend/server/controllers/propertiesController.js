@@ -32,9 +32,18 @@ export const createProperty = async (req, res) => {
             city: req.body.address.city,
             state: req.body.address.state,
             postalCode: req.body.address.postalCode,
+        },
+        image: {
+            src: req.body.image.src,
         }
     }, {
-        include: ["address"],
+        include: [
+            { model: db.address },
+            { model: db.image, through: db.propertyImage },
+        ],
+        where: {
+            id: req.params.id,
+        },
     });
 // This is causing a bug, wont verify admin
     // if (!req.user) {
@@ -62,6 +71,10 @@ export const deleteProperty = async (req, res) => {
     const db = req.app.get("db");
 
     const property = await db.property.findOne({
+        include: [
+            { model: db.address },
+            { model: db.image, through: db.propertyImage },
+        ],
         where: {
             id: req.params.id,
         },
@@ -88,6 +101,10 @@ export const updateProperty = async (req, res) => {
     const db = req.app.get("db");
 
     const property = await db.property.findOne({
+        include: [
+            { model: db.address },
+            { model: db.image, through: db.propertyImage },
+        ],
         where: {
             id: req.params.id,
         },
@@ -115,6 +132,10 @@ export const getProperty = async (req, res) => {
     const db = req.app.get("db");
 
     const property = await db.property.findOne({
+        include: [
+            { model: db.address },
+            { model: db.image, through: db.propertyImage },
+        ],
         where: {
             id: req.params.id,
         },
@@ -138,7 +159,12 @@ export const getProperty = async (req, res) => {
 export const getAllProperties = async (req, res) => {
     const db = req.app.get("db");
 
-    const properties = await db.property.findAll();
+    const properties = await db.property.findAll({
+        include: [
+            { model: db.address },
+            { model: db.image, through: db.propertyImage },
+        ],
+    });
 
     res.status(200).send(properties);
 };

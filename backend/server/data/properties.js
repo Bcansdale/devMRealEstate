@@ -18,8 +18,12 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/33694d3ac24b10d530865ca579fd9685-cc_ft_1536.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
+            },
+            {
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
+                isPrimary: false,
             },
         ],
     },
@@ -42,8 +46,16 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abc1234567890def1234567890abcdef-uncropped_scaled_within_1536_1152.webp",
+                src: "https://www.probuilder.com/sites/default/files/pb/2023-03/pexels-binyamin-mellish-1396122.jpg",
                 isPrimary: true,
+            },
+            {
+                src: "https://www.probuilder.com/sites/default/files/pb/2023-03/pexels-binyamin-mellish-1396122.jpg",
+                isPrimary: false,
+            },
+            {
+                src: "https://www.probuilder.com/sites/default/files/pb/2023-03/pexels-binyamin-mellish-1396122.jpg",
+                isPrimary: false,
             },
         ],
     },
@@ -66,7 +78,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef1234567890abcdef1234567890-uncropped_scaled_within_1536_1152.webp",
+                src: "https://img.freepik.com/premium-photo/luxury-travel-resort-background_951586-73917.jpg",
                 isPrimary: true,
             },
         ],
@@ -90,7 +102,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/4567890abcdef1234567890abcdef1234-uncropped_scaled_within_1536_1152.webp",
+                src: "https://www.nichiha.com/uploads/gallery/seo-images/501LesesneExterior-KeenEyeMarketing1-1920px.jpg?",
                 isPrimary: true,
             },
         ],
@@ -114,7 +126,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef1234567890abcdef0987654321-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -138,7 +150,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef0987654321abcdef1234567890-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -162,7 +174,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/1234567890abcdef0987654321abcdef-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -186,7 +198,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef1234567890fedcba0987654321-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -210,7 +222,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/12345abcdef09876fedcba0987654321-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -234,7 +246,7 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef1234567890987654321fedcba98-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
@@ -258,9 +270,9 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/abcdef1234567890abcdef12345678901-uncropped_scaled_within_1536_1152.webp",
+                src: "https://cdn.houseplansservices.com/product/si3lgiouiuap9scoj2lers3s0i/w800x533.jpg?v=3",
                 isPrimary: true,
             },
         ],
-    }
+    },
 ];

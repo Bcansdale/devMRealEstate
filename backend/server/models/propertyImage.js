@@ -15,6 +15,7 @@ export const PropertyImage = (sequelize, Sequelize) => {
             isPrimary: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
+                defaultValue: false,
             },
         },
         {},

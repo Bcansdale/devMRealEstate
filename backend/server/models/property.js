@@ -73,7 +73,7 @@ export const Property = (sequelize, Sequelize) => {
         });
         property.belongsToMany(models.image, {
             through: "propertyImage",
-            foreignKey: "imageId",
+            foreignKey: "propertyId",
         });
         property.belongsToMany(models.user, {
             through: "userSavedProperty",

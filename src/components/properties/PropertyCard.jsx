@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Heart from "react-heart";
 
 function PropertyCard({ property }) {
     const [active, setActive] = useState(false);
+    const primaryImg = property.images.filter(
+        (photo) => photo.propertyImage.isPrimary,
+    )[0];
 
     return (
         <button
-            key={property.id}
+            key={property.propertyId}
             className="mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl">
             <div className="">
                 <img
-                    src={property.imageURL}
+                    src={primaryImg.src}
                     alt={property.address ? property.address.addressLine1 || "Property Image" : "Property Image"}
                     className=""
                 />
@@ -18,7 +21,7 @@ function PropertyCard({ property }) {
 
             <div className="p-4">
                 <div className="pb-6">
-                    <a href={`/property/${property.id}`}
+                    <a href={`/property/${property.propertyId}`}
                        className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.4rem] text-[#444445]">
                         {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
                     </a>
