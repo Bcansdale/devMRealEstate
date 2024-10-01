@@ -8,7 +8,7 @@ import axios from "axios";
 import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding.js";
 import mapboxgl from "mapbox-gl";
 
-function DetailProperty() {
+function DetailProperty({propertyId}) {
     // const { propertyId } = useParams();
     const [active, setActive] = useState(false);
 
@@ -16,7 +16,6 @@ function DetailProperty() {
     const mapRef = useRef()
     const geocodingClient = mbxGeocoding({ accessToken: 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g' });
     const [address, setAddress] = useState('');
-
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g';
@@ -67,6 +66,7 @@ function DetailProperty() {
         }
     }, []);
 
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [property, setProperty] = useState({});
@@ -76,7 +76,7 @@ function DetailProperty() {
 
     const fetchProperty = async () => {
         try {
-            const response = await axios.get(`/api/properties/get/${property.propertyId}`);
+            const response = await axios.get(`/api/properties/${propertyId}`);
             setProperty(response.data);
             setLoading(false);
         } catch (error) {
@@ -87,7 +87,7 @@ function DetailProperty() {
 
     useEffect(() => {
         fetchProperty();
-    }, []);
+    }, [propertyId]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -100,7 +100,6 @@ function DetailProperty() {
     return (
         <>
             <div
-                key={property.propertyId}
                 className="flex flex-col justify-center items-center bg-gray-800">
                 <div className="max-w-full lg:w-[100vw] bg-[#fff] ">
                     <section className="flex flex-col bg-white">
