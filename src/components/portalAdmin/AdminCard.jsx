@@ -71,7 +71,7 @@ function AdminCard({ property }) {
                     <li>
                         <div
                             className="cursor-wait hover:text-orange-600 duration-500 ease-in-out color-[#444445] w-5 h-5"
-                            // onClick={(e) => handleDeleteProperty(e, null)}
+                            onClick={(e) => handleDeleteProperty(e, null)}
                         >
                             <XMarkIcon/>
                         </div>

@@ -4,7 +4,7 @@ import bannerImage from '/src/assets/background-dark1.png'
 function Banner() {
     return (
         <>
-            <div className='lg:flex flex-col h-[90vh]'>
+            <div className='lg:flex flex-col h-[85vh]'>
                 <div className="h-[80vh] text-white text-center grid bg-cover"
                      style={{backgroundImage: `url(${bannerImage})`}}>
                     <div className="col-start-1 row-start-1 bg-gray-800 bg-opacity-60"></div>
@@ -33,8 +33,8 @@ function Banner() {
                         </div>
                     </div>
                 </div>
-                <h1 className='flex flex-col justify-center items-center text-3xl md:text-[3.5rem] mt-10 text-[#444445]'>
-                    Find Listings By Property Type</h1>
+                <h1 className='flex flex-col justify-center items-center text-3xl md:text-[3.5rem] mt-12 text-[#444445]'>
+                    Our Active Listings</h1>
             </div>
         </>
     );

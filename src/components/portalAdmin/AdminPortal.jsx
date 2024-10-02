@@ -8,7 +8,7 @@ function AdminPortal() {
     return (
         <>
 
-            <h2 className="flex justify-center items-center text-[#444445] text-5xl pt-[20px]">Current Listings</h2>
+            <h2 className="flex justify-center items-center text-[#444445] text-5xl pt-12">Current Listings</h2>
             <AdminProperties/>
             <AdminPost />
         </>
