@@ -79,6 +79,7 @@ export const Property = (sequelize, Sequelize) => {
             through: "userSavedProperty",
             foreignKey: "userId",
         });
+
     };
     return property;
 };

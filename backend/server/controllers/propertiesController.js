@@ -161,6 +161,7 @@ export const getProperty = async (req, res) => {
         include: [
             { model: db.address },
             { model: db.image, through: db.propertyImage },
+            { model: db.propertyType },
         ],
         where: {
             propertyId: propertyId, // Use propertyId instead of id

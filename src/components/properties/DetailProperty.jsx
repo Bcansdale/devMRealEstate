@@ -182,7 +182,7 @@ function DetailProperty() {
                                                         Category:
                                                     </li>
                                                     <li className="text-1xl text-[#444445] ml-4 ">
-                                                        {property.propertyTypeId.typeName}
+                                                        {property.propertyType.typeName}
                                                     </li>
                                                 </div>
                                                 <div>
