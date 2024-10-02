@@ -30,7 +30,7 @@ function PropertyCard({ property }) {
             <div className="p-4">
                 <div className="pb-8">
                     <a href={`/property/${property.propertyId}`}
-                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.51rem] text-[#444445]">
+                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.6rem] text-[#444445]">
                         {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
                     </a>
                 </div>

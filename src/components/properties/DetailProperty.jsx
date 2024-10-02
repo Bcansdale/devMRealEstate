@@ -1,12 +1,11 @@
 import  {useEffect, useRef, useState} from "react";
 import { Button, Carousel } from "@material-tailwind/react";
 import Heart from "react-heart";
-// import mapboxgl from 'mapbox-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
-// import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 import axios from "axios";
-import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding.js";
-import mapboxgl from "mapbox-gl";
+
 
 function DetailProperty({propertyId}) {
     // const { propertyId } = useParams();
