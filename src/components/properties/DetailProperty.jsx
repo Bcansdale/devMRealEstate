@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from "react";
-import { Button, Carousel } from "@material-tailwind/react";
+import {useEffect, useRef, useState} from "react";
+import {Button, Carousel} from "@material-tailwind/react";
 import Heart from "react-heart";
-import { GoShare } from "react-icons/go";
+import {GoShare} from "react-icons/go";
 import axios from "axios";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding.js";
 import mapboxgl from "mapbox-gl";
 import {Link, useParams} from "react-router-dom";
+import { TiArrowBackOutline } from "react-icons/ti";
+
 
 function DetailProperty() {
-    const { propertyId } = useParams();
+    const {propertyId} = useParams();
     const [active, setActive] = useState(false);
 
     const mapContainerRef = useRef();
@@ -44,7 +46,7 @@ function DetailProperty() {
                     tileSize: 512,
                     maxzoom: 18,
                 });
-                mapRef.current.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
+                mapRef.current.setTerrain({source: "mapbox-dem", exaggeration: 1.5});
                 mapRef.current.addControl(new mapboxgl.NavigationControl(), 'top-left');
             });
 
@@ -107,6 +109,10 @@ function DetailProperty() {
                 <div className="max-w-full lg:w-[100vw] bg-[#fff] ">
                     <section className="flex flex-col bg-white">
                         <div className="flex flex-col m-2 gap-2">
+                            <button onClick={() => window.history.back()} className="flex ">
+                            <TiArrowBackOutline className="size-[1.5rem] text-[#444445] mr-4"/>
+                            <h2 className="text-[1.25rem] text-[#444445]">Back to properties</h2>
+                            </button>
                             <div className="inline-flex mt-2">
                                 <Carousel
                                     className="rounded-2xl h-1/2 lg:w-1/2"
@@ -220,7 +226,8 @@ function DetailProperty() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between mt-3 w-full md:mr-28 xl:justify-end xl:items-end xl:flex-col xl:mr-20 xl:w-1/2">
+                                    <div
+                                        className="flex flex-row items-center justify-between mt-3 w-full md:mr-28 xl:justify-end xl:items-end xl:flex-col xl:mr-20 xl:w-1/2">
                                         <div className="flex flex-col lg:items-end md:ml-28 pr-4 xl:mt-5">
                                             <h3 className="text-2xl md:text-4xl text-[#444445] m-2 ml-5">
                                                 ${property.price.toLocaleString()}
@@ -237,7 +244,7 @@ function DetailProperty() {
                                                 <button className="flex flex-row">
                                                     <div
                                                         className="flex"
-                                                        style={{ width: "1rem", color: "#444445" }}
+                                                        style={{width: "1rem", color: "#444445"}}
                                                     >
                                                         <Heart
                                                             className="size-4"
@@ -251,16 +258,17 @@ function DetailProperty() {
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="flex flex-col md:mr-28 lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
+                                        <div
+                                            className="flex flex-col md:mr-28 lg:items-center lg:justify-center xl:items-end xl:pr-4 xl:m-2">
                                             <div className="flex items-center xl:justify-start">
-                                                <Link to={"/contact"}>
-                                                <Button
-                                                    variant="outlined"
-                                                    className="px-10 text-[1rem] text-[#444445]"
-                                                >
-                                                    Contact Agent
-                                                </Button>
-                                            </Link>
+                                                <a href="/contact">
+                                                    <Button
+                                                        variant="outlined"
+                                                        className="px-10 text-[1rem] text-[#444445]"
+                                                    >
+                                                        Contact Agent
+                                                    </Button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
