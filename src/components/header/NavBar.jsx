@@ -10,7 +10,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 function StickyNavbar({ handleClickShowForm }) {
     let Links = [
-        { name: "Home", link: "/home" },
+        { name: "Home", link: "/" },
         { name: "Properties", link: "properties" },
         // { name: "About", link: "/about" },
         // { name: "Contact", link: "/contact" },

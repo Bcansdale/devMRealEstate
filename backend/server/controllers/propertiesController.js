@@ -2,50 +2,61 @@
 export const test = (req, res) => {
     res.send({
         message: "Property controller works",
-        success: true
+        success: true,
     });
-}
+};
 
 // Function to create property
 export const createProperty = async (req, res) => {
     const db = req.app.get("db");
 
-    const { addressId, propertyTypeId, title, description, price, numBedrooms, numBathrooms, squareFeet, isAvailable,  } = req.body;
+    const {
+        addressId,
+        propertyTypeId,
+        title,
+        description,
+        price,
+        numBedrooms,
+        numBathrooms,
+        squareFeet,
+        isAvailable,
+    } = req.body;
 
-
-
-    const property = await db.property.create({
-        addressId: addressId,
-        propertyTypeId: propertyTypeId,
-        title: title,
-        description: description,
-        price: price,
-        numBedrooms: numBedrooms,
-        numBathrooms: numBathrooms,
-        squareFeet: squareFeet,
-        isAvailable: isAvailable,
-        userId: 2,
-        // userId: req.user ? req.user.id : null,
-        address: {
-            addressLine1: req.body.address.addressLine1,
-            addressLine2: req.body.address.addressLine2,
-            city: req.body.address.city,
-            state: req.body.address.state,
-            postalCode: req.body.address.postalCode,
+    const property = await db.property.create(
+        {
+            addressId: addressId,
+            propertyTypeId: propertyTypeId,
+            title: title,
+            description: description,
+            price: price,
+            numBedrooms: numBedrooms,
+            numBathrooms: numBathrooms,
+            squareFeet: squareFeet,
+            isAvailable: isAvailable,
+            userId: 2,
+            // userId: req.user ? req.user.id : null,
+            address: {
+                addressLine1: req.body.address.addressLine1,
+                addressLine2: req.body.address.addressLine2,
+                city: req.body.address.city,
+                state: req.body.address.state,
+                postalCode: req.body.address.postalCode,
+            },
+            image: {
+                src: req.body.image.src,
+            },
         },
-        image: {
-            src: req.body.image.src,
-        }
-    }, {
-        include: [
-            { model: db.address },
-            { model: db.image, through: db.propertyImage },
-        ],
-        where: {
-            id: req.params.propertyId,
+        {
+            include: [
+                { model: db.address },
+                { model: db.image, through: db.propertyImage },
+            ],
+            where: {
+                id: req.params.propertyId,
+            },
         },
-    });
-// This is causing a bug, wont verify admin
+    );
+    // This is causing a bug, wont verify admin
     // if (!req.user) {
     //     res.status(401).send({ message: 'Unauthorized' });
     //     return;
@@ -72,7 +83,7 @@ export const deleteProperty = async (req, res) => {
 
     const propertyId = req.params.propertyId;
     if (!propertyId) {
-        return res.status(400).send({ message: 'Property ID is required' });
+        return res.status(400).send({ message: "Property ID is required" });
     }
 
     const property = await db.property.findOne({
@@ -101,14 +112,13 @@ export const deleteProperty = async (req, res) => {
     });
 };
 
-
 // Function to update property
 export const updateProperty = async (req, res) => {
     const db = req.app.get("db");
 
     const propertyId = req.params.propertyId;
     if (!propertyId) {
-        return res.status(400).send({ message: 'Property ID is required' });
+        return res.status(400).send({ message: "Property ID is required" });
     }
 
     const property = await db.property.findOne({
@@ -144,7 +154,7 @@ export const getProperty = async (req, res) => {
 
     const propertyId = req.params.propertyId;
     if (!propertyId) {
-        return res.status(400).send({ message: 'Property ID is required' });
+        return res.status(400).send({ message: "Property ID is required" });
     }
 
     const property = await db.property.findOne({

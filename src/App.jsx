@@ -51,7 +51,7 @@ function App() {
                 )}
                 <Routes>
                     <Route
-                        path="/home"
+                        path="/"
                         element={
                             <>
                                 <Banner />
