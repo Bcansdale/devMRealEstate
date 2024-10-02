@@ -9,7 +9,6 @@ import mapboxgl from "mapbox-gl";
 import {Link, useParams} from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
 
-
 function DetailProperty() {
     const {propertyId} = useParams();
     const [active, setActive] = useState(false);
@@ -18,7 +17,7 @@ function DetailProperty() {
     const mapRef = useRef();
     const geocodingClient = mbxGeocoding({
         accessToken:
-            "pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g",
+        import.meta.env.VITE_MAPBOX_KEY,
     });
     const [address, setAddress] = useState("");
 
@@ -27,8 +26,7 @@ function DetailProperty() {
     const [property, setProperty] = useState({});
 
     useEffect(() => {
-        mapboxgl.accessToken =
-            "pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g";
+        mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
         if (mapContainerRef.current) {
             mapRef.current = new mapboxgl.Map({
@@ -109,8 +107,8 @@ function DetailProperty() {
                 <div className="max-w-full lg:w-[100vw] bg-[#fff] ">
                     <section className="flex flex-col bg-white">
                         <div className="flex flex-col m-2 gap-2">
-                            <button onClick={() => window.history.back()} className="flex ">
-                            <TiArrowBackOutline className="size-[1.5rem] text-[#444445] mr-4"/>
+                            <button onClick={() => window.history.back()} className="flex ml-4 mt-3">
+                            <TiArrowBackOutline className="size-[1.5rem] text-[#444445] mr-2"/>
                             <h2 className="text-[1.25rem] text-[#444445]">Back to properties</h2>
                             </button>
                             <div className="inline-flex mt-2">
@@ -138,7 +136,7 @@ function DetailProperty() {
                                                 key={image.imageId}
                                                 src={image.src}
                                                 alt="image 1"
-                                                className="h-full w-full"
+                                                className="h-full w-full "
                                             />
                                         );
                                     })}
@@ -221,7 +219,8 @@ function DetailProperty() {
                                                     <li className="text-1xl text-[#444445] ml-4 ">
                                                         Est Payment:
                                                     </li>
-                                                    <li className="text-1xl text-[#444445] ml-4 ">{`$${(property.price / 360).toFixed(2)}`}</li>
+                                                    <li className="text-1xl text-[#444445] ml-4 ">{`$${((property.price * .06 * 30 ) / 360).toFixed(2)}`}
+                                                    </li>
                                                 </div>
                                             </ul>
                                         </div>

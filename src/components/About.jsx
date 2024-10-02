@@ -4,7 +4,7 @@ import bannerImage from '/src/assets/background-dark1.png';
 function AboutUs() {
     return (
         <>
-            <div className='flex flex-col min-h-screen'>
+            <div className='flex flex-col h-[85vh]'>
                 <div className="h-[80vh] text-white text-center grid bg-cover"
                      style={{backgroundImage: `url(${bannerImage})`}}>
                     <div className="col-start-1 row-start-1 bg-gray-800 bg-opacity-60"></div>

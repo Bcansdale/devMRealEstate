@@ -7,8 +7,8 @@ function PropertyCard({ property }) {
     const primaryImg = property.images.filter(
         (photo) => photo.propertyImage.isPrimary,
     )[0];
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const handleCardClick = (propertyId) => {
         navigate(`/property/${propertyId}`);
     };

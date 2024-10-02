@@ -1,6 +1,54 @@
 export const properties = [
     {
         propertyTypeId: 1,
+        userId: 2,
+        title: "Lehi Mansion",
+        description: "Back on the market with fully finished landscaping! Enjoy unparalleled views from every level and the newly completed, spacious backyard. Commanding attention and exuding glamour, this sprawling yet unassuming mansion over 11,000 square feet is an architectural masterpiece that embodies the perfect fusion of opulence and the charm of Traverse Mountain.   With sweeping, unobstructed views of both the mountains and the serene expanse of Utah Lake, this residence creates a cinematic backdrop for your life. Picture yourself relaxing poolside year round in your private indoor pool, enjoying movie nights in your dedicated theater, and getting ready for the day in an oversized steam shower.  This home embraces luxury and leisure, offering multiple generously sized bedrooms for quiet retreats. Immerse yourself in the aura of sophistication in your office, complete with a mesmerizing aquarium. For those seeking an active lifestyle, your very own home gym and indoor sports court bring fitness right to your doorstep.  This estate invites you to a lifestyle where elegance and entertainment are woven seamlessly. This is not just a home; it's a stage set for the grand production of your life. Embrace the allure, embrace the luxury-welcome to your haven!",
+        price: 4000000.0,
+        numBedrooms: 5,
+        numBathrooms: 9,
+        squareFeet: 11298,
+        isAvailable: true,
+        address: {
+            addressLine1: "1419 W Summer View Cir",
+            addressLine2: "",
+            city: "Lehi",
+            state: "Utah",
+            postalCode: 84043,
+        },
+        photos: [
+            {
+                src: "https://photos.zillowstatic.com/fp/203878bd53087ac21d3ca15cddad6c87-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: true,
+            },{
+                src: "https://photos.zillowstatic.com/fp/c4d289335621cb3714c50d0002e668e7-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/d5fb09780ddf2717f2893e63f1e67db5-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/dfb348437ac41af1428d38223175af2e-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/240d213b73eac070be9cfa9440cf277a-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/e0f07cfc40882dd5734768ee17054815-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/dc1c950fdb3b391d9b31f34127fb990c-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/fed7eb77a79ab31b8e66cbf9df8ec74e-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/6050c5ee54fe537ad9d115f4015eae44-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },
+        ],
+    },
+    {
+        propertyTypeId: 1,
         userId: 1,
         title: "Downtown Salt Lake Apartment",
         description: "Cozy apartment in the heart of Salt Lake City",
@@ -95,13 +143,13 @@ export const properties = [
                 isPrimary: true,
             },{
                 src: "https://photos.zillowstatic.com/fp/324a382d71b5e2ccb77aaf4b608d952d-cc_ft_768.webp",
-                isPrimary: true,
+                isPrimary: false,
             },{
                 src: "https://photos.zillowstatic.com/fp/55905bfa00f63bd4cd74c550d5e5e69e-cc_ft_768.webp",
-                isPrimary: true,
+                isPrimary: false,
             },{
                 src: "https://photos.zillowstatic.com/fp/ad30fd9d8d5a5f45376a3b6c3b1e878c-cc_ft_1536.webp",
-                isPrimary: true,
+                isPrimary: false,
             },
         ],
     },
@@ -128,13 +176,13 @@ export const properties = [
                 isPrimary: true,
             },{
                 src: "https://photos.zillowstatic.com/fp/5a3c5940de8e8ce42b93be9d452e55c5-cc_ft_1536.webp",
-                isPrimary: true,
+                isPrimary: false,
             },{
                 src: "https://photos.zillowstatic.com/fp/7c6f27315bfec18be8e168175d6b61d2-cc_ft_1536.webp",
-                isPrimary: true,
+                isPrimary: false,
             },{
                 src: "https://photos.zillowstatic.com/fp/d38613fd482dd94cf12c062f12b6a2b7-cc_ft_1536.webp",
-                isPrimary: true,
+                isPrimary: false,
             },
         ],
     },
@@ -157,32 +205,23 @@ export const properties = [
         },
         photos: [
             {
-                src: "https://photos.zillowstatic.com/fp/50e58acb7ee2f6d604e6da3af1f677df-cc_ft_1536.webp",
+                src: "https://photos.zillowstatic.com/fp/71fec666caa1cbb18c8b4cda99ce9939-cc_ft_768.webp",
                 isPrimary: true,
-            },
-        ],
-    },
-    {
-        propertyTypeId: 1,
-        userId: 6,
-        title: "Lehi Suburban Home",
-        description: "Modern home in a family-friendly neighborhood",
-        price: 500000.0,
-        numBedrooms: 3,
-        numBathrooms: 2.5,
-        squareFeet: 1800,
-        isAvailable: true,
-        address: {
-            addressLine1: "405 S Maple Dr",
-            addressLine2: "",
-            city: "Lehi",
-            state: "Utah",
-            postalCode: 84043,
-        },
-        photos: [
-            {
-                src: "https://photos.zillowstatic.com/fp/893b73e439aaa1935db2c9fb53e6fa05-cc_ft_1536.webp",
-                isPrimary: true,
+            },{
+                src: "https://photos.zillowstatic.com/fp/7f7d4454151f358de548b9dabeb5f736-cc_ft_768.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/f1c1a700a6b299e15de348d66bc8ebb8-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/55964e1e22b47b4f581d7743376d39fa-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/9872b1885191e4b6395fdaf3e2d7a6e3-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/e91234ae28a9a7b672e17b807b87a813-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
             },
         ],
     },
