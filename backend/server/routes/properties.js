@@ -14,10 +14,10 @@ const router = express.Router();
 
 router.get("/test", test)
 router.get("/get",  getAllProperties);
-router.get("/properties/:propertyId", getProperty);
+router.get("/:propertyId", getProperty);
 router.post("/create", createProperty);
-router.delete("/properties/:propertyId", deleteProperty);
-router.put("/properties/:propertyId", updateProperty);
+router.delete("/:propertyId", deleteProperty);
+router.put("/:propertyId", updateProperty);
 
 
 

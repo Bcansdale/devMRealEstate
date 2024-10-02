@@ -21,6 +21,10 @@ function DetailProperty() {
     });
     const [address, setAddress] = useState("");
 
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [property, setProperty] = useState({});
+
     useEffect(() => {
         mapboxgl.accessToken =
             "pk.eyJ1IjoiYnJhbmRvbmNtMyIsImEiOiJjbHY4ZHpyMmcwa2VqMmprd3k5aTUxdHRqIn0.58o5iA8-2QQX46rm055i7g";
@@ -30,7 +34,7 @@ function DetailProperty() {
                 container: mapContainerRef.current, // Ensure this is correctly set
                 style: "mapbox://styles/mapbox/standard-satellite", // Use a style that supports terrain
                 center: [-111.891, 40.7608], // default starting position [lng, lat]
-                zoom: 15, // starting zoom
+                zoom: 13, // starting zoom
             });
 
             // Add terrain source and layer
@@ -44,10 +48,12 @@ function DetailProperty() {
                 mapRef.current.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
             });
 
+            const address = property.address;
+
             // Geocode the address to get the coordinates
             geocodingClient
                 .forwardGeocode({
-                    query: "351 W 800 N, Salt Lake City, UT",
+                    query: `${address.addressLine1} ${address.city} ${address.state} ${address.postalCode}`,
                     limit: 1,
                 })
                 .send()
@@ -70,11 +76,7 @@ function DetailProperty() {
                     console.error("Error with geocoding:", err);
                 });
         }
-    }, []);
-
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [property, setProperty] = useState({});
+    }, [geocodingClient, property]);
 
     useEffect(() => {
         const fetchProperty = async () => {
@@ -107,8 +109,8 @@ function DetailProperty() {
                         <div className="flex flex-col m-2 gap-2">
                             <div className="inline-flex mt-2">
                                 <Carousel
-                                    className="rounded-xl h-1/2 lg:w-1/2"
-                                    navigation={({ setActiveIndex, activeIndex, length }) => (
+                                    className="rounded-2xl h-1/2 lg:w-1/2"
+                                    navigation={({setActiveIndex, activeIndex, length}) => (
                                         <div className="absolute bottom-4 left-2/4 flex -translate-x-2/4 gap-2">
                                             {new Array(length).fill("").map((_, i) => (
                                                 <span
@@ -135,6 +137,17 @@ function DetailProperty() {
                                         );
                                     })}
                                 </Carousel>
+                                <div className="hidden ml-2 lg:grid lg:grid-cols-2 lg:w-1/2 gap-2">
+                                    {property.images.slice(0, 4).map((image, index) => (
+                                        <img
+                                            key={index}
+                                            src={image.src}
+                                            alt=""
+                                            className="h-full w-full rounded-xl"
+                                        />
+                                    ))}
+                                </div>
+
                             </div>
                             {/*Property Details*/}
                             <div className="flex flex-col lg:flex-row-2">
@@ -157,7 +170,11 @@ function DetailProperty() {
                                                         Listed:
                                                     </li>
                                                     <li className="text-1xl text-[#444445] ml-2 xl:ml-0">
-                                                        {property.createdAt}
+                                                        {new Date(property.createdAt).toLocaleDateString('en-US', {
+                                                            month: 'long',
+                                                            day: 'numeric',
+                                                            year: 'numeric'
+                                                        })}
                                                     </li>
                                                 </div>
                                                 <div>
@@ -165,7 +182,7 @@ function DetailProperty() {
                                                         Category:
                                                     </li>
                                                     <li className="text-1xl text-[#444445] ml-4 ">
-                                                        {property.category}
+                                                        {property.propertyTypeId.typeName}
                                                     </li>
                                                 </div>
                                                 <div>
