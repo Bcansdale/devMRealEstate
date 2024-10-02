@@ -10,7 +10,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 function StickyNavbar({ handleClickShowForm }) {
     let Links = [
-        { name: "Home", link: "/" },
+        { name: "Home", link: "/home" },
         { name: "Properties", link: "properties" },
         // { name: "About", link: "/about" },
         // { name: "Contact", link: "/contact" },
@@ -34,7 +34,7 @@ function StickyNavbar({ handleClickShowForm }) {
             <div className="shadow-md w-full fixed top-0 left-0">
                 <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
                     <div className="font-bold text-2xl cursor-pointer flex items-center gap-1">
-                        <Link to="/">
+                        <Link to="/home">
                             <img className="inline w-[14rem]" src={logo} alt="Logo" />
                         </Link>
                     </div>

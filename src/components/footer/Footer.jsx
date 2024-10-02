@@ -49,13 +49,13 @@ function Footer() {
                                 <h2 className='text-[1.25rem] pb-2'>Links:</h2>
                                 <ul className="font-light">
                                     <li>
-                                        <a href="#" className="hover:underline me-4 lg:me-6">About</a>
+                                        <a href="/about" className="hover:underline me-4 lg:me-6">About</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline me-4 lg:me-6">Licensing</a>
+                                        <a href="/home" className="hover:underline me-4 lg:me-6">Properties</a>
                                     </li>
                                     <li>
-                                    <a href="#" className="hover:underline">Contact</a>
+                                    <a href="/contact" className="hover:underline">Contact</a>
                                     </li>
                                 </ul>
                             </li>

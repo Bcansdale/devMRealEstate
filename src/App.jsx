@@ -11,6 +11,8 @@ import SignUp from "./components/loginSignup/SignUp.jsx";
 import DetailProperty from "./components/properties/DetailProperty.jsx";
 import UserSaves from "./components/userSaves/userSaves.jsx";
 import AdminPortal from "./components/portalAdmin/AdminPortal.jsx";
+import About from "./components/About.jsx";
+import ContactForm from "./components/Contact.jsx";
 import { AuthProvider} from "./context/AuthContext.jsx";
 
 
@@ -49,7 +51,7 @@ function App() {
                 )}
                 <Routes>
                     <Route
-                        path="/"
+                        path="/home"
                         element={
                             <>
                                 <Banner />
@@ -61,6 +63,8 @@ function App() {
                     <Route path="/property/:propertyId" element={<DetailProperty />} />
                     <Route path="/saves" element={<UserSaves />} />
                     <Route path="/admin" element={<AdminPortal />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<ContactForm />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

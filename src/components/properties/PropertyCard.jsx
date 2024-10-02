@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import Heart from "react-heart";
 
-function PropertyCard({ property }) {
+function PropertyCard({property}) {
     const [active, setActive] = useState(false);
     const primaryImg = property.images.filter(
         (photo) => photo.propertyImage.isPrimary,
@@ -41,7 +41,7 @@ function PropertyCard({ property }) {
                 <ul className="box-border flex list-none items-center justify-between border-t border-b border-solid border-gray-300 px-0 py-6">
                     <li key="squareFeet" className="mr-4 flex items-center text-left">
                         <i className="mr-2 text-2xl text-[#444445]">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                  className="h-5 w-5" preserveAspectRatio="xMidYMid meet"
                                  viewBox="0 0 24 24">
                                 <path fill="currentColor"
@@ -73,19 +73,23 @@ function PropertyCard({ property }) {
                         <span className="text-sm">{`${property.numBathrooms} Baths`}</span>
                     </li>
                 </ul>
+                <div>
+                    <ul className="m-0 flex list-none items-center justify-between px-0 pt-4 pb-0">
+                        <li className="text-left">
+                            <span className="text-sm text-[#444445]">Price</span>
+                            <p className="m-0 text-base font-medium">{`$${property.price.toLocaleString()}`}</p>
+                        </li>
 
-                <ul className="m-0 flex list-none items-center justify-between px-0 pt-4 pb-0">
-                    <li className="text-left">
-                        <span className="text-sm text-[#444445]">Price</span>
-                        <p className="m-0 text-base font-medium">{`$${property.price.toLocaleString()}`}</p>
-                    </li>
-
-                    <li className="text-left mr-5">
-                        <div style={{width: "1.5rem", color: "#444445"}}>
-                            <Heart isActive={active} onClick={() => setActive(!active)}/>
-                        </div>
-                    </li>
-                </ul>
+                        <li className="text-left mr-5">
+                            <div style={{width: "1.5rem", color: "#444445"}}>
+                                <Heart isActive={active} onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActive(!active);
+                                }}/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </button>
     );

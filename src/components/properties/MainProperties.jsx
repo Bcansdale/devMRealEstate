@@ -39,6 +39,7 @@ function MainProperties() {
     return (
         <>
             <Element name="properties" className="element">
+                {/* Future component*/}
                 {/*<div className="grid justify-center">*/}
                 {/*    <div className="grid grid-cols-3 justify-center items-center mt-5">*/}
                 {/*        <button><HiOutlineHome size={'5rem'} color="#444445" className="mx-7 md:mx-24 px-1 "/></button>*/}
