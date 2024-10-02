@@ -19,7 +19,7 @@ function PropertyCard({ property }) {
             className="container mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl"
             onClick={handleCardClick}
         >
-            <div className="container ">
+            <div className="">
                 <img
                     src={primaryImg.src}
                     alt={property.address ? property.address.addressLine1 || "Property Image" : "Property Image"}
@@ -29,16 +29,19 @@ function PropertyCard({ property }) {
 
             <div className="p-4">
                 <div className="pb-8">
-                    <a href={`/property/${property.propertyId}`}
-                       className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.6rem] text-[#444445]">
-                        {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
-                    </a>
+                    <ul>
+                        <a href={`/property/${property.propertyId}`}
+                           className="hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.5rem] text-[#444445]">
+                            {property.address ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}` : "Address not available"}
+                        </a>
+                    </ul>
                 </div>
+
 
                 <ul className="box-border flex list-none items-center justify-between border-t border-b border-solid border-gray-300 px-0 py-6">
                     <li key="squareFeet" className="mr-4 flex items-center text-left">
                         <i className="mr-2 text-2xl text-[#444445]">
-                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                  className="h-5 w-5" preserveAspectRatio="xMidYMid meet"
                                  viewBox="0 0 24 24">
                                 <path fill="currentColor"
