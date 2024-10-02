@@ -157,7 +157,7 @@ function DetailProperty() {
                                             <h2 className="text-4xl text-[#444445] ml-2 m-2 xl:ml-20">
                                                 {property.title}
                                             </h2>
-                                            <h3 className="text-1xl text-[#444445] m-2 xl:ml-20">
+                                            <h3 className="text-[1.25rem] text-[#444445] m-2 xl:ml-20">
                                                 {property.address
                                                     ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}`
                                                     : "Address not available"}
