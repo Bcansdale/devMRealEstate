@@ -285,7 +285,7 @@ function DetailProperty() {
                                         </h2>
                                         <div
                                             ref={mapContainerRef}
-                                            className="aspect-square w-full h-full"
+                                            className="aspect-square w-full h-full rounded-2xl"
                                         />
                                     </div>
                                 </div>
