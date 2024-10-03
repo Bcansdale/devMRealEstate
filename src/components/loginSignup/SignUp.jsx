@@ -160,7 +160,7 @@ function SignUp({ handleClickShowForm, handleCloseForm }) {
                                 required
                             >
                                 <option value="">Select Role</option>
-                                <option value="user">User</option>
+                                {/*<option value="user">User</option>*/}
                                 <option value="admin">Admin</option>
                             </select>
                         </div>

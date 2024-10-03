@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs";
 import dotenv from "dotenv";
 dotenv.config();
+import * as crypto from "node:crypto";
 
 // Test Route
 export const test = (req, res) => {
@@ -53,6 +54,7 @@ export const signup = async (req, res) => {
                 firstName: firstname,
                 lastName: lastname,
             },
+            authToken: crypto.randomBytes(20).toString("hex")
         },
         {
             include: ["userProfile"],
@@ -72,6 +74,7 @@ export const signup = async (req, res) => {
         message: "user created",
         success: true,
         userId: user.userId,
+        authToken: user.authToken,
     });
 };
 
