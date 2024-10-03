@@ -3,12 +3,13 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import session from "express-session";
 
+
 // Express setup
 const app = express();
 
 // Middleware
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(
@@ -20,16 +21,15 @@ app.use(
 );
 
 
-
 // Database and seed data
 import db from "./models/db.js";
-import { createUsers } from "./seed/userSeed.js";
-import { createRoles } from "./seed/roleSeed.js";
-import { createPermissions } from "./seed/permissionSeed.js";
-import { createProperties } from "./seed/propertySeed.js";
-import { createPropertyTypes } from "./seed/propertyTypeSeed.js";
+import {createUsers} from "./seed/userSeed.js";
+import {createRoles} from "./seed/roleSeed.js";
+import {createPermissions} from "./seed/permissionSeed.js";
+import {createProperties} from "./seed/propertySeed.js";
+import {createPropertyTypes} from "./seed/propertyTypeSeed.js";
 
-db.sequelize.sync({ force: true }).then(async function () {
+db.sequelize.sync({force: true}).then(async function () {
     console.log("Database successfully created");
 
     try {
@@ -51,7 +51,7 @@ db.sequelize.sync({ force: true }).then(async function () {
 
     app.set("db", db);
 
-    ViteExpress.config({ printViteDevServerHost: true });
+    ViteExpress.config({printViteDevServerHost: true});
     ViteExpress.listen(app, 5539, () =>
         console.log("Server running on http://localhost:5539"),
     );

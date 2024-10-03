@@ -34,7 +34,7 @@ export const createProperty = async (req, res) => {
             squareFeet: squareFeet,
             isAvailable: isAvailable,
             userId: 2,
-            // userId: req.user ? req.user.id : null,
+
             address: {
                 addressLine1: req.body.address.addressLine1,
                 addressLine2: req.body.address.addressLine2,
@@ -43,7 +43,7 @@ export const createProperty = async (req, res) => {
                 postalCode: req.body.address.postalCode,
             },
             image: {
-                src: req.body.image.src,
+                src: req.file ? req.file.path : null,
             },
         },
         {
@@ -56,11 +56,6 @@ export const createProperty = async (req, res) => {
             },
         },
     );
-    // This is causing a bug, wont verify admin
-    // if (!req.user) {
-    //     res.status(401).send({ message: 'Unauthorized' });
-    //     return;
-    // }
 
     if (!property) {
         res.status(500).send({
@@ -92,7 +87,7 @@ export const deleteProperty = async (req, res) => {
             { model: db.image, through: db.propertyImage },
         ],
         where: {
-            propertyId: propertyId, // Use propertyId instead of id
+            propertyId: propertyId,
         },
     });
 

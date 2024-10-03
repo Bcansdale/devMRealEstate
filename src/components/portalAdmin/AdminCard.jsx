@@ -1,7 +1,6 @@
-
-
 import { XMarkIcon } from "@heroicons/react/24/solid/index.js";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 function AdminCard({ property }) {
@@ -16,10 +15,13 @@ function AdminCard({ property }) {
 
     const handleDeleteProperty = async (e, propertyId) => {
         e.preventDefault();
+        if (!propertyId || !property) {
+            console.error("Property ID or property object is not defined");
+            return;
+        }
         try {
-            await axios.delete(`/api/properties/${propertyId}`);
+            await axios.delete(`/property/${propertyId}`);
             console.log(`Property with ID ${propertyId} deleted successfully.`);
-            // Optionally, you can refresh the list of properties or update the state here
         } catch (error) {
             console.error(`Error deleting property with ID ${propertyId}:`, error);
         }
@@ -116,12 +118,12 @@ function AdminCard({ property }) {
                     </li>
 
                     <li>
-                        <button
+                        <div
                             className="cursor-wait hover:text-orange-600 duration-500 ease-in-out color-[#444445] w-5 h-5"
-                            onClick={(e) => handleDeleteProperty(e, null)}
+                            onClick={(e) => handleDeleteProperty(e, property.propertyId)}
                         >
                             <XMarkIcon/>
-                        </button>
+                        </div>
                     </li>
                 </ul>
             </div>
