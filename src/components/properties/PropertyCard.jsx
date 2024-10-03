@@ -17,9 +17,9 @@ function PropertyCard({ property }) {
         <button
             key={property.propertyId}
             className="container mb-4 overflow-hidden rounded-xl border text-[#444445] shadow-xl duration-500 ease-in-out hover:shadow-xl"
-            onClick={() => handleCardClick(property.propertyId)}
         >
-            <div className="container ">
+            <div className="container"
+                 onClick={() => handleCardClick(property.propertyId)}>
                 <img
                     src={primaryImg.src}
                     alt={
@@ -33,17 +33,18 @@ function PropertyCard({ property }) {
 
             <div className="p-4">
                 <div className="pb-8">
-                    <a
-                        href={`/property/${property.propertyId}`}
+                    <p
+                        onClick={() => handleCardClick(property.propertyId)}
                         className="text-lg hover:text-orange-600 font-[400] duration-500 ease-in-out text-[1.51rem] text-[#444445]"
                     >
                         {property.address
                             ? `${property.address.addressLine1}, ${property.address.city}, ${property.address.state}, ${property.address.postalCode}`
                             : "Address not available"}
-                    </a>
+                    </p>
                 </div>
 
-                <ul className="box-border flex list-none items-center justify-between border-t border-b border-solid border-gray-300 px-0 py-6">
+                <ul className="box-border flex list-none items-center justify-between border-t border-b border-solid border-gray-300 px-0 py-6"
+                    onClick={() => handleCardClick(property.propertyId)}>
                     <li key="squareFeet" className="mr-4 flex items-center text-left">
                         <i className="mr-2 text-2xl text-[#444445]">
                             <svg
