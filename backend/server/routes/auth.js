@@ -1,7 +1,7 @@
 import express from "express";
 import {
     test,
-    sessionCheck,
+    verify,
     login,
     logout,
     signup,
@@ -10,12 +10,9 @@ import {
 const router = express.Router();
 
 router.get("/test", test);
-router.get("/session-check", sessionCheck);
+router.post("/token/verify", verify);
 router.post("/signup", signup);
 router.post("/login", login);
 router.get("/logout", logout);
-
-
-
 
 export default router;

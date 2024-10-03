@@ -3,7 +3,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import logo from "/src/assets/devmLogo.png";
 import { BsHouseHeart } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { Link as ScrollLink } from "react-scroll";
@@ -17,16 +17,21 @@ function StickyNavbar({ handleClickShowForm }) {
     ];
     let [open, setOpen] = useState(false);
 
-    const { user, logout, isAuthenticated, sessionCheck } = useAuth();
+    const { logout, isAuthenticated, verifyToken } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        sessionCheck();
+        verifyToken();
     }, []);
 
     function handleClickLogout(e) {
         e.preventDefault();
 
         logout();
+    }
+
+    function handleClickAdmin() {
+        navigate("/admin");
     }
 
     return (
@@ -56,7 +61,12 @@ function StickyNavbar({ handleClickShowForm }) {
                                 key={index}
                             >
                                 {link.link === "properties" ? (
-                                    <ScrollLink to={link.link} smooth={true} duration={500} className="flex items-center cursor-pointer">
+                                    <ScrollLink
+                                        to={link.link}
+                                        smooth={true}
+                                        duration={500}
+                                        className="flex items-center cursor-pointer"
+                                    >
                                         {link.name}
                                     </ScrollLink>
                                 ) : (
@@ -75,11 +85,11 @@ function StickyNavbar({ handleClickShowForm }) {
                                     {/*        <BsHouseHeart size={"1.4rem"} />*/}
                                     {/*    </button>*/}
                                     {/*</Link>*/}
-                                    <Link to="/admin">
-                                        <button className="mt-2 mr-5">
-                                            <GrUserAdmin size={"1.4rem"} />
-                                        </button>
-                                    </Link>
+                                    {/*<Link to="/admin">*/}
+                                    {/*    <button className="mt-2 mr-5">*/}
+                                    {/*        <GrUserAdmin size={"1.4rem"} />*/}
+                                    {/*    </button>*/}
+                                    {/*</Link>*/}
                                 </li>
                             </>
                         ) : (
@@ -88,14 +98,24 @@ function StickyNavbar({ handleClickShowForm }) {
 
                         <li>
                             {isAuthenticated ? (
-                                <Button
-                                    variant="outlined"
-                                    size="sm"
-                                    className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
-                                    onClick={handleClickLogout}
-                                >
-                                    Logout
-                                </Button>
+                                <>
+                                    <Button
+                                        variant="outlined"
+                                        size="sm"
+                                        className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8 mr-2"
+                                        onClick={handleClickAdmin}
+                                    >
+                                        Admin
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        size="sm"
+                                        className="lg:inline-block rounded-3xl text-[#444445] text-[1rem] px-8"
+                                        onClick={handleClickLogout}
+                                    >
+                                        Logout
+                                    </Button>
+                                </>
                             ) : (
                                 <>
                                     <Button

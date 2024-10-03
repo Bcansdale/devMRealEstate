@@ -1,4 +1,3 @@
-
 import bcryptjs from "bcryptjs";
 import dotenv from "dotenv";
 dotenv.config();
@@ -17,7 +16,8 @@ export const signup = async (req, res) => {
 
     const validAccessCode = process.env.VITE_ADMIN_ACCESS_CODE;
 
-    const { firstname, lastname, username, password, role, adminAccessCode} = req.body;
+    const { firstname, lastname, username, password, role, adminAccessCode } =
+        req.body;
 
     if (await db.user.findOne({ where: { username: username } })) {
         res.send({
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
     }
 
     let roleId;
-    if (role === 'admin') {
+    if (role === "admin") {
         roleId = 2; // Assuming roleId 2 is for admin
     } else {
         roleId = 1; // Assuming roleId 1 is for user
@@ -44,19 +44,19 @@ export const signup = async (req, res) => {
 
     const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10));
 
-    const user = await db.user.create({
-        // firstname: firstname,
-        // lastname: lastname,
-        roleId: roleId,
-        username: username,
-        password: hashedPassword,
-        userProfile: {
-            firstName: firstname,
-            lastName: lastname,
-        }
-    }, {
-        include: ["userProfile"],
-    }
+    const user = await db.user.create(
+        {
+            roleId: roleId,
+            username: username,
+            password: hashedPassword,
+            userProfile: {
+                firstName: firstname,
+                lastName: lastname,
+            },
+        },
+        {
+            include: ["userProfile"],
+        },
     );
 
     if (!user) {
@@ -100,6 +100,7 @@ export const login = async (req, res) => {
         message: "user logged in",
         success: true,
         userId: req.session.userId,
+        authToken: user.authToken,
     });
 };
 
@@ -112,12 +113,22 @@ export const logout = async (req, res) => {
     });
 };
 
-export const sessionCheck = async (req, res) => {
-    if (req.session.userId) {
+export const verify = async (req, res) => {
+    const db = req.app.get("db");
+    const { token } = req.body;
+
+    const user = await db.user.findOne({
+        where: {
+            authToken: token,
+        },
+    });
+
+    if (user) {
         res.send({
             message: "user logged in",
             success: true,
-            userId: req.session.userId,
+            userId: user.userId,
+            authToken: user.authToken,
         });
     } else {
         res.send({
@@ -126,6 +137,3 @@ export const sessionCheck = async (req, res) => {
         });
     }
 };
-
-
-

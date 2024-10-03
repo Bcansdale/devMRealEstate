@@ -130,4 +130,3 @@ function AdminCard({ property }) {
 }
 
 export default AdminCard;
-

@@ -1,4 +1,5 @@
 import bcryptjs from "bcryptjs";
+import * as crypto from "node:crypto";
 
 const users = [
     {
@@ -16,6 +17,7 @@ const users = [
             //     postalCode: "34104",
             // },
         },
+        authToken: crypto.randomBytes(20).toString("hex"),
     },
     {
         username: "admin@admin.com",
@@ -33,6 +35,7 @@ const users = [
             // },
             savedProperties: [],
         },
+        authToken: crypto.randomBytes(20).toString("hex"),
     },
 ];
 
@@ -48,6 +51,7 @@ export const createUsers = async function createUsers(db) {
                 username: user.username.toLowerCase(),
                 password: hashedPassword,
                 roleId: user.roleId,
+                authToken: user.authToken,
             })
             .then(async (newUser) => {
                 const profile = user.userProfile;

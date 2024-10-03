@@ -27,6 +27,10 @@ export const User = (sequelize, Sequelize) => {
                 type: Sequelize.STRING(255),
                 allowNull: false,
             },
+            authToken: {
+                type: Sequelize.STRING(255),
+                allowNull: false,
+            },
         },
         {},
     );

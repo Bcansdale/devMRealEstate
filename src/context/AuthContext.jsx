@@ -6,6 +6,7 @@ const AuthContext = createContext();
 const initialState = {
     user: null,
     isAuthenticated: false,
+    setIsAuthenticated: () => {},
     role: "",
     isAdmin: false,
     adminAccessCode: "",
@@ -45,11 +46,16 @@ function reducer(state, action) {
     }
 }
 function AuthProvider({ children }) {
-    const [{ user, isAuthenticated, role, isUserAdmin, adminAccessCode, }, dispatch] =
-        useReducer(reducer, initialState, undefined);
+    const [
+        { user, isAuthenticated, setIsAuthenticated, role, adminAccessCode },
+        dispatch,
+    ] = useReducer(reducer, initialState, undefined);
 
-    async function sessionCheck() {
-        const res = await axios.get("/api/auth/session-check");
+    async function verifyToken() {
+        const authToken = localStorage.getItem("authToken");
+        const res = await axios.post("/api/auth/token/verify", {
+            token: authToken === null ? "" : authToken,
+        });
 
         if (res.data.success) {
             dispatch({
@@ -59,12 +65,14 @@ function AuthProvider({ children }) {
         }
         return res;
     }
-    async function signup(firstname, lastname, username, password, role, adminAccessCode) {
-        // This causes the error
-        // if (role === "admin" && adminAccessCode !== process.env.ADMIN_ACCESS_CODE) {
-        //     throw new Error("Invalid access key");
-        // }
-
+    async function signup(
+        firstname,
+        lastname,
+        username,
+        password,
+        role,
+        adminAccessCode,
+    ) {
         const res = await axios.post("/api/auth/signup", {
             firstname: firstname,
             lastname: lastname,
@@ -84,6 +92,7 @@ function AuthProvider({ children }) {
         }
         return res;
     }
+
     async function login(username, password) {
         const res = await axios.post("/api/auth/login", {
             username: username,
@@ -92,37 +101,33 @@ function AuthProvider({ children }) {
 
         if (res.data.success) {
             dispatch({ type: "user/login", payload: res.data });
+            localStorage.setItem("authToken", res.data.authToken);
         }
         return res;
     }
+
     async function logout() {
         const res = await axios.get("/api/auth/logout");
 
         if (res.data.success) {
             dispatch({ type: "user/logout" });
+            localStorage.clear();
         }
         return res;
     }
-    async function checkAdmin() {
-        const res = await axios.get("/api/auth/isAdmin");
 
-        if (res.data.success) {
-            dispatch({ type: "admin/login", payload: res.data });
-        }
-        return res;
-    }
     return (
         <AuthContext.Provider
             value={{
                 user,
                 isAuthenticated,
+                setIsAuthenticated,
                 role,
                 adminAccessCode,
                 signup,
                 login,
                 logout,
-                sessionCheck,
-                checkAdmin,
+                verifyToken,
             }}
         >
             {children}
