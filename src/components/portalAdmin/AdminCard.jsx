@@ -15,15 +15,19 @@ function AdminCard({ property }) {
 
     const handleDeleteProperty = async (e, propertyId) => {
         e.preventDefault();
-        if (!propertyId || !property) {
-            console.error("Property ID or property object is not defined");
-            return;
+
+        // Ask for confirmation before deleting
+        const isConfirmed = window.confirm("Are you sure you want to delete this property?");
+        if (!isConfirmed) {
+            return; // Exit if user cancels
         }
+
         try {
-            await axios.delete(`/property/${propertyId}`);
+            await axios.delete(`/api/properties/${propertyId}`);
             console.log(`Property with ID ${propertyId} deleted successfully.`);
+            window.location.reload(); // Refresh the page after successful deletion
         } catch (error) {
-            console.error(`Error deleting property with ID ${propertyId}:`, error);
+            console.error(`Error deleting property with ID ${propertyId}:`, error.response ? error.response.data : error);
         }
     };
 
