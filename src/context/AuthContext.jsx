@@ -89,6 +89,8 @@ function AuthProvider({ children }) {
                 role: role,
                 adminAccessCode: adminAccessCode,
             });
+            localStorage.setItem("authToken", res.data.authToken);
+
         }
         return res;
     }
