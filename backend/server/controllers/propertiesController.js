@@ -127,17 +127,37 @@ export const updateProperty = async (req, res) => {
     });
 
     if (!property) {
-        res.status(404).send({
+        return res.status(404).send({
             message: "Property not found",
             success: false,
         });
-        return;
     }
 
-    const updatedProperty = await property.update(req.body);
+    // Update the property fields with req.body data
+    const updatedData = {
+        addressLine1: req.body.addressLine1,
+        addressLine2: req.body.addressLine2,
+        city: req.body.city,
+        state: req.body.state,
+        postalCode: req.body.postalCode,
+        price: req.body.price,
+        numBedrooms: req.body.numBedrooms,
+        numBathrooms: req.body.numBathrooms,
+        squareFeet: req.body.squareFeet,
+        propertyTypeId: req.body.propertyTypeId,
+        description: req.body.description,
+    };
 
-    res.status(200).send({
-        message: "Property updated",
+    // If there's a file, update the image
+    if (req.file) {
+        const imagePath = `/images/${req.file.filename}`;
+        updatedData.image = imagePath; // Assuming you store image as a path
+    }
+
+    const updatedProperty = await property.update(updatedData);
+
+    return res.status(200).send({
+        message: "Property updated successfully",
         success: true,
         property: updatedProperty,
     });

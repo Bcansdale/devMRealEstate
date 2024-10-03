@@ -36,7 +36,7 @@ router.get("/get",  getAllProperties);
 router.get("/:propertyId", getProperty);
 router.post("/create", upload.single('image'), createProperty);
 router.delete("/:propertyId", deleteProperty);
-router.put("/:propertyId", updateProperty);
+router.put("/:propertyId", upload.single('image'), updateProperty);
 
 
 

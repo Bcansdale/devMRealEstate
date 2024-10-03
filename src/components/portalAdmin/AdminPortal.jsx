@@ -1,17 +1,24 @@
-import React from 'react';
-import MainProperties from "../properties/MainProperties.jsx";
-import {Button} from "@material-tailwind/react";
-import AdminPost from "./AdminPost.jsx";
-import AdminProperties from "./AdminProperties.jsx";
+import { useState } from "react";
+import AdminCard from "./AdminCard"; // Import AdminCard
+import AdminProperties from "./AdminProperties"; // Import AdminProperties
+import AdminPost from "./AdminPost"; // Import AdminPost
 
 function AdminPortal() {
-    return (
-        <>
+    const [selectedProperty, setSelectedProperty] = useState(null);
 
-            <h2 className="flex justify-center items-center text-[#444445] text-5xl pt-12">Current Listings</h2>
-            <AdminProperties/>
-            <AdminPost />
-        </>
+    // Function to handle property selection
+    const handleSelectedProperty = (property) => {
+        setSelectedProperty(property);  // Update selected property
+    };
+
+    return (
+        <div>
+            {/* Pass the handler to AdminProperties which will forward it to AdminCard */}
+            <AdminProperties onSelectedProperty={handleSelectedProperty} />
+
+            {/* Always show the form */}
+            <AdminPost selectedProperty={selectedProperty} />
+        </div>
     );
 }
 

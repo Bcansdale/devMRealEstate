@@ -1,16 +1,14 @@
-import {useState} from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 
-
-function AdminPost() {
-
+function AdminPost({ property, selectedProperty = null }) {
     const [file, setFile] = useState(null);
     const [addressLine1, setAddressLine1] = useState("");
     const [addressLine2, setAddressLine2] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
-    const [areaCode, setAreaCode] = useState("");
+    const [postalCode, setPostalCode] = useState("");
     const [price, setPrice] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [bathrooms, setBathrooms] = useState("");
@@ -18,7 +16,39 @@ function AdminPost() {
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
 
+    // Populate form fields with selected property when editing
+    useEffect(() => {
+        if (selectedProperty) {
+            setAddressLine1(selectedProperty.address?.addressLine1 || "");
+            setAddressLine2(selectedProperty.address?.addressLine2 || "");
+            setCity(selectedProperty.address?.city || "");
+            setState(selectedProperty.address?.state || "");
+            setPostalCode(selectedProperty.address?.postalCode || "");
+            setPrice(selectedProperty.price || "");
+            setBedrooms(selectedProperty.numBedrooms || "");
+            setBathrooms(selectedProperty.numBathrooms || "");
+            setSquareFeet(selectedProperty.squareFeet || "");
+            setCategory(selectedProperty.propertyTypeId || "");
+            setDescription(selectedProperty.description || "");
+        } else {
+            resetFormFields();
+        }
+    }, [selectedProperty]);
 
+    // Reset form fields for new property
+    const resetFormFields = () => {
+        setAddressLine1("");
+        setAddressLine2("");
+        setCity("");
+        setState("");
+        setPostalCode("");
+        setPrice("");
+        setBedrooms("");
+        setBathrooms("");
+        setSquareFeet("");
+        setCategory("");
+        setDescription("");
+    };
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -32,7 +62,7 @@ function AdminPost() {
         formData.append("addressLine2", addressLine2);
         formData.append("city", city);
         formData.append("state", state);
-        formData.append("areaCode", areaCode);
+        formData.append("areaCode", postalCode);
         formData.append("price", price);
         formData.append("bedrooms", bedrooms);
         formData.append("bathrooms", bathrooms);
@@ -41,24 +71,37 @@ function AdminPost() {
         formData.append("description", description);
 
         try {
-            const response = await axios.post("/api/properties/create", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            let response;
+            if (selectedProperty) {
+                // Update existing property
+                response = await axios.put(`/api/properties/${selectedProperty.propertyId}`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
+            } else {
+                // Create new property
+                response = await axios.post("/api/properties/create", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
+            }
             console.log(response.data);
+            resetFormFields();  // Reset form after successful submission
         } catch (error) {
-            console.error("Error uploading file:", error);
+            console.error("Error submitting form:", error);
         }
     };
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex justify-center items-center w-fill h-fill bg-[#444445] py-5">
+            className="flex justify-center items-center w-fill h-fill bg-[#444445] py-5"
+        >
             <div className="container mx-auto my-4 px-4">
                 <h2 className="flex justify-center items-center text-white text-5xl pb-2">
-                    Create a New Listing
+                    {selectedProperty ? "Update Listing" : "Create a New Listing"}
                 </h2>
                 <div className="w-full p-8 my-4 mr-auto bg-white rounded-2xl shadow-2xl">
                     <div className="flex">
@@ -67,6 +110,7 @@ function AdminPost() {
                         </h1>
                     </div>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
+                        {/* Form fields (address, city, state, etc.) */}
                         <div>
                             <h2 className="text-[1.5rem] text-[#444445]">Address Line 1</h2>
                             <input
@@ -113,8 +157,8 @@ function AdminPost() {
                                 className="w-full bg-[#444445] text-white mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                 type="number"
                                 placeholder="Area Code"
-                                value={areaCode}
-                                onChange={(e) => setAreaCode(e.target.value)}
+                                value={postalCode}
+                                onChange={(e) => setPostalCode(e.target.value)}
                             />
                         </div>
                         <div>
@@ -167,12 +211,14 @@ function AdminPost() {
                                 <option value="" disabled className="text-gray-600">
                                     Category
                                 </option>
-                                <option>House</option>
-                                <option>Townhouse</option>
-                                <option>Multi-Family</option>
+                                <option value="House">House</option>
+                                <option value="Townhouse">Townhouse</option>
+                                <option value="Multi-Family">Multi-Family</option>
                             </select>
                         </div>
                     </div>
+
+                    {/* Description Field */}
                     <div className="my-2">
                         <h2 className="text-[1.5rem] text-[#444445]">Description</h2>
                         <textarea
@@ -182,10 +228,13 @@ function AdminPost() {
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                     </div>
+
+                    {/* Image Upload Field */}
                     <div>
                         <label className="block text-[1.5rem] text-[#444445]">Image</label>
                         <div
-                            className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-white-300 border-dashed rounded-md bg-[#444445]">
+                            className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-white-300 border-dashed rounded-md bg-[#444445]"
+                        >
                             <div className="space-y-1 text-center">
                                 <svg
                                     className="mx-auto h-12 w-12 text-white"
@@ -206,7 +255,7 @@ function AdminPost() {
                                         htmlFor="file-upload"
                                         className="relative cursor-pointer bg-white rounded-md text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 p-1"
                                     >
-                                        <span className="">Upload a file</span>
+                                        <span>Upload a file</span>
                                         <input
                                             id="file-upload"
                                             name="file-upload"
@@ -221,13 +270,16 @@ function AdminPost() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Submit Button */}
                     <div className="flex items-center justify-center m-5 mt-10">
                         <Button
                             type="submit"
                             variant="outlined"
                             className="px-10 text-[1rem] text-[#444445]"
+                            onSubmit={handleSubmit}
                         >
-                            Submit listing
+                            {selectedProperty ? "Update Listing" : "Create Listing"}
                         </Button>
                     </div>
                 </div>
