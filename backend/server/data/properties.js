@@ -1,52 +1,5 @@
 export const properties = [
-    {
-        propertyTypeId: 1,
-        userId: 2,
-        title: "Lehi Mansion",
-        description: "Back on the market with fully finished landscaping! Enjoy unparalleled views from every level and the newly completed, spacious backyard. Commanding attention and exuding glamour, this sprawling yet unassuming mansion over 11,000 square feet is an architectural masterpiece that embodies the perfect fusion of opulence and the charm of Traverse Mountain.   With sweeping, unobstructed views of both the mountains and the serene expanse of Utah Lake, this residence creates a cinematic backdrop for your life. Picture yourself relaxing poolside year round in your private indoor pool, enjoying movie nights in your dedicated theater, and getting ready for the day in an oversized steam shower.  This home embraces luxury and leisure, offering multiple generously sized bedrooms for quiet retreats. Immerse yourself in the aura of sophistication in your office, complete with a mesmerizing aquarium. For those seeking an active lifestyle, your very own home gym and indoor sports court bring fitness right to your doorstep.  This estate invites you to a lifestyle where elegance and entertainment are woven seamlessly. This is not just a home; it's a stage set for the grand production of your life. Embrace the allure, embrace the luxury-welcome to your haven!",
-        price: 4000000.0,
-        numBedrooms: 5,
-        numBathrooms: 9,
-        squareFeet: 11298,
-        isAvailable: true,
-        address: {
-            addressLine1: "1419 W Summer View Cir",
-            addressLine2: "",
-            city: "Lehi",
-            state: "Utah",
-            postalCode: 84043,
-        },
-        photos: [
-            {
-                src: "https://photos.zillowstatic.com/fp/203878bd53087ac21d3ca15cddad6c87-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: true,
-            },{
-                src: "https://photos.zillowstatic.com/fp/c4d289335621cb3714c50d0002e668e7-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/d5fb09780ddf2717f2893e63f1e67db5-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/dfb348437ac41af1428d38223175af2e-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/240d213b73eac070be9cfa9440cf277a-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/e0f07cfc40882dd5734768ee17054815-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/dc1c950fdb3b391d9b31f34127fb990c-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/fed7eb77a79ab31b8e66cbf9df8ec74e-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },{
-                src: "https://photos.zillowstatic.com/fp/6050c5ee54fe537ad9d115f4015eae44-uncropped_scaled_within_1536_1152.webp",
-                isPrimary: false,
-            },
-        ],
-    },
+
     {
         propertyTypeId: 1,
         userId: 1,
@@ -342,6 +295,54 @@ export const properties = [
             {
                 src: "https://photos.zillowstatic.com/fp/d9d838ecfd65d86ce895f549fbaa91ea-cc_ft_1536.webp",
                 isPrimary: true,
+            },
+        ],
+    },
+    {
+        propertyTypeId: 1,
+        userId: 2,
+        title: "Lehi Mansion",
+        description: "Back on the market with fully finished landscaping! Enjoy unparalleled views from every level and the newly completed, spacious backyard. Commanding attention and exuding glamour, this sprawling yet unassuming mansion over 11,000 square feet is an architectural masterpiece that embodies the perfect fusion of opulence and the charm of Traverse Mountain.   With sweeping, unobstructed views of both the mountains and the serene expanse of Utah Lake, this residence creates a cinematic backdrop for your life. Picture yourself relaxing poolside year round in your private indoor pool, enjoying movie nights in your dedicated theater, and getting ready for the day in an oversized steam shower.  This home embraces luxury and leisure, offering multiple generously sized bedrooms for quiet retreats. Immerse yourself in the aura of sophistication in your office, complete with a mesmerizing aquarium. For those seeking an active lifestyle, your very own home gym and indoor sports court bring fitness right to your doorstep.  This estate invites you to a lifestyle where elegance and entertainment are woven seamlessly. This is not just a home; it's a stage set for the grand production of your life. Embrace the allure, embrace the luxury-welcome to your haven!",
+        price: 4000000.0,
+        numBedrooms: 5,
+        numBathrooms: 9,
+        squareFeet: 11298,
+        isAvailable: true,
+        address: {
+            addressLine1: "1419 W Summer View Cir",
+            addressLine2: "",
+            city: "Lehi",
+            state: "Utah",
+            postalCode: 84043,
+        },
+        photos: [
+            {
+                src: "https://photos.zillowstatic.com/fp/203878bd53087ac21d3ca15cddad6c87-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: true,
+            },{
+                src: "https://photos.zillowstatic.com/fp/c4d289335621cb3714c50d0002e668e7-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/d5fb09780ddf2717f2893e63f1e67db5-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/dfb348437ac41af1428d38223175af2e-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/240d213b73eac070be9cfa9440cf277a-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/e0f07cfc40882dd5734768ee17054815-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/dc1c950fdb3b391d9b31f34127fb990c-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/fed7eb77a79ab31b8e66cbf9df8ec74e-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
+            },{
+                src: "https://photos.zillowstatic.com/fp/6050c5ee54fe537ad9d115f4015eae44-uncropped_scaled_within_1536_1152.webp",
+                isPrimary: false,
             },
         ],
     },

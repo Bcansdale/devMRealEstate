@@ -1,25 +1,37 @@
-import { useState } from "react";
-import AdminCard from "./AdminCard"; // Import AdminCard
-import AdminProperties from "./AdminProperties"; // Import AdminProperties
-import AdminPost from "./AdminPost"; // Import AdminPost
+import { useEffect, useState } from "react";
+import PropertyForm from "./PropertyForm.jsx";
+import PropertyList from "./PropertyList.jsx";
+import {
+  PropertyProvider,
+  useProperty,
+} from "../../context/PropertyContext.jsx";
 
 function AdminPortal() {
-    const [selectedProperty, setSelectedProperty] = useState(null);
+  return (
+    <>
+      <PropertyProvider>
+        <PropertyPage />
+      </PropertyProvider>
+    </>
+  );
+}
 
-    // Function to handle property selection
-    const handleSelectedProperty = (property) => {
-        setSelectedProperty(property);  // Update selected property
-    };
+function PropertyPage() {
+  const { getProperties } = useProperty();
 
-    return (
-        <div>
-            {/* Pass the handler to AdminProperties which will forward it to AdminCard */}
-            <AdminProperties onSelectedProperty={handleSelectedProperty} />
+  useEffect(() => {
+    getProperties();
+  }, []);
 
-            {/* Always show the form */}
-            <AdminPost selectedProperty={selectedProperty} />
-        </div>
-    );
+  return (
+    <>
+      <h2 className="flex justify-center items-center text-[#444445] text-5xl pt-12">
+        Current Listings
+      </h2>
+      <PropertyList />
+      <PropertyForm />
+    </>
+  );
 }
 
 export default AdminPortal;

@@ -15,3 +15,7 @@
     margin: 12px;
     border-radius: 4px;
 }
+
+#propertyForm {
+    scroll-margin-top: 150px;
+}

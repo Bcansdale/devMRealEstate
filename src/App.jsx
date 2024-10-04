@@ -13,6 +13,8 @@ import AdminPortal from "./components/portalAdmin/AdminPortal.jsx";
 import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ContactForm from "./components/Contact.jsx";
+import About from "./components/About.jsx";
 
 function App() {
     const [activeForm, setActiveForm] = useState(null);
@@ -69,6 +71,8 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+                    <Route path="/contact" element={<ContactForm />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
