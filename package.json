@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "nodemon backend/server/server.js -w server -w src",
     "initdb": "dropdb --if-exists devmdb && createdb devmdb",
-    "predeploy": "npm run build && npm run initdb && npm run dev",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
